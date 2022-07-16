@@ -1,4 +1,5 @@
-import { join } from 'path';
+import { fileURLToPath } from 'url';
+import { join, dirname } from 'path';
 import AutoLoad, {AutoloadPluginOptions} from '@fastify/autoload';
 import { FastifyPluginAsync } from 'fastify';
 
@@ -10,6 +11,7 @@ const app: FastifyPluginAsync<AppOptions> = async (
   fastify,
   opts
 ): Promise<void> => {
+  const __dirname = dirname(fileURLToPath(import.meta.url))
   // Place here your custom code!
 
   // Do not touch the following lines
