@@ -1,6 +1,6 @@
 import { fileURLToPath } from 'url';
 import { join, dirname } from 'path';
-import AutoLoad, {AutoloadPluginOptions} from '@fastify/autoload';
+import AutoLoad, { AutoloadPluginOptions } from '@fastify/autoload';
 import { FastifyPluginAsync } from 'fastify';
 
 export type AppOptions = {
@@ -9,9 +9,9 @@ export type AppOptions = {
 
 const app: FastifyPluginAsync<AppOptions> = async (
   fastify,
-  opts
+  opts,
 ): Promise<void> => {
-  const __dirname = dirname(fileURLToPath(import.meta.url))
+  const __dirname = dirname(fileURLToPath(import.meta.url));
   // Place here your custom code!
 
   // Do not touch the following lines
@@ -19,19 +19,18 @@ const app: FastifyPluginAsync<AppOptions> = async (
   // This loads all plugins defined in plugins
   // those should be support plugins that are reused
   // through your application
-  void fastify.register(AutoLoad, {
+  fastify.register(AutoLoad, {
     dir: join(__dirname, 'plugins'),
-    options: opts
-  })
+    options: opts,
+  });
 
   // This loads all plugins defined in routes
   // define your routes in one of these
-  void fastify.register(AutoLoad, {
+  fastify.register(AutoLoad, {
     dir: join(__dirname, 'routes'),
-    options: opts
-  })
-
+    options: opts,
+  });
 };
 
 export default app;
-export { app }
+export { app };
