@@ -1,0 +1,17 @@
+{
+  "name": "article-picker",
+  "packageManager": "yarn@3.2.1",
+  "scripts": {
+    "server:test": "yarn workspace server test",
+    "server:start": "yarn workspace server test",
+    "server:dev": "yarn workspace server dev"
+  },
+  "workspaces": [
+    "packages/*"
+  ],
+  "devDependencies": {
+    "@types/node": "^18.0.5",
+    "@yarnpkg/sdks": "^3.0.0-rc.12",
+    "typescript": "^4.7.4"
+  }
+}

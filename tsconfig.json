@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "incremental": true,
+    "composite": true,
+    "strict": true,
+    "moduleResolution": "NodeNext",
+    "target": "ESNext",
+    "module": "CommonJS",
+    "esModuleInterop": true,
+    "allowJs": true,
+    "outDir": "./dist",
+    "noImplicitAny": false
+  },
+  "exclude": ["node_modules"]
+}
