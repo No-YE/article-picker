@@ -307,6 +307,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["@prisma/engines", [\
+        ["npm:3.16.0-49.da41d2bb3406da22087b849f0e911199ba4fbf11", {\
+          "packageLocation": "./.yarn/unplugged/@prisma-engines-npm-3.16.0-49.da41d2bb3406da22087b849f0e911199ba4fbf11-1a48a65443/node_modules/@prisma/engines/",\
+          "packageDependencies": [\
+            ["@prisma/engines", "npm:3.16.0-49.da41d2bb3406da22087b849f0e911199ba4fbf11"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["@sindresorhus/is", [\
         ["npm:4.6.0", {\
           "packageLocation": "./.yarn/cache/@sindresorhus-is-npm-4.6.0-7cad05c55e-83839f13da.zip/node_modules/@sindresorhus/is/",\
@@ -4796,6 +4805,16 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["prisma", [\
+        ["npm:4.0.0", {\
+          "packageLocation": "./.yarn/unplugged/prisma-npm-4.0.0-345d2216a5/node_modules/prisma/",\
+          "packageDependencies": [\
+            ["prisma", "npm:4.0.0"],\
+            ["@prisma/engines", "npm:3.16.0-49.da41d2bb3406da22087b849f0e911199ba4fbf11"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["process-warning", [\
         ["npm:2.0.0", {\
           "packageLocation": "./.yarn/cache/process-warning-npm-2.0.0-f7a9c0265e-a2bb299835.zip/node_modules/process-warning/",\
@@ -5203,6 +5222,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["fastify", "npm:4.2.1"],\
             ["fastify-cli", "npm:4.3.0"],\
             ["fastify-plugin", "npm:3.0.1"],\
+            ["prisma", "npm:4.0.0"],\
             ["ts-node", "virtual:2499dbb93d824027565d71b0716c4fb8b548ad61955d0a0286bfb3c5b4058e227894b6691d96808c00f576db14870018375210362c26ee321ea99fd6ed041c74#npm:10.9.1"],\
             ["typescript", "patch:typescript@npm%3A4.7.4#~builtin<compat/typescript>::version=4.7.4&hash=7ad353"]\
           ],\
