@@ -1,0 +1,7 @@
+set -e
+docker-compose -f ../../docker-compose.test.yml down
+docker-compose -f ../../docker-compose.test.yml up -d
+tsc
+yarn prisma migrate deploy
+c8 ava
+docker-compose -f ../../docker-compose.test.yml down

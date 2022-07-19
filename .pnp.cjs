@@ -2070,6 +2070,28 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["dotenv-cli", [\
+        ["npm:6.0.0", {\
+          "packageLocation": "./.yarn/cache/dotenv-cli-npm-6.0.0-a5881469d0-3db5a363ee.zip/node_modules/dotenv-cli/",\
+          "packageDependencies": [\
+            ["dotenv-cli", "npm:6.0.0"],\
+            ["cross-spawn", "npm:7.0.3"],\
+            ["dotenv", "npm:16.0.1"],\
+            ["dotenv-expand", "npm:8.0.3"],\
+            ["minimist", "npm:1.2.6"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["dotenv-expand", [\
+        ["npm:8.0.3", {\
+          "packageLocation": "./.yarn/cache/dotenv-expand-npm-8.0.3-3f30d1947a-128ce90ac8.zip/node_modules/dotenv-expand/",\
+          "packageDependencies": [\
+            ["dotenv-expand", "npm:8.0.3"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["eastasianwidth", [\
         ["npm:0.2.0", {\
           "packageLocation": "./.yarn/cache/eastasianwidth-npm-0.2.0-c37eb16bd1-7d00d7cd8e.zip/node_modules/eastasianwidth/",\
@@ -5219,6 +5241,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["ava", "virtual:2499dbb93d824027565d71b0716c4fb8b548ad61955d0a0286bfb3c5b4058e227894b6691d96808c00f576db14870018375210362c26ee321ea99fd6ed041c74#npm:4.3.1"],\
             ["c8", "npm:7.11.3"],\
             ["concurrently", "npm:7.2.2"],\
+            ["dotenv-cli", "npm:6.0.0"],\
             ["fastify", "npm:4.2.1"],\
             ["fastify-cli", "npm:4.3.0"],\
             ["fastify-plugin", "npm:3.0.1"],\
