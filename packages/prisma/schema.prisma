@@ -2,8 +2,9 @@
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 generator client {
-  provider = "prisma-client-js"
-  output   = "../../../../prisma"
+  provider      = "prisma-client-js"
+  output        = "../../../../prisma"
+  binaryTargets = ["darwin", "linux-musl"]
 }
 
 datasource db {
