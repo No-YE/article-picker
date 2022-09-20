@@ -3,5 +3,5 @@ docker-compose -f ../../docker-compose.test.yml down
 docker-compose -f ../../docker-compose.test.yml up -d
 tsc
 yarn prisma migrate deploy
-c8 ava
+c8 ava spec
 docker-compose -f ../../docker-compose.test.yml down

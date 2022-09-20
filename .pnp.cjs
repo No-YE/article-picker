@@ -3048,6 +3048,16 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["fishery", [\
+        ["npm:2.2.2", {\
+          "packageLocation": "./.yarn/cache/fishery-npm-2.2.2-3de659036c-270a90bb69.zip/node_modules/fishery/",\
+          "packageDependencies": [\
+            ["fishery", "npm:2.2.2"],\
+            ["lodash.mergewith", "npm:4.6.2"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["flat-cache", [\
         ["npm:3.0.4", {\
           "packageLocation": "./.yarn/cache/flat-cache-npm-3.0.4-ee77e5911e-4fdd10ecbc.zip/node_modules/flat-cache/",\
@@ -4147,6 +4157,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/lodash.merge-npm-4.6.2-77cb4416bf-ad580b4bdb.zip/node_modules/lodash.merge/",\
           "packageDependencies": [\
             ["lodash.merge", "npm:4.6.2"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["lodash.mergewith", [\
+        ["npm:4.6.2", {\
+          "packageLocation": "./.yarn/cache/lodash.mergewith-npm-4.6.2-7d2d4201ec-a6db2a9339.zip/node_modules/lodash.mergewith/",\
+          "packageDependencies": [\
+            ["lodash.mergewith", "npm:4.6.2"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -5472,6 +5491,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["fastify", "npm:4.5.3"],\
             ["fastify-cli", "npm:4.4.0"],\
             ["fastify-plugin", "npm:4.2.1"],\
+            ["fishery", "npm:2.2.2"],\
             ["my-prisma", "workspace:packages/prisma"],\
             ["prisma", "npm:4.3.1"],\
             ["ts-node", "virtual:2499dbb93d824027565d71b0716c4fb8b548ad61955d0a0286bfb3c5b4058e227894b6691d96808c00f576db14870018375210362c26ee321ea99fd6ed041c74#npm:10.9.1"],\

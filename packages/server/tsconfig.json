@@ -13,6 +13,7 @@
   },
   "exclude": [
     "dist",
+    "spec",
     "**/generated/**/*"
   ]
 }
