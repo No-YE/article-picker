@@ -1,6 +1,6 @@
 {
   "name": "article-picker",
-  "packageManager": "yarn@3.2.1",
+  "packageManager": "yarn@3.2.3",
   "scripts": {
     "lint": "yarn eslint --ext .ts,.js .",
     "server:test": "yarn workspace server test",

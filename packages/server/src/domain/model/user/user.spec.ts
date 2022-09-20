@@ -1,6 +1,6 @@
 // eslint-disable-next-line import/no-unresolved
-import test from 'ava';
+// import test from 'ava';
 
-test('foo', (t) => {
-  t.pass();
-});
+// test('foo', (t) => {
+//   t.pass();
+// });

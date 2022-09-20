@@ -18,12 +18,17 @@
         "**/dist/**/*"
     ],
     "rules": {
+        "lines-between-class-members": "off",
+        "class-methods-use-this": "off",
         "no-underscore-dangle": "off",
         "no-unused-vars": [
             "error",
             {
                 "argsIgnorePattern": "^_"
             }
-        ]
+        ],
+        "import/prefer-default-export": "off",
+        "import/extensions": "off",
+        "import/no-unresolved": "off"
     }
 }
