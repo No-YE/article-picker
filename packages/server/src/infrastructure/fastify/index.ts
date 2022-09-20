@@ -23,13 +23,13 @@ const app: FastifyPluginAsync<AppOptions> = async (
   // define your routes in one of these
 
   fastify.register(AutoLoad, {
-    dir: join(__dirname, 'lib/fastify'),
+    dir: join(__dirname, 'plugin'),
     options: opts,
   });
 
   fastify.register(AutoLoad, {
-    dir: join(__dirname, 'interface'),
-    ignorePattern: /.*(test|spec|plugin).js/,
+    dir: join(__dirname, 'routes'),
+    ignorePattern: /.*(test|spec).js/,
     options: opts,
   });
 
@@ -39,5 +39,4 @@ const app: FastifyPluginAsync<AppOptions> = async (
   // });
 };
 
-export default app;
 export { app };
