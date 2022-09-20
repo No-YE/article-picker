@@ -1,4 +1,4 @@
-import type UserEntity from './user.entity.js';
+import type UserEntity from './entity.js';
 
 type UserRepository = {
   save(_userEntity: UserEntity): Promise<UserEntity>;

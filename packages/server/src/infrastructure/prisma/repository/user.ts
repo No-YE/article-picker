@@ -1,6 +1,6 @@
-import UserEntity from '../../domain/model/user/user.entity.js';
-import type UserRepository from '../../domain/model/user/user.repository.js';
-import prisma from './client.js';
+import UserEntity from '../../../domain/model/user/entity.js';
+import type UserRepository from '../../../domain/model/user/repository.js';
+import prisma from '../client.js';
 
 async function save(userEntity: UserEntity): Promise<UserEntity> {
   const { name, email } = userEntity;

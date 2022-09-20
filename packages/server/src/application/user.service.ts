@@ -1,5 +1,5 @@
-import UserEntity from '../domain/model/user/user.entity.js';
-import prismaUserRepository from '../infrastructure/prisma/user.repository.js';
+import UserEntity from '../domain/model/user/entity.js';
+import prismaUserRepository from '../infrastructure/prisma/repository/user.js';
 
 type User = {
   name: string;
