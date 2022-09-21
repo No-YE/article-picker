@@ -1,8 +1,8 @@
-import UserEntity from '../../../domain/model/user/entity.js';
+import User from '../../../domain/model/user/entity.js';
 import type UserRepository from '../../../domain/model/user/repository.js';
 import prisma from '../client.js';
 
-async function save(userEntity: UserEntity): Promise<UserEntity> {
+async function save(userEntity: User): Promise<User> {
   const { name, email } = userEntity;
 
   const upsertedUser = await prisma.user.upsert({
@@ -14,12 +14,12 @@ async function save(userEntity: UserEntity): Promise<UserEntity> {
   return upsertedUser;
 }
 
-async function findByEmail(email: string): Promise<UserEntity | null> {
+async function findByEmail(email: string): Promise<User | null> {
   const user = await prisma.user.findUnique({
     where: { email },
   });
 
-  return user ? UserEntity.new(user) : null;
+  return user ? User.new(user) : null;
 }
 
 const userRepository: UserRepository = {

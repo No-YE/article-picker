@@ -1,4 +1,4 @@
-class UserEntity {
+class User {
   id?: number;
   name!: string;
   email!: string;
@@ -6,7 +6,7 @@ class UserEntity {
   updatedAt?: Date;
   deletedAt?: Date | null;
 
-  static new(param: UserEntity): UserEntity {
+  static new(param: User): User {
     const userEntity = new this(param);
 
     if (userEntity.name.length < 1) {
@@ -20,9 +20,9 @@ class UserEntity {
     return userEntity;
   }
 
-  private constructor(param: UserEntity) {
+  private constructor(param: User) {
     Object.assign(this, param);
   }
 }
 
-export default UserEntity;
+export default User;
