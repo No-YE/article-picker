@@ -19,7 +19,7 @@ async function findByEmail(email: string): Promise<UserEntity | null> {
     where: { email },
   });
 
-  return user ? new UserEntity(user) : null;
+  return user ? UserEntity.new(user) : null;
 }
 
 const userRepository: UserRepository = {

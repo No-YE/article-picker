@@ -7,7 +7,7 @@ type User = {
 }
 
 async function createUser(user: User): Promise<UserEntity> {
-  const userEntity = new UserEntity(user);
+  const userEntity = UserEntity.new(user);
   return prismaUserRepository.save(userEntity);
 }
 

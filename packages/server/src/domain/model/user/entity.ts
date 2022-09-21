@@ -6,7 +6,21 @@ class UserEntity {
   updatedAt?: Date;
   deletedAt?: Date | null;
 
-  constructor(param: UserEntity) {
+  static new(param: UserEntity): UserEntity {
+    const userEntity = new this(param);
+
+    if (userEntity.name.length < 1) {
+      throw Error('');
+    }
+
+    if (userEntity.email.length < 1) {
+      throw Error('');
+    }
+
+    return userEntity;
+  }
+
+  private constructor(param: UserEntity) {
     Object.assign(this, param);
   }
 }
