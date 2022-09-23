@@ -1,27 +1,34 @@
-class User {
-  id?: number;
-  name!: string;
-  email!: string;
-  createdAt?: Date;
-  updatedAt?: Date;
-  deletedAt?: Date | null;
+import { Entity } from '../entity';
 
-  static new(param: User): User {
-    const userEntity = new this(param);
+class User extends Entity {
+  private name!: string;
+  private email!: string;
+  private createdAt!: Date;
+  private updatedAt!: Date;
+  private deletedAt?: Date | null;
 
-    if (userEntity.name.length < 1) {
-      throw Error('');
-    }
+  static new(param: {
+    id?: number,
+    name: string,
+    email: string,
+    createdAt?: Date,
+    updatedAt?: Date,
+  }): User {
+    const entity = new this();
+    Object.assign(entity, { id: -1, createdAt: -1, updatedAt: -1 }, param);
 
-    if (userEntity.email.length < 1) {
-      throw Error('');
-    }
-
-    return userEntity;
+    return entity;
   }
 
-  private constructor(param: User) {
-    Object.assign(this, param);
+  get properties() {
+    return {
+      id: this.id,
+      name: this.name,
+      email: this.email,
+      createdAt: this.createdAt,
+      updatedAt: this.updatedAt,
+      deletedAt: this.deletedAt,
+    };
   }
 }
 
