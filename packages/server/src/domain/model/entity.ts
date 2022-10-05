@@ -1,14 +1,10 @@
 abstract class Entity {
-  protected _id: number = -1;
+  id: number = -1;
 
   protected constructor() {}
 
-  get id() {
-    return this._id;
-  }
-
-  protected set id(value: number) {
-    this._id = value;
+  protected setId(value: number) {
+    this.id = value;
   }
 
   static new(_args: unknown) {

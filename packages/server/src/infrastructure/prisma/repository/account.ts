@@ -3,7 +3,7 @@ import type AccountRepository from '../../../domain/model/account/repository.js'
 import prisma from '../client.js';
 
 async function save(account: Account): Promise<Account> {
-  const { id, name, email } = account.properties;
+  const { id, name, email } = account;
 
   const upsertedAccount = await prisma.account.upsert({
     where: { id },
