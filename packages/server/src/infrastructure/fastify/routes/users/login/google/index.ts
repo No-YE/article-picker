@@ -1,14 +1,14 @@
 import { FastifyPluginAsync } from 'fastify';
 import { getUserInfo } from '../../../../../google/index';
-import userCommand from '../../../../../../application/command/user';
+import accountService from '../../../../../../application/service/account';
 
 const oauth: FastifyPluginAsync = async (fastify) => {
   fastify.get('/callback', async function handler(request, reply) {
     const token = await this.googleOAuth2.getAccessTokenFromAuthorizationCodeFlow(request);
     const userInfo = await getUserInfo(token.access_token);
-    const user = await userCommand.createUser(userInfo);
+    const account = await accountService.createAccount(userInfo);
 
-    request.session.userId = user.id;
+    request.session.accountId = account.id;
 
     reply.redirect('/');
   });

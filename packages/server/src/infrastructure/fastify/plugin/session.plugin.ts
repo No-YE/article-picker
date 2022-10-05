@@ -5,7 +5,7 @@ import cookie from '@fastify/cookie';
 declare module 'fastify' {
   // eslint-disable-next-line no-unused-vars
   interface Session {
-    userId?: number;
+    accountId?: number;
   }
 }
 

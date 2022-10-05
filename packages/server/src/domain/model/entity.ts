@@ -3,6 +3,10 @@ abstract class Entity {
 
   protected constructor() {}
 
+  get id() {
+    return this._id;
+  }
+
   protected set id(value: number) {
     this._id = value;
   }

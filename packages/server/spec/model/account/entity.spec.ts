@@ -1,5 +1,5 @@
 import test from 'ava';
-import User from '../../../src/domain/model/user/entity';
+import User from '../../../src/domain/model/account/entity';
 
 test('name은 1글자 이상이어야 한다.', (t) => {
   t.notThrows(() => {
