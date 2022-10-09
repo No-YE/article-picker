@@ -19,13 +19,13 @@ class Account extends Entity {
     return entity;
   }
 
-  private setName(value: string) {
+  private setName(value: string): void {
     if (value.length < 1) throw Error();
 
     this.name = value;
   }
 
-  private setEmail(value: string) {
+  private setEmail(value: string): void {
     if (value.length < 1) throw Error();
 
     this.email = value;
