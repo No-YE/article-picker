@@ -163,10 +163,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["@fastify/autoload", [\
-        ["npm:5.2.0", {\
-          "packageLocation": "./.yarn/cache/@fastify-autoload-npm-5.2.0-92665de3ff-6358eff50c.zip/node_modules/@fastify/autoload/",\
+        ["npm:5.4.0", {\
+          "packageLocation": "./.yarn/cache/@fastify-autoload-npm-5.4.0-5d4bbc6b3d-47c3d6e164.zip/node_modules/@fastify/autoload/",\
           "packageDependencies": [\
-            ["@fastify/autoload", "npm:5.2.0"],\
+            ["@fastify/autoload", "npm:5.4.0"],\
             ["fastify", "npm:4.5.3"],\
             ["pkg-up", "npm:3.1.0"]\
           ],\
@@ -174,14 +174,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["@fastify/cookie", [\
-        ["npm:7.2.0", {\
-          "packageLocation": "./.yarn/cache/@fastify-cookie-npm-7.2.0-99b05eb91f-ac618c8246.zip/node_modules/@fastify/cookie/",\
+        ["npm:8.3.0", {\
+          "packageLocation": "./.yarn/cache/@fastify-cookie-npm-8.3.0-d4b09e29b0-d5dfb5c85d.zip/node_modules/@fastify/cookie/",\
           "packageDependencies": [\
-            ["@fastify/cookie", "npm:7.2.0"],\
+            ["@fastify/cookie", "npm:8.3.0"],\
             ["cookie", "npm:0.5.0"],\
-            ["cookie-signature", "npm:1.2.0"],\
             ["fastify", "npm:4.5.3"],\
-            ["fastify-plugin", "npm:3.0.1"]\
+            ["fastify-plugin", "npm:4.2.1"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -215,13 +214,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["@fastify/oauth2", [\
-        ["npm:5.1.0", {\
-          "packageLocation": "./.yarn/cache/@fastify-oauth2-npm-5.1.0-54d4255d34-ace65fccd6.zip/node_modules/@fastify/oauth2/",\
+        ["npm:6.1.0", {\
+          "packageLocation": "./.yarn/cache/@fastify-oauth2-npm-6.1.0-5265bd5ef0-1c4a5f6b5e.zip/node_modules/@fastify/oauth2/",\
           "packageDependencies": [\
-            ["@fastify/oauth2", "npm:5.1.0"],\
+            ["@fastify/oauth2", "npm:6.1.0"],\
             ["fastify", "npm:4.5.3"],\
             ["fastify-plugin", "npm:4.2.1"],\
-            ["simple-oauth2", "npm:3.4.0"]\
+            ["simple-oauth2", "npm:4.3.0"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -266,93 +265,52 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
-      ["@hapi/address", [\
-        ["npm:2.1.4", {\
-          "packageLocation": "./.yarn/cache/@hapi-address-npm-2.1.4-8548124531-10341c3b65.zip/node_modules/@hapi/address/",\
-          "packageDependencies": [\
-            ["@hapi/address", "npm:2.1.4"]\
-          ],\
-          "linkType": "HARD"\
-        }]\
-      ]],\
       ["@hapi/boom", [\
-        ["npm:7.4.11", {\
-          "packageLocation": "./.yarn/cache/@hapi-boom-npm-7.4.11-c111d7ffa5-ef166e1a76.zip/node_modules/@hapi/boom/",\
+        ["npm:9.1.4", {\
+          "packageLocation": "./.yarn/cache/@hapi-boom-npm-9.1.4-1a3569656a-b1cdde1e82.zip/node_modules/@hapi/boom/",\
           "packageDependencies": [\
-            ["@hapi/boom", "npm:7.4.11"],\
-            ["@hapi/hoek", "npm:8.5.1"]\
+            ["@hapi/boom", "npm:9.1.4"],\
+            ["@hapi/hoek", "npm:9.3.0"]\
           ],\
           "linkType": "HARD"\
         }]\
       ]],\
       ["@hapi/bourne", [\
-        ["npm:1.3.2", {\
-          "packageLocation": "./.yarn/cache/@hapi-bourne-npm-1.3.2-5729bbf3c8-8403a2e829.zip/node_modules/@hapi/bourne/",\
+        ["npm:2.1.0", {\
+          "packageLocation": "./.yarn/cache/@hapi-bourne-npm-2.1.0-dbe7c97050-0ce5a38bc4.zip/node_modules/@hapi/bourne/",\
           "packageDependencies": [\
-            ["@hapi/bourne", "npm:1.3.2"]\
-          ],\
-          "linkType": "HARD"\
-        }]\
-      ]],\
-      ["@hapi/formula", [\
-        ["npm:1.2.0", {\
-          "packageLocation": "./.yarn/cache/@hapi-formula-npm-1.2.0-fb399dda35-fb9e45c689.zip/node_modules/@hapi/formula/",\
-          "packageDependencies": [\
-            ["@hapi/formula", "npm:1.2.0"]\
+            ["@hapi/bourne", "npm:2.1.0"]\
           ],\
           "linkType": "HARD"\
         }]\
       ]],\
       ["@hapi/hoek", [\
-        ["npm:8.5.1", {\
-          "packageLocation": "./.yarn/cache/@hapi-hoek-npm-8.5.1-8e6025c279-8f8ce36be4.zip/node_modules/@hapi/hoek/",\
+        ["npm:9.3.0", {\
+          "packageLocation": "./.yarn/cache/@hapi-hoek-npm-9.3.0-447eb8d274-4771c7a776.zip/node_modules/@hapi/hoek/",\
           "packageDependencies": [\
-            ["@hapi/hoek", "npm:8.5.1"]\
-          ],\
-          "linkType": "HARD"\
-        }]\
-      ]],\
-      ["@hapi/joi", [\
-        ["npm:16.1.8", {\
-          "packageLocation": "./.yarn/cache/@hapi-joi-npm-16.1.8-042739a2e5-f0b50d6666.zip/node_modules/@hapi/joi/",\
-          "packageDependencies": [\
-            ["@hapi/joi", "npm:16.1.8"],\
-            ["@hapi/address", "npm:2.1.4"],\
-            ["@hapi/formula", "npm:1.2.0"],\
-            ["@hapi/hoek", "npm:8.5.1"],\
-            ["@hapi/pinpoint", "npm:1.0.2"],\
-            ["@hapi/topo", "npm:3.1.6"]\
-          ],\
-          "linkType": "HARD"\
-        }]\
-      ]],\
-      ["@hapi/pinpoint", [\
-        ["npm:1.0.2", {\
-          "packageLocation": "./.yarn/cache/@hapi-pinpoint-npm-1.0.2-9af5036cff-d7f0733d18.zip/node_modules/@hapi/pinpoint/",\
-          "packageDependencies": [\
-            ["@hapi/pinpoint", "npm:1.0.2"]\
+            ["@hapi/hoek", "npm:9.3.0"]\
           ],\
           "linkType": "HARD"\
         }]\
       ]],\
       ["@hapi/topo", [\
-        ["npm:3.1.6", {\
-          "packageLocation": "./.yarn/cache/@hapi-topo-npm-3.1.6-763c40a944-34278bc13b.zip/node_modules/@hapi/topo/",\
+        ["npm:5.1.0", {\
+          "packageLocation": "./.yarn/cache/@hapi-topo-npm-5.1.0-5e0b776809-604dfd5dde.zip/node_modules/@hapi/topo/",\
           "packageDependencies": [\
-            ["@hapi/topo", "npm:3.1.6"],\
-            ["@hapi/hoek", "npm:8.5.1"]\
+            ["@hapi/topo", "npm:5.1.0"],\
+            ["@hapi/hoek", "npm:9.3.0"]\
           ],\
           "linkType": "HARD"\
         }]\
       ]],\
       ["@hapi/wreck", [\
-        ["npm:15.1.0", {\
-          "packageLocation": "./.yarn/cache/@hapi-wreck-npm-15.1.0-878e8dfe03-027ea5fe3b.zip/node_modules/@hapi/wreck/",\
+        ["npm:17.2.0", {\
+          "packageLocation": "./.yarn/cache/@hapi-wreck-npm-17.2.0-77d8f4b8d3-50a7c3d146.zip/node_modules/@hapi/wreck/",\
           "packageDependencies": [\
-            ["@hapi/wreck", "npm:15.1.0"],\
-            ["@hapi/boom", "npm:7.4.11"],\
-            ["@hapi/bourne", "npm:1.3.2"],\
-            ["@hapi/hoek", "npm:8.5.1"]\
+            ["@hapi/wreck", "npm:17.2.0"],\
+            ["@hapi/boom", "npm:9.1.4"],\
+            ["@hapi/bourne", "npm:2.1.0"],\
+            ["@hapi/hoek", "npm:9.3.0"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -685,6 +643,34 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/@rushstack-eslint-patch-npm-1.2.0-917f402e4e-faa749faae.zip/node_modules/@rushstack/eslint-patch/",\
           "packageDependencies": [\
             ["@rushstack/eslint-patch", "npm:1.2.0"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["@sideway/address", [\
+        ["npm:4.1.4", {\
+          "packageLocation": "./.yarn/cache/@sideway-address-npm-4.1.4-32f94bc9f5-b9fca2a93a.zip/node_modules/@sideway/address/",\
+          "packageDependencies": [\
+            ["@sideway/address", "npm:4.1.4"],\
+            ["@hapi/hoek", "npm:9.3.0"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["@sideway/formula", [\
+        ["npm:3.0.0", {\
+          "packageLocation": "./.yarn/cache/@sideway-formula-npm-3.0.0-8688cb96b6-8ae26a0ed6.zip/node_modules/@sideway/formula/",\
+          "packageDependencies": [\
+            ["@sideway/formula", "npm:3.0.0"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["@sideway/pinpoint", [\
+        ["npm:2.0.0", {\
+          "packageLocation": "./.yarn/cache/@sideway-pinpoint-npm-2.0.0-66d94e687e-0f4491e589.zip/node_modules/@sideway/pinpoint/",\
+          "packageDependencies": [\
+            ["@sideway/pinpoint", "npm:2.0.0"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -2258,7 +2244,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["commist", "npm:2.0.0"],\
             ["leven", "npm:3.1.0"],\
-            ["minimist", "npm:1.2.6"]\
+            ["minimist", "npm:1.2.7"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -3408,10 +3394,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["fast-copy", [\
-        ["npm:2.1.3", {\
-          "packageLocation": "./.yarn/cache/fast-copy-npm-2.1.3-90618f7412-5d1a4a2183.zip/node_modules/fast-copy/",\
+        ["npm:2.1.7", {\
+          "packageLocation": "./.yarn/cache/fast-copy-npm-2.1.7-b95a8375c3-af8016c174.zip/node_modules/fast-copy/",\
           "packageDependencies": [\
-            ["fast-copy", "npm:2.1.3"]\
+            ["fast-copy", "npm:2.1.7"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -4600,6 +4586,20 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["joi", [\
+        ["npm:17.6.3", {\
+          "packageLocation": "./.yarn/cache/joi-npm-17.6.3-2a8ba9150f-a4cd53a83e.zip/node_modules/joi/",\
+          "packageDependencies": [\
+            ["joi", "npm:17.6.3"],\
+            ["@hapi/hoek", "npm:9.3.0"],\
+            ["@hapi/topo", "npm:5.1.0"],\
+            ["@sideway/address", "npm:4.1.4"],\
+            ["@sideway/formula", "npm:3.0.0"],\
+            ["@sideway/pinpoint", "npm:2.0.0"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["joycon", [\
         ["npm:3.1.1", {\
           "packageLocation": "./.yarn/cache/joycon-npm-3.1.1-3033e0e5f4-8003c9c3fc.zip/node_modules/joycon/",\
@@ -5087,6 +5087,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/minimist-npm-1.2.6-f4cee4b4af-d15428cd1e.zip/node_modules/minimist/",\
           "packageDependencies": [\
             ["minimist", "npm:1.2.6"]\
+          ],\
+          "linkType": "HARD"\
+        }],\
+        ["npm:1.2.7", {\
+          "packageLocation": "./.yarn/cache/minimist-npm-1.2.7-51d33b1371-7346574a10.zip/node_modules/minimist/",\
+          "packageDependencies": [\
+            ["minimist", "npm:1.2.7"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -5767,7 +5774,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["pino-pretty", "npm:8.1.0"],\
             ["colorette", "npm:2.0.19"],\
             ["dateformat", "npm:4.6.3"],\
-            ["fast-copy", "npm:2.1.3"],\
+            ["fast-copy", "npm:2.1.7"],\
             ["fast-safe-stringify", "npm:2.1.1"],\
             ["help-me", "npm:4.0.1"],\
             ["joycon", "npm:3.1.1"],\
@@ -6353,9 +6360,9 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["server", "workspace:packages/server"],\
             ["@ava/typescript", "npm:3.0.1"],\
-            ["@fastify/autoload", "npm:5.2.0"],\
-            ["@fastify/cookie", "npm:7.2.0"],\
-            ["@fastify/oauth2", "npm:5.1.0"],\
+            ["@fastify/autoload", "npm:5.4.0"],\
+            ["@fastify/cookie", "npm:8.3.0"],\
+            ["@fastify/oauth2", "npm:6.1.0"],\
             ["@fastify/sensible", "npm:4.1.0"],\
             ["@fastify/session", "npm:9.0.0"],\
             ["@prisma/client", "virtual:2499dbb93d824027565d71b0716c4fb8b548ad61955d0a0286bfb3c5b4058e227894b6691d96808c00f576db14870018375210362c26ee321ea99fd6ed041c74#npm:4.3.1"],\
@@ -6373,7 +6380,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["my-prisma", "workspace:packages/prisma"],\
             ["prisma", "npm:4.3.1"],\
             ["ts-node", "virtual:2499dbb93d824027565d71b0716c4fb8b548ad61955d0a0286bfb3c5b4058e227894b6691d96808c00f576db14870018375210362c26ee321ea99fd6ed041c74#npm:10.9.1"],\
-            ["typescript", "patch:typescript@npm%3A4.8.2#~builtin<compat/typescript>::version=4.8.2&hash=a1c5e5"]\
+            ["typescript", "patch:typescript@npm%3A4.8.3#~builtin<compat/typescript>::version=4.8.3&hash=a1c5e5"]\
           ],\
           "linkType": "SOFT"\
         }]\
@@ -6455,15 +6462,14 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["simple-oauth2", [\
-        ["npm:3.4.0", {\
-          "packageLocation": "./.yarn/cache/simple-oauth2-npm-3.4.0-f1232b45f9-755e682b89.zip/node_modules/simple-oauth2/",\
+        ["npm:4.3.0", {\
+          "packageLocation": "./.yarn/cache/simple-oauth2-npm-4.3.0-a29339f882-a78c6181cc.zip/node_modules/simple-oauth2/",\
           "packageDependencies": [\
-            ["simple-oauth2", "npm:3.4.0"],\
-            ["@hapi/hoek", "npm:8.5.1"],\
-            ["@hapi/joi", "npm:16.1.8"],\
-            ["@hapi/wreck", "npm:15.1.0"],\
-            ["date-fns", "npm:2.29.2"],\
-            ["debug", "virtual:9e3a462140b35a19ddb3d48ebde58d66740d97f4c0386bc195c327fc2c44fa59f43cbcb382dd9f194b16d0dd6c0a138aadd4a9de84088f88e25946598f97cb88#npm:4.3.4"]\
+            ["simple-oauth2", "npm:4.3.0"],\
+            ["@hapi/hoek", "npm:9.3.0"],\
+            ["@hapi/wreck", "npm:17.2.0"],\
+            ["debug", "virtual:9e3a462140b35a19ddb3d48ebde58d66740d97f4c0386bc195c327fc2c44fa59f43cbcb382dd9f194b16d0dd6c0a138aadd4a9de84088f88e25946598f97cb88#npm:4.3.4"],\
+            ["joi", "npm:17.6.3"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -6962,7 +6968,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["create-require", "npm:1.1.1"],\
             ["diff", "npm:4.0.2"],\
             ["make-error", "npm:1.3.6"],\
-            ["typescript", "patch:typescript@npm%3A4.8.2#~builtin<compat/typescript>::version=4.8.2&hash=a1c5e5"],\
+            ["typescript", "patch:typescript@npm%3A4.8.3#~builtin<compat/typescript>::version=4.8.3&hash=a1c5e5"],\
             ["v8-compile-cache-lib", "npm:3.0.1"],\
             ["yn", "npm:3.1.1"]\
           ],\
@@ -7104,6 +7110,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/typescript-patch-d6cb78dce7-5cb0f02f41.zip/node_modules/typescript/",\
           "packageDependencies": [\
             ["typescript", "patch:typescript@npm%3A4.8.2#~builtin<compat/typescript>::version=4.8.2&hash=a1c5e5"]\
+          ],\
+          "linkType": "HARD"\
+        }],\
+        ["patch:typescript@npm%3A4.8.3#~builtin<compat/typescript>::version=4.8.3&hash=a1c5e5", {\
+          "packageLocation": "./.yarn/cache/typescript-patch-4d824bf818-2222d2382f.zip/node_modules/typescript/",\
+          "packageDependencies": [\
+            ["typescript", "patch:typescript@npm%3A4.8.3#~builtin<compat/typescript>::version=4.8.3&hash=a1c5e5"]\
           ],\
           "linkType": "HARD"\
         }]\
