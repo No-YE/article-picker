@@ -1,8 +1,8 @@
-import { Entity } from '../entity';
+import { Entity } from '../entity'
 
 class Account extends Entity {
-  name!: string;
-  email!: string;
+  name!: string
+  email!: string
 
   static new({ id, name, email }: {
     id?: number,
@@ -11,25 +11,25 @@ class Account extends Entity {
     createdAt?: Date,
     updatedAt?: Date,
   }): Account {
-    const entity = new this();
-    entity.setId(id ?? -1);
-    entity.setName(name);
-    entity.setEmail(email);
+    const entity = new this()
+    entity.setId(id ?? -1)
+    entity.setName(name)
+    entity.setEmail(email)
 
-    return entity;
+    return entity
   }
 
   private setName(value: string): void {
-    if (value.length < 1) throw Error();
+    if (value.length < 1) throw Error()
 
-    this.name = value;
+    this.name = value
   }
 
   private setEmail(value: string): void {
-    if (value.length < 1) throw Error();
+    if (value.length < 1) throw Error()
 
-    this.email = value;
+    this.email = value
   }
 }
 
-export default Account;
+export default Account

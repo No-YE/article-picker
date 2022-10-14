@@ -1,15 +1,15 @@
 abstract class Entity {
-  id: number = -1;
+  id: number = -1
 
   protected constructor() {}
 
   protected setId(value: number) {
-    this.id = value;
+    this.id = value
   }
 
   static new(_args: unknown) {
-    throw Error();
+    throw Error()
   }
 }
 
-export { Entity };
+export { Entity }

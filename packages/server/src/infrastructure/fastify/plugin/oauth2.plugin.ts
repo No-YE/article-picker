@@ -1,6 +1,6 @@
-import fp from 'fastify-plugin';
-import oauthPlugin from '@fastify/oauth2';
-import type { OAuth2Namespace } from '@fastify/oauth2';
+import fp from 'fastify-plugin'
+import oauthPlugin from '@fastify/oauth2'
+import type { OAuth2Namespace } from '@fastify/oauth2'
 
 declare module 'fastify' {
   // eslint-disable-next-line no-unused-vars
@@ -22,7 +22,7 @@ const oauth = fp(async (fastify) => {
     },
     startRedirectPath: '/user/login/google',
     callbackUri: 'http://localhost:3000/user/login/google/callback',
-  });
-});
+  })
+})
 
-export default oauth;
+export default oauth

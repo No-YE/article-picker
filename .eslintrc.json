@@ -18,6 +18,10 @@
         "**/dist/**/*"
     ],
     "rules": {
+        "semi": [
+            "error",
+            "never"
+        ],
         "object-curly-newline": "off",
         "lines-between-class-members": "off",
         "class-methods-use-this": "off",

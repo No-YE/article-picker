@@ -1,4 +1,4 @@
-const GOOGLE_API_URI = 'https://www.googleapis.com/oauth2/v3/userinfo';
+const GOOGLE_API_URI = 'https://www.googleapis.com/oauth2/v3/userinfo'
 
 type GoogleProfile = {
   sub: string,
@@ -16,7 +16,7 @@ export async function getUserInfo(accessToken: string): Promise<GoogleProfile> {
     headers: {
       Authorization: `Bearer ${accessToken}`,
     },
-  });
+  })
 
-  return response.json() as Promise<GoogleProfile>;
+  return response.json() as Promise<GoogleProfile>
 }
