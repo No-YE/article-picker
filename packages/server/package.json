@@ -10,7 +10,7 @@
     "build:ts": "tsc",
     "watch:ts": "tsc -w",
     "dev": "yarn run build:ts && concurrently -k -p \"[{name}]\" -n \"TypeScript,App\" -c \"yellow.bold,cyan.bold\" \"npm:watch:ts\" \"npm:dev:start\"",
-    "dev:start": "fastify start --ignore-watch=.ts$ -w -l info -P dist/index.js",
+    "dev:start": "fastify start --ignore-watch=.ts$ -w -l info -P dist/index.js -p 4000",
     "prisma:generate": "pnpify prisma generate --schema=./src/infrastructure/prisma/schema.prisma",
     "prisma:migrate:dev": "pnpify prisma migrate dev --schema=./src/infrastructure/prisma/schema.prisma",
     "prisma:studio": "pnpify prisma studio --schema=./src/infrastructure/prisma/schema.prisma"
