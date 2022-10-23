@@ -8,8 +8,7 @@ const google: FastifyPluginAsync = async (fastify) => {
     '/callback',
     { preValidation: fastifyPassport.authenticate('google', { failureMessage: true }) },
     async (request, reply) => {
-      // console.log(request)
-      reply.redirect('/')
+      reply.redirect('http://localhost:4001/articles')
     },
   )
 }
