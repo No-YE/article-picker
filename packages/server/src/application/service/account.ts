@@ -1,23 +1,25 @@
-import Account from '../../domain/model/account/entity'
-import accountRepository from '../../infrastructure/prisma/repository/account'
+import { Inject, Service } from 'autoinjection'
+import { AccountRepository } from '@/domain/model/account/repository'
+import { Account } from '../../domain/model/account/entity'
 
-async function createAccount({ name, email }: { name: string, email: string }): Promise<Account> {
-  const account = Account.new({ name, email })
-  return accountRepository.save(account)
-}
+@Service({ singleton: true })
+export class AccountService {
+  // eslint-disable-next-line no-unused-vars
+  constructor(@Inject() private readonly accountRepository?: AccountRepository) {}
 
-async function findOrCreaetAccountByEmail(
-  { name, email }: { name: string, email: string },
-): Promise<Account> {
-  const account = await accountRepository.findByEmail(email)
-  if (account) {
-    return account
+  async createAccount(name: string, email: string): Promise<Account> {
+    const account = Account.new({ name, email })
+    return this.accountRepository!.save(account)
   }
 
-  return accountRepository.save(Account.new({ name, email }))
-}
+  async findOrCreaetAccountByEmail(
+    { name, email }: { name: string, email: string },
+  ): Promise<Account> {
+    const account = await this.accountRepository!.findByEmail(email)
+    if (account) {
+      return account
+    }
 
-export default {
-  createAccount,
-  findOrCreaetAccountByEmail,
+    return this.accountRepository!.save(Account.new({ name, email }))
+  }
 }

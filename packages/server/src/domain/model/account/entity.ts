@@ -1,6 +1,6 @@
 import { Entity } from '../entity'
 
-class Account extends Entity {
+export class Account extends Entity {
   name!: string
   email!: string
 
@@ -31,5 +31,3 @@ class Account extends Entity {
     this.email = value
   }
 }
-
-export default Account

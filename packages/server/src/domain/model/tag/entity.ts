@@ -1,6 +1,6 @@
 import { Entity } from '../entity'
 
-export default class Tag extends Entity {
+export class Tag extends Entity {
   text!: string
 
   static new({ id, text }: {

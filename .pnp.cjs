@@ -1793,6 +1793,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["autoinjection", [\
+        ["npm:0.0.5", {\
+          "packageLocation": "./.yarn/cache/autoinjection-npm-0.0.5-94ac798c3c-ac83d093c8.zip/node_modules/autoinjection/",\
+          "packageDependencies": [\
+            ["autoinjection", "npm:0.0.5"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["ava", [\
         ["npm:4.3.3", {\
           "packageLocation": "./.yarn/cache/ava-npm-4.3.3-56d136b19b-6365f0e9fa.zip/node_modules/ava/",\
@@ -6185,6 +6194,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["reflect-metadata", [\
+        ["npm:0.1.13", {\
+          "packageLocation": "./.yarn/cache/reflect-metadata-npm-0.1.13-c525998e20-798d379a7b.zip/node_modules/reflect-metadata/",\
+          "packageDependencies": [\
+            ["reflect-metadata", "npm:0.1.13"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["regenerator-runtime", [\
         ["npm:0.13.9", {\
           "packageLocation": "./.yarn/cache/regenerator-runtime-npm-0.13.9-6d02340eec-65ed455fe5.zip/node_modules/regenerator-runtime/",\
@@ -6481,6 +6499,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/passport-google-oauth20", "npm:2.0.11"],\
             ["@yarnpkg/pnpify", "npm:4.0.0-rc.15"],\
             ["@yarnpkg/sdks", "npm:3.0.0-rc.15"],\
+            ["autoinjection", "npm:0.0.5"],\
             ["ava", "virtual:2499dbb93d824027565d71b0716c4fb8b548ad61955d0a0286bfb3c5b4058e227894b6691d96808c00f576db14870018375210362c26ee321ea99fd6ed041c74#npm:4.3.3"],\
             ["c8", "npm:7.12.0"],\
             ["concurrently", "npm:7.3.0"],\
@@ -6492,7 +6511,9 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["my-prisma", "workspace:packages/prisma"],\
             ["passport-google-oauth20", "npm:2.0.0"],\
             ["prisma", "npm:4.3.1"],\
+            ["reflect-metadata", "npm:0.1.13"],\
             ["ts-node", "virtual:2499dbb93d824027565d71b0716c4fb8b548ad61955d0a0286bfb3c5b4058e227894b6691d96808c00f576db14870018375210362c26ee321ea99fd6ed041c74#npm:10.9.1"],\
+            ["ttypescript", "virtual:2499dbb93d824027565d71b0716c4fb8b548ad61955d0a0286bfb3c5b4058e227894b6691d96808c00f576db14870018375210362c26ee321ea99fd6ed041c74#npm:1.5.13"],\
             ["typescript", "patch:typescript@npm%3A4.8.3#~builtin<compat/typescript>::version=4.8.3&hash=a1c5e5"]\
           ],\
           "linkType": "SOFT"\
@@ -7192,6 +7213,33 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           ],\
           "packagePeers": [\
             "@types/typescript",\
+            "typescript"\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["ttypescript", [\
+        ["npm:1.5.13", {\
+          "packageLocation": "./.yarn/cache/ttypescript-npm-1.5.13-219eabee3b-bd97f05852.zip/node_modules/ttypescript/",\
+          "packageDependencies": [\
+            ["ttypescript", "npm:1.5.13"]\
+          ],\
+          "linkType": "SOFT"\
+        }],\
+        ["virtual:2499dbb93d824027565d71b0716c4fb8b548ad61955d0a0286bfb3c5b4058e227894b6691d96808c00f576db14870018375210362c26ee321ea99fd6ed041c74#npm:1.5.13", {\
+          "packageLocation": "./.yarn/__virtual__/ttypescript-virtual-04dc57e69c/0/cache/ttypescript-npm-1.5.13-219eabee3b-bd97f05852.zip/node_modules/ttypescript/",\
+          "packageDependencies": [\
+            ["ttypescript", "virtual:2499dbb93d824027565d71b0716c4fb8b548ad61955d0a0286bfb3c5b4058e227894b6691d96808c00f576db14870018375210362c26ee321ea99fd6ed041c74#npm:1.5.13"],\
+            ["@types/ts-node", null],\
+            ["@types/typescript", null],\
+            ["resolve", "patch:resolve@npm%3A1.22.1#~builtin<compat/resolve>::version=1.22.1&hash=07638b"],\
+            ["ts-node", "virtual:2499dbb93d824027565d71b0716c4fb8b548ad61955d0a0286bfb3c5b4058e227894b6691d96808c00f576db14870018375210362c26ee321ea99fd6ed041c74#npm:10.9.1"],\
+            ["typescript", "patch:typescript@npm%3A4.8.3#~builtin<compat/typescript>::version=4.8.3&hash=a1c5e5"]\
+          ],\
+          "packagePeers": [\
+            "@types/ts-node",\
+            "@types/typescript",\
+            "ts-node",\
             "typescript"\
           ],\
           "linkType": "HARD"\

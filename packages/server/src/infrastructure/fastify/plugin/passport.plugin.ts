@@ -2,7 +2,7 @@ import fp from 'fastify-plugin'
 import fastifyPassport from '@fastify/passport'
 import secureSession, { type SecureSessionPluginOptions } from '@fastify/secure-session'
 import { Strategy as GoogleStrategy } from 'passport-google-oauth20'
-import accountService from '../../../application/service/account'
+import { AccountService } from '../../../application/service/account'
 
 declare module 'fastify' {
   // eslint-disable-next-line no-unused-vars
@@ -20,6 +20,8 @@ const secureSessionPluginOptions: SecureSessionPluginOptions = {
     secure: true,
   },
 }
+
+const accountService = new AccountService()
 
 const googleStrategy = new GoogleStrategy(
   {

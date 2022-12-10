@@ -1,6 +1,6 @@
 import { Entity } from '../entity'
 
-export default class Article extends Entity {
+export class Article extends Entity {
   title!: string
   uri!: string
   read!: boolean

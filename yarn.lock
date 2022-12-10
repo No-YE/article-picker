@@ -1407,6 +1407,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"autoinjection@npm:^0.0.5":
+  version: 0.0.5
+  resolution: "autoinjection@npm:0.0.5"
+  checksum: ac83d093c824ec6ad0226d1041a63effb07d04e332ebc4be10b8242b9f2d4b58c8fd77f4d745233705b05d53237c0c63f53f2f8103543c3d84a61d781535d7f9
+  languageName: node
+  linkType: hard
+
 "ava@npm:^4.3.1":
   version: 4.3.3
   resolution: "ava@npm:4.3.3"
@@ -5113,6 +5120,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"reflect-metadata@npm:^0.1.13":
+  version: 0.1.13
+  resolution: "reflect-metadata@npm:0.1.13"
+  checksum: 798d379a7b6f6455501145419505c97dd11cbc23857a386add2b9ef15963ccf15a48d9d15507afe01d4cd74116df8a213247200bac00320bd7c11ddeaa5e8fb4
+  languageName: node
+  linkType: hard
+
 "regenerator-runtime@npm:^0.13.4":
   version: 0.13.9
   resolution: "regenerator-runtime@npm:0.13.9"
@@ -5189,7 +5203,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"resolve@npm:^1.20.0, resolve@npm:^1.22.0":
+"resolve@npm:>=1.9.0, resolve@npm:^1.20.0, resolve@npm:^1.22.0":
   version: 1.22.1
   resolution: "resolve@npm:1.22.1"
   dependencies:
@@ -5215,7 +5229,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"resolve@patch:resolve@^1.22.0#~builtin<compat/resolve>, resolve@patch:resolve@npm%3A^1.20.0#~builtin<compat/resolve>, resolve@patch:resolve@npm%3A^1.22.0#~builtin<compat/resolve>":
+"resolve@patch:resolve@>=1.9.0#~builtin<compat/resolve>, resolve@patch:resolve@^1.22.0#~builtin<compat/resolve>, resolve@patch:resolve@npm%3A^1.20.0#~builtin<compat/resolve>, resolve@patch:resolve@npm%3A^1.22.0#~builtin<compat/resolve>":
   version: 1.22.1
   resolution: "resolve@patch:resolve@npm%3A1.22.1#~builtin<compat/resolve>::version=1.22.1&hash=07638b"
   dependencies:
@@ -5404,6 +5418,7 @@ __metadata:
     "@types/passport-google-oauth20": ^2.0.11
     "@yarnpkg/pnpify": ^4.0.0-rc.12
     "@yarnpkg/sdks": ^3.0.0-rc.12
+    autoinjection: ^0.0.5
     ava: ^4.3.1
     c8: ^7.11.3
     concurrently: ^7.0.0
@@ -5415,7 +5430,9 @@ __metadata:
     my-prisma: "workspace:*"
     passport-google-oauth20: ^2.0.0
     prisma: 4.3.1
+    reflect-metadata: ^0.1.13
     ts-node: ^10.4.0
+    ttypescript: ^1.5.13
     typescript: 4.8.3
   languageName: unknown
   linkType: soft
@@ -5963,6 +5980,21 @@ __metadata:
   peerDependencies:
     typescript: ">=2.8.0 || >= 3.2.0-dev || >= 3.3.0-dev || >= 3.4.0-dev || >= 3.5.0-dev || >= 3.6.0-dev || >= 3.6.0-beta || >= 3.7.0-dev || >= 3.7.0-beta"
   checksum: 1843f4c1b2e0f975e08c4c21caa4af4f7f65a12ac1b81b3b8489366826259323feb3fc7a243123453d2d1a02314205a7634e048d4a8009921da19f99755cdc48
+  languageName: node
+  linkType: hard
+
+"ttypescript@npm:^1.5.13":
+  version: 1.5.13
+  resolution: "ttypescript@npm:1.5.13"
+  dependencies:
+    resolve: ">=1.9.0"
+  peerDependencies:
+    ts-node: ">=8.0.2"
+    typescript: ">=3.2.2"
+  bin:
+    ttsc: bin/tsc
+    ttsserver: bin/tsserver
+  checksum: bd97f058520ebd6183446b2100bfc714c400455e2195c3711d00c3407521d99098a4a204f16200c14a115cd78a5005d4a790bf7fb73a1b21a513573291a9c1d0
   languageName: node
   linkType: hard
 
