@@ -252,6 +252,18 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["@fastify/view", [\
+        ["npm:7.3.0", {\
+          "packageLocation": "./.yarn/cache/@fastify-view-npm-7.3.0-b4174d3325-6327724cd7.zip/node_modules/@fastify/view/",\
+          "packageDependencies": [\
+            ["@fastify/view", "npm:7.3.0"],\
+            ["fastify", "npm:4.5.3"],\
+            ["fastify-plugin", "npm:4.2.1"],\
+            ["hashlru", "npm:2.3.0"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["@gar/promisify", [\
         ["npm:1.1.3", {\
           "packageLocation": "./.yarn/cache/@gar-promisify-npm-1.1.3-ac1a325862-4059f790e2.zip/node_modules/@gar/promisify/",\
@@ -542,6 +554,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["@types/connect", "npm:3.4.35"],\
             ["@types/node", "npm:18.7.13"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["@types/ejs", [\
+        ["npm:3.1.1", {\
+          "packageLocation": "./.yarn/cache/@types-ejs-npm-3.1.1-0ab41f0e19-12fa444920.zip/node_modules/@types/ejs/",\
+          "packageDependencies": [\
+            ["@types/ejs", "npm:3.1.1"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -1448,6 +1469,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["typescript", "patch:typescript@npm%3A4.8.2#~builtin<compat/typescript>::version=4.8.2&hash=a1c5e5"]\
           ],\
           "linkType": "SOFT"\
+        }]\
+      ]],\
+      ["async", [\
+        ["npm:3.2.4", {\
+          "packageLocation": "./.yarn/cache/async-npm-3.2.4-aba13508f9-43d07459a4.zip/node_modules/async/",\
+          "packageDependencies": [\
+            ["async", "npm:3.2.4"]\
+          ],\
+          "linkType": "HARD"\
         }]\
       ]],\
       ["atomic-sleep", [\
@@ -2387,6 +2417,16 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["ejs", [\
+        ["npm:3.1.8", {\
+          "packageLocation": "./.yarn/cache/ejs-npm-3.1.8-30583753fc-1d40d198ad.zip/node_modules/ejs/",\
+          "packageDependencies": [\
+            ["ejs", "npm:3.1.8"],\
+            ["jake", "npm:10.8.5"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["emittery", [\
         ["npm:0.11.0", {\
           "packageLocation": "./.yarn/cache/emittery-npm-0.11.0-fcf431f1e5-fba43607e6.zip/node_modules/emittery/",\
@@ -3064,6 +3104,16 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["filelist", [\
+        ["npm:1.0.4", {\
+          "packageLocation": "./.yarn/cache/filelist-npm-1.0.4-3a835ae0a7-a303573b08.zip/node_modules/filelist/",\
+          "packageDependencies": [\
+            ["filelist", "npm:1.0.4"],\
+            ["minimatch", "npm:5.1.0"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["fill-range", [\
         ["npm:7.0.1", {\
           "packageLocation": "./.yarn/cache/fill-range-npm-7.0.1-b8b1817caa-cc283f4e65.zip/node_modules/fill-range/",\
@@ -3493,6 +3543,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/has-unicode-npm-2.0.1-893adb4747-1eab07a743.zip/node_modules/has-unicode/",\
           "packageDependencies": [\
             ["has-unicode", "npm:2.0.1"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["hashlru", [\
+        ["npm:2.3.0", {\
+          "packageLocation": "./.yarn/cache/hashlru-npm-2.3.0-8267692d49-38b3559e6f.zip/node_modules/hashlru/",\
+          "packageDependencies": [\
+            ["hashlru", "npm:2.3.0"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -4035,6 +4094,19 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["istanbul-reports", "npm:3.1.5"],\
             ["html-escaper", "npm:2.0.2"],\
             ["istanbul-lib-report", "npm:3.0.0"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["jake", [\
+        ["npm:10.8.5", {\
+          "packageLocation": "./.yarn/cache/jake-npm-10.8.5-6a5e87e533-56c913ecf5.zip/node_modules/jake/",\
+          "packageDependencies": [\
+            ["jake", "npm:10.8.5"],\
+            ["async", "npm:3.2.4"],\
+            ["chalk", "npm:4.1.2"],\
+            ["filelist", "npm:1.0.4"],\
+            ["minimatch", "npm:3.1.2"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -5622,7 +5694,9 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@fastify/passport", "npm:2.2.0"],\
             ["@fastify/secure-session", "npm:5.2.0"],\
             ["@fastify/sensible", "npm:4.1.0"],\
+            ["@fastify/view", "npm:7.3.0"],\
             ["@prisma/client", "virtual:2499dbb93d824027565d71b0716c4fb8b548ad61955d0a0286bfb3c5b4058e227894b6691d96808c00f576db14870018375210362c26ee321ea99fd6ed041c74#npm:4.7.1"],\
+            ["@types/ejs", "npm:3.1.1"],\
             ["@types/node", "npm:18.8.4"],\
             ["@types/passport-google-oauth20", "npm:2.0.11"],\
             ["@yarnpkg/pnpify", "npm:4.0.0-rc.15"],\
@@ -5632,6 +5706,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["c8", "npm:7.12.0"],\
             ["concurrently", "npm:7.3.0"],\
             ["dotenv-cli", "npm:6.0.0"],\
+            ["ejs", "npm:3.1.8"],\
             ["fastify", "npm:4.5.3"],\
             ["fastify-cli", "npm:4.4.0"],\
             ["fastify-plugin", "npm:4.2.1"],\

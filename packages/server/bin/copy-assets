@@ -1,0 +1,2 @@
+mkdir -p dist/infrastructure/fastify
+cp -r src/infrastructure/fastify/views dist/infrastructure/fastify
