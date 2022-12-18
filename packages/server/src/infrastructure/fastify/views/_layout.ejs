@@ -1,17 +1,20 @@
+<!DOCTYPE html>
 <html>
+  <head>
+    <title>Articler</title>
+    <script src="https://unpkg.com/htmx.org@1.8.4"></script>
+    <script src="https://cdn.tailwindcss.com/3.2.4"></script>
+    <script>
+      tailwind.config = {
+        corePlugins: {
+          preflight: false,
+        },
+      }
+    </script>
+  </head>
 
-<head>
-  <title>hello</title>
-</head>
-
-<body>
-  <h1>
-    <%= header %>
-  </h1>
-  <%- body -%>
-    <div>
-      <%= footer %>
-    </div>
-</body>
-
+  <body class="m-0">
+    <%- include('_header') -%>
+    <%- body -%>
+  </body>
 </html>

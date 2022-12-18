@@ -13,15 +13,23 @@ declare module 'fastify' {
       _page: string, _data: T, _opts?: RouteSpecificOptions
     ): FastifyReply;
     view(_page: string, _data?: object, _opts?: RouteSpecificOptions): FastifyReply;
+    locals: { [key: string]: unknown; }
   }
 }
 
 const options: FastifyViewOptions = {
   engine: { ejs },
   root: path.join(__dirname, '../', 'views'),
-  templates: './_layout.ejs',
+  layout: '_layout.ejs',
 }
 
 export default fp(async (fastify, _opts) => {
+  fastify.addHook('preHandler', async (request, reply) => {
+    // eslint-disable-next-line no-param-reassign
+    reply.locals = {
+      user: request.user,
+      flash: reply.flash(),
+    }
+  })
   fastify.register(view, options)
 })

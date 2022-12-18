@@ -1,0 +1,16 @@
+<header class="flex justify-center border-0 border-b-2 border-gray-300 border-solid">
+  <div class="flex justify-between items-center w-full max-w-screen-2xl">
+    <div hx-boost="true" class="flex items-center">
+      <h1 class="mr-10">Articler</h1>
+
+      <a href="/articles/my" class="mr-4 text-gray-700 no-underline">My Article</a>
+      <a href="/articles/all" class="text-gray-700 no-underline">All Article</a>
+    </div>
+
+    <% if (user) { %>
+      <a href="/user/signout" class="text-gray-700 no-underline">Sign Out</a>
+    <% } else { %>
+      <a href="/user/google/signin" class="text-gray-700 no-underline">Sign In</a>
+    <% } %>
+  </div>
+</header>

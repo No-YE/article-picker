@@ -1,0 +1,7 @@
+<% if (flash) %>
+  <% flash.info?.forEach((info) => {) { %>
+    <div class="flex items-center bg-blue-500 text-white text-sm font-bold px-4 py-3">
+      <p><%= info %></p>
+    </div>
+  <% }) %>
+<% } %>
