@@ -187,6 +187,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@fastify/type-provider-typebox@npm:^2.4.0":
+  version: 2.4.0
+  resolution: "@fastify/type-provider-typebox@npm:2.4.0"
+  peerDependencies:
+    "@sinclair/typebox": ^0.25.9
+    fastify: ^4.0.0
+  checksum: abaf019e25bb4dd7adbf5ad6d588b1cc846c60695b01c7ae5d4a98d4c8f8263c531f08ca2e81a54c8176117b856978cf541d7aff19d98b4c28f26a9f2a61da3a
+  languageName: node
+  linkType: hard
+
 "@fastify/view@npm:^7.3.0":
   version: 7.3.0
   resolution: "@fastify/view@npm:7.3.0"
@@ -342,6 +352,13 @@ __metadata:
   version: 4.7.1
   resolution: "@prisma/engines@npm:4.7.1"
   checksum: 1660f1d5a6188a9cb9aa5186111910f37b1bc02f09be10336a41e0ec61a18a4193e0ff424077dafb1bf1392a435fc89cec47526a58784a7bdc6c8278adf147a4
+  languageName: node
+  linkType: hard
+
+"@sinclair/typebox@npm:^0.25.15":
+  version: 0.25.15
+  resolution: "@sinclair/typebox@npm:0.25.15"
+  checksum: af2f330e4fba7a38edfebb0c9210d14687de296a4dced71d653f5ce5fa8aa641159180c24f2b67c8f8fe725925d031d227f6d89f21cbaeba560ca58ce204ab4d
   languageName: node
   linkType: hard
 
@@ -4881,8 +4898,10 @@ __metadata:
     "@fastify/passport": ^2.2.0
     "@fastify/secure-session": ^5.2.0
     "@fastify/sensible": ^4.1.0
+    "@fastify/type-provider-typebox": ^2.4.0
     "@fastify/view": ^7.3.0
     "@prisma/client": 4.7.1
+    "@sinclair/typebox": ^0.25.15
     "@types/ejs": ^3
     "@types/node": ^18.0.5
     "@types/passport-google-oauth20": ^2.0.11

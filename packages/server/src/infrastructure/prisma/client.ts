@@ -1,7 +1,8 @@
-import { PrismaClient } from 'my-prisma'
+import * as Prisma from 'my-prisma'
 
-const prisma = new PrismaClient({
+const prismaClient = new Prisma.PrismaClient({
   log: ['query', 'info', 'warn', 'error'],
 })
 
-export default prisma
+export { Prisma }
+export default prismaClient

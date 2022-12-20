@@ -2,6 +2,7 @@
 import { join } from 'path'
 import AutoLoad, { AutoloadPluginOptions } from '@fastify/autoload'
 import { FastifyPluginAsync } from 'fastify'
+import { TypeBoxValidatorCompiler } from '@fastify/type-provider-typebox'
 import '../prisma/repository'
 
 export type AppOptions = {
@@ -22,6 +23,8 @@ const app: FastifyPluginAsync<AppOptions> = async (
   // through your application
   // This loads all plugins defined in routes
   // define your routes in one of these
+
+  fastify.setValidatorCompiler(TypeBoxValidatorCompiler)
 
   fastify.register(AutoLoad, {
     dir: join(__dirname, 'plugin'),

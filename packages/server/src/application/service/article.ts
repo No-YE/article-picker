@@ -10,4 +10,8 @@ export class ArticleService {
   async allPublicArticles(): Promise<Array<Article>> {
     return this.articleRepository!.allPublicArticles()
   }
+
+  async findById(id: number): Promise<Article> {
+    return this.articleRepository!.findById(id)
+  }
 }

@@ -1,7 +1,7 @@
 import { Service } from 'autoinjection'
 import { Article } from '../../../domain/model/article/entity.js'
 import type { ArticleRepository } from '../../../domain/model/article/repository.js'
-import prisma from '../client.js'
+import prisma, { Prisma } from '../client.js'
 
 @Service({ singleton: true })
 class PrismaArticleRepository implements ArticleRepository {
@@ -10,7 +10,19 @@ class PrismaArticleRepository implements ArticleRepository {
       where: { isPublic: true },
     })
 
-    return articles.map((article) => Article.new({ ...article, read: !!article.readAt }))
+    return articles.map(this.mapToEntity)
+  }
+
+  async findById(id: number): Promise<Article> {
+    const article = await prisma.article.findUniqueOrThrow({
+      where: { id },
+    })
+
+    return this.mapToEntity(article)
+  }
+
+  private mapToEntity(article: Prisma.Article): Article {
+    return Article.new({ ...article, read: !!article.readAt })
   }
 }
 

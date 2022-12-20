@@ -252,6 +252,32 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["@fastify/type-provider-typebox", [\
+        ["npm:2.4.0", {\
+          "packageLocation": "./.yarn/cache/@fastify-type-provider-typebox-npm-2.4.0-96d492b92d-abaf019e25.zip/node_modules/@fastify/type-provider-typebox/",\
+          "packageDependencies": [\
+            ["@fastify/type-provider-typebox", "npm:2.4.0"]\
+          ],\
+          "linkType": "SOFT"\
+        }],\
+        ["virtual:2499dbb93d824027565d71b0716c4fb8b548ad61955d0a0286bfb3c5b4058e227894b6691d96808c00f576db14870018375210362c26ee321ea99fd6ed041c74#npm:2.4.0", {\
+          "packageLocation": "./.yarn/__virtual__/@fastify-type-provider-typebox-virtual-19af6ade93/0/cache/@fastify-type-provider-typebox-npm-2.4.0-96d492b92d-abaf019e25.zip/node_modules/@fastify/type-provider-typebox/",\
+          "packageDependencies": [\
+            ["@fastify/type-provider-typebox", "virtual:2499dbb93d824027565d71b0716c4fb8b548ad61955d0a0286bfb3c5b4058e227894b6691d96808c00f576db14870018375210362c26ee321ea99fd6ed041c74#npm:2.4.0"],\
+            ["@sinclair/typebox", "npm:0.25.15"],\
+            ["@types/fastify", null],\
+            ["@types/sinclair__typebox", null],\
+            ["fastify", "npm:4.5.3"]\
+          ],\
+          "packagePeers": [\
+            "@sinclair/typebox",\
+            "@types/fastify",\
+            "@types/sinclair__typebox",\
+            "fastify"\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["@fastify/view", [\
         ["npm:7.3.0", {\
           "packageLocation": "./.yarn/cache/@fastify-view-npm-7.3.0-b4174d3325-6327724cd7.zip/node_modules/@fastify/view/",\
@@ -456,6 +482,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/@prisma-engines-version-npm-4.7.1-1.272861e07ab64f234d3ffc4094e32bd61775599c-102769d014-66221f1805.zip/node_modules/@prisma/engines-version/",\
           "packageDependencies": [\
             ["@prisma/engines-version", "npm:4.7.1-1.272861e07ab64f234d3ffc4094e32bd61775599c"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["@sinclair/typebox", [\
+        ["npm:0.25.15", {\
+          "packageLocation": "./.yarn/cache/@sinclair-typebox-npm-0.25.15-ee9770d29d-af2f330e4f.zip/node_modules/@sinclair/typebox/",\
+          "packageDependencies": [\
+            ["@sinclair/typebox", "npm:0.25.15"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -5772,8 +5807,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@fastify/passport", "npm:2.2.0"],\
             ["@fastify/secure-session", "npm:5.2.0"],\
             ["@fastify/sensible", "npm:4.1.0"],\
+            ["@fastify/type-provider-typebox", "virtual:2499dbb93d824027565d71b0716c4fb8b548ad61955d0a0286bfb3c5b4058e227894b6691d96808c00f576db14870018375210362c26ee321ea99fd6ed041c74#npm:2.4.0"],\
             ["@fastify/view", "npm:7.3.0"],\
             ["@prisma/client", "virtual:2499dbb93d824027565d71b0716c4fb8b548ad61955d0a0286bfb3c5b4058e227894b6691d96808c00f576db14870018375210362c26ee321ea99fd6ed041c74#npm:4.7.1"],\
+            ["@sinclair/typebox", "npm:0.25.15"],\
             ["@types/ejs", "npm:3.1.1"],\
             ["@types/node", "npm:18.8.4"],\
             ["@types/passport-google-oauth20", "npm:2.0.11"],\
