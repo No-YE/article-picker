@@ -25,6 +25,24 @@ export type Account = {
   deletedAt: Date | null
 }
 
+/**
+ * Model Article
+ * 
+ */
+export type Article = {
+  id: number
+  title: string
+  description: string
+  uri: string
+  imageUri: string | null
+  readAt: Date | null
+  isPublic: boolean
+  accountId: number
+  createdAt: Date
+  updatedAt: Date
+  deletedAt: Date | null
+}
+
 
 /**
  * ##  Prisma Client ʲˢ
@@ -152,6 +170,16 @@ export class PrismaClient<
     * ```
     */
   get account(): Prisma.AccountDelegate<GlobalReject>;
+
+  /**
+   * `prisma.article`: Exposes CRUD operations for the **Article** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Articles
+    * const articles = await prisma.article.findMany()
+    * ```
+    */
+  get article(): Prisma.ArticleDelegate<GlobalReject>;
 }
 
 export namespace Prisma {
@@ -636,7 +664,8 @@ export namespace Prisma {
   }
 
   export const ModelName: {
-    Account: 'Account'
+    Account: 'Account',
+    Article: 'Article'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -798,6 +827,49 @@ export namespace Prisma {
   /**
    * Count Types
    */
+
+
+  /**
+   * Count Type AccountCountOutputType
+   */
+
+
+  export type AccountCountOutputType = {
+    articles: number
+  }
+
+  export type AccountCountOutputTypeSelect = {
+    articles?: boolean
+  }
+
+  export type AccountCountOutputTypeGetPayload<S extends boolean | null | undefined | AccountCountOutputTypeArgs> =
+    S extends { select: any, include: any } ? 'Please either choose `select` or `include`' :
+    S extends true ? AccountCountOutputType :
+    S extends undefined ? never :
+    S extends { include: any } & (AccountCountOutputTypeArgs)
+    ? AccountCountOutputType 
+    : S extends { select: any } & (AccountCountOutputTypeArgs)
+      ? {
+    [P in TruthyKeys<S['select']>]:
+    P extends keyof AccountCountOutputType ? AccountCountOutputType[P] : never
+  } 
+      : AccountCountOutputType
+
+
+
+
+  // Custom InputTypes
+
+  /**
+   * AccountCountOutputType without action
+   */
+  export type AccountCountOutputTypeArgs = {
+    /**
+     * Select specific fields to fetch from the AccountCountOutputType
+     * 
+    **/
+    select?: AccountCountOutputTypeSelect | null
+  }
 
 
 
@@ -1015,22 +1087,34 @@ export namespace Prisma {
     id?: boolean
     email?: boolean
     name?: boolean
+    articles?: boolean | ArticleFindManyArgs
     createdAt?: boolean
     updatedAt?: boolean
     deletedAt?: boolean
+    _count?: boolean | AccountCountOutputTypeArgs
   }
 
+
+  export type AccountInclude = {
+    articles?: boolean | ArticleFindManyArgs
+    _count?: boolean | AccountCountOutputTypeArgs
+  } 
 
   export type AccountGetPayload<S extends boolean | null | undefined | AccountArgs> =
     S extends { select: any, include: any } ? 'Please either choose `select` or `include`' :
     S extends true ? Account :
     S extends undefined ? never :
     S extends { include: any } & (AccountArgs | AccountFindManyArgs)
-    ? Account 
+    ? Account  & {
+    [P in TruthyKeys<S['include']>]:
+        P extends 'articles' ? Array < ArticleGetPayload<S['include'][P]>>  :
+        P extends '_count' ? AccountCountOutputTypeGetPayload<S['include'][P]> :  never
+  } 
     : S extends { select: any } & (AccountArgs | AccountFindManyArgs)
       ? {
     [P in TruthyKeys<S['select']>]:
-    P extends keyof Account ? Account[P] : never
+        P extends 'articles' ? Array < ArticleGetPayload<S['select'][P]>>  :
+        P extends '_count' ? AccountCountOutputTypeGetPayload<S['select'][P]> :  P extends keyof Account ? Account[P] : never
   } 
       : Account
 
@@ -1404,6 +1488,7 @@ export namespace Prisma {
     constructor(_dmmf: runtime.DMMFClass, _fetcher: PrismaClientFetcher, _queryType: 'query' | 'mutation', _rootField: string, _clientMethod: string, _args: any, _dataPath: string[], _errorFormat: ErrorFormat, _measurePerformance?: boolean | undefined, _isList?: boolean);
     readonly [Symbol.toStringTag]: 'PrismaClientPromise';
 
+    articles<T extends ArticleFindManyArgs= {}>(args?: Subset<T, ArticleFindManyArgs>): PrismaPromise<Array<ArticleGetPayload<T>>| Null>;
 
     private get _document();
     /**
@@ -1442,6 +1527,11 @@ export namespace Prisma {
     **/
     select?: AccountSelect | null
     /**
+     * Choose, which related nodes to fetch as well.
+     * 
+    **/
+    include?: AccountInclude | null
+    /**
      * Filter, which Account to fetch.
      * 
     **/
@@ -1470,6 +1560,11 @@ export namespace Prisma {
     **/
     select?: AccountSelect | null
     /**
+     * Choose, which related nodes to fetch as well.
+     * 
+    **/
+    include?: AccountInclude | null
+    /**
      * Filter, which Account to fetch.
      * 
     **/
@@ -1486,6 +1581,11 @@ export namespace Prisma {
      * 
     **/
     select?: AccountSelect | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     * 
+    **/
+    include?: AccountInclude | null
     /**
      * Filter, which Account to fetch.
      * 
@@ -1550,6 +1650,11 @@ export namespace Prisma {
     **/
     select?: AccountSelect | null
     /**
+     * Choose, which related nodes to fetch as well.
+     * 
+    **/
+    include?: AccountInclude | null
+    /**
      * Filter, which Account to fetch.
      * 
     **/
@@ -1602,6 +1707,11 @@ export namespace Prisma {
     **/
     select?: AccountSelect | null
     /**
+     * Choose, which related nodes to fetch as well.
+     * 
+    **/
+    include?: AccountInclude | null
+    /**
      * Filter, which Accounts to fetch.
      * 
     **/
@@ -1648,6 +1758,11 @@ export namespace Prisma {
     **/
     select?: AccountSelect | null
     /**
+     * Choose, which related nodes to fetch as well.
+     * 
+    **/
+    include?: AccountInclude | null
+    /**
      * The data needed to create a Account.
      * 
     **/
@@ -1677,6 +1792,11 @@ export namespace Prisma {
      * 
     **/
     select?: AccountSelect | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     * 
+    **/
+    include?: AccountInclude | null
     /**
      * The data needed to update a Account.
      * 
@@ -1717,6 +1837,11 @@ export namespace Prisma {
     **/
     select?: AccountSelect | null
     /**
+     * Choose, which related nodes to fetch as well.
+     * 
+    **/
+    include?: AccountInclude | null
+    /**
      * The filter to search for the Account to update in case it exists.
      * 
     **/
@@ -1743,6 +1868,11 @@ export namespace Prisma {
      * 
     **/
     select?: AccountSelect | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     * 
+    **/
+    include?: AccountInclude | null
     /**
      * Filter which Account to delete.
      * 
@@ -1772,6 +1902,1085 @@ export namespace Prisma {
      * 
     **/
     select?: AccountSelect | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     * 
+    **/
+    include?: AccountInclude | null
+  }
+
+
+
+  /**
+   * Model Article
+   */
+
+
+  export type AggregateArticle = {
+    _count: ArticleCountAggregateOutputType | null
+    _avg: ArticleAvgAggregateOutputType | null
+    _sum: ArticleSumAggregateOutputType | null
+    _min: ArticleMinAggregateOutputType | null
+    _max: ArticleMaxAggregateOutputType | null
+  }
+
+  export type ArticleAvgAggregateOutputType = {
+    id: number | null
+    accountId: number | null
+  }
+
+  export type ArticleSumAggregateOutputType = {
+    id: number | null
+    accountId: number | null
+  }
+
+  export type ArticleMinAggregateOutputType = {
+    id: number | null
+    title: string | null
+    description: string | null
+    uri: string | null
+    imageUri: string | null
+    readAt: Date | null
+    isPublic: boolean | null
+    accountId: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    deletedAt: Date | null
+  }
+
+  export type ArticleMaxAggregateOutputType = {
+    id: number | null
+    title: string | null
+    description: string | null
+    uri: string | null
+    imageUri: string | null
+    readAt: Date | null
+    isPublic: boolean | null
+    accountId: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    deletedAt: Date | null
+  }
+
+  export type ArticleCountAggregateOutputType = {
+    id: number
+    title: number
+    description: number
+    uri: number
+    imageUri: number
+    readAt: number
+    isPublic: number
+    accountId: number
+    createdAt: number
+    updatedAt: number
+    deletedAt: number
+    _all: number
+  }
+
+
+  export type ArticleAvgAggregateInputType = {
+    id?: true
+    accountId?: true
+  }
+
+  export type ArticleSumAggregateInputType = {
+    id?: true
+    accountId?: true
+  }
+
+  export type ArticleMinAggregateInputType = {
+    id?: true
+    title?: true
+    description?: true
+    uri?: true
+    imageUri?: true
+    readAt?: true
+    isPublic?: true
+    accountId?: true
+    createdAt?: true
+    updatedAt?: true
+    deletedAt?: true
+  }
+
+  export type ArticleMaxAggregateInputType = {
+    id?: true
+    title?: true
+    description?: true
+    uri?: true
+    imageUri?: true
+    readAt?: true
+    isPublic?: true
+    accountId?: true
+    createdAt?: true
+    updatedAt?: true
+    deletedAt?: true
+  }
+
+  export type ArticleCountAggregateInputType = {
+    id?: true
+    title?: true
+    description?: true
+    uri?: true
+    imageUri?: true
+    readAt?: true
+    isPublic?: true
+    accountId?: true
+    createdAt?: true
+    updatedAt?: true
+    deletedAt?: true
+    _all?: true
+  }
+
+  export type ArticleAggregateArgs = {
+    /**
+     * Filter which Article to aggregate.
+     * 
+    **/
+    where?: ArticleWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Articles to fetch.
+     * 
+    **/
+    orderBy?: Enumerable<ArticleOrderByWithRelationInput>
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     * 
+    **/
+    cursor?: ArticleWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Articles from the position of the cursor.
+     * 
+    **/
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Articles.
+     * 
+    **/
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Articles
+    **/
+    _count?: true | ArticleCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: ArticleAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: ArticleSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: ArticleMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: ArticleMaxAggregateInputType
+  }
+
+  export type GetArticleAggregateType<T extends ArticleAggregateArgs> = {
+        [P in keyof T & keyof AggregateArticle]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateArticle[P]>
+      : GetScalarType<T[P], AggregateArticle[P]>
+  }
+
+
+
+
+  export type ArticleGroupByArgs = {
+    where?: ArticleWhereInput
+    orderBy?: Enumerable<ArticleOrderByWithAggregationInput>
+    by: Array<ArticleScalarFieldEnum>
+    having?: ArticleScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: ArticleCountAggregateInputType | true
+    _avg?: ArticleAvgAggregateInputType
+    _sum?: ArticleSumAggregateInputType
+    _min?: ArticleMinAggregateInputType
+    _max?: ArticleMaxAggregateInputType
+  }
+
+
+  export type ArticleGroupByOutputType = {
+    id: number
+    title: string
+    description: string
+    uri: string
+    imageUri: string | null
+    readAt: Date | null
+    isPublic: boolean
+    accountId: number
+    createdAt: Date
+    updatedAt: Date
+    deletedAt: Date | null
+    _count: ArticleCountAggregateOutputType | null
+    _avg: ArticleAvgAggregateOutputType | null
+    _sum: ArticleSumAggregateOutputType | null
+    _min: ArticleMinAggregateOutputType | null
+    _max: ArticleMaxAggregateOutputType | null
+  }
+
+  type GetArticleGroupByPayload<T extends ArticleGroupByArgs> = PrismaPromise<
+    Array<
+      PickArray<ArticleGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof ArticleGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], ArticleGroupByOutputType[P]>
+            : GetScalarType<T[P], ArticleGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type ArticleSelect = {
+    id?: boolean
+    title?: boolean
+    description?: boolean
+    uri?: boolean
+    imageUri?: boolean
+    readAt?: boolean
+    isPublic?: boolean
+    account?: boolean | AccountArgs
+    accountId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    deletedAt?: boolean
+  }
+
+
+  export type ArticleInclude = {
+    account?: boolean | AccountArgs
+  } 
+
+  export type ArticleGetPayload<S extends boolean | null | undefined | ArticleArgs> =
+    S extends { select: any, include: any } ? 'Please either choose `select` or `include`' :
+    S extends true ? Article :
+    S extends undefined ? never :
+    S extends { include: any } & (ArticleArgs | ArticleFindManyArgs)
+    ? Article  & {
+    [P in TruthyKeys<S['include']>]:
+        P extends 'account' ? AccountGetPayload<S['include'][P]> :  never
+  } 
+    : S extends { select: any } & (ArticleArgs | ArticleFindManyArgs)
+      ? {
+    [P in TruthyKeys<S['select']>]:
+        P extends 'account' ? AccountGetPayload<S['select'][P]> :  P extends keyof Article ? Article[P] : never
+  } 
+      : Article
+
+
+  type ArticleCountArgs = Merge<
+    Omit<ArticleFindManyArgs, 'select' | 'include'> & {
+      select?: ArticleCountAggregateInputType | true
+    }
+  >
+
+  export interface ArticleDelegate<GlobalRejectSettings extends Prisma.RejectOnNotFound | Prisma.RejectPerOperation | false | undefined> {
+    /**
+     * Find zero or one Article that matches the filter.
+     * @param {ArticleFindUniqueArgs} args - Arguments to find a Article
+     * @example
+     * // Get one Article
+     * const article = await prisma.article.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUnique<T extends ArticleFindUniqueArgs,  LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
+      args: SelectSubset<T, ArticleFindUniqueArgs>
+    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findUnique', 'Article'> extends True ? Prisma__ArticleClient<ArticleGetPayload<T>> : Prisma__ArticleClient<ArticleGetPayload<T> | null, null>
+
+    /**
+     * Find one Article that matches the filter or throw an error  with `error.code='P2025'` 
+     *     if no matches were found.
+     * @param {ArticleFindUniqueOrThrowArgs} args - Arguments to find a Article
+     * @example
+     * // Get one Article
+     * const article = await prisma.article.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUniqueOrThrow<T extends ArticleFindUniqueOrThrowArgs>(
+      args?: SelectSubset<T, ArticleFindUniqueOrThrowArgs>
+    ): Prisma__ArticleClient<ArticleGetPayload<T>>
+
+    /**
+     * Find the first Article that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ArticleFindFirstArgs} args - Arguments to find a Article
+     * @example
+     * // Get one Article
+     * const article = await prisma.article.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirst<T extends ArticleFindFirstArgs,  LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
+      args?: SelectSubset<T, ArticleFindFirstArgs>
+    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findFirst', 'Article'> extends True ? Prisma__ArticleClient<ArticleGetPayload<T>> : Prisma__ArticleClient<ArticleGetPayload<T> | null, null>
+
+    /**
+     * Find the first Article that matches the filter or
+     * throw `NotFoundError` if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ArticleFindFirstOrThrowArgs} args - Arguments to find a Article
+     * @example
+     * // Get one Article
+     * const article = await prisma.article.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirstOrThrow<T extends ArticleFindFirstOrThrowArgs>(
+      args?: SelectSubset<T, ArticleFindFirstOrThrowArgs>
+    ): Prisma__ArticleClient<ArticleGetPayload<T>>
+
+    /**
+     * Find zero or more Articles that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ArticleFindManyArgs=} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Articles
+     * const articles = await prisma.article.findMany()
+     * 
+     * // Get first 10 Articles
+     * const articles = await prisma.article.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const articleWithIdOnly = await prisma.article.findMany({ select: { id: true } })
+     * 
+    **/
+    findMany<T extends ArticleFindManyArgs>(
+      args?: SelectSubset<T, ArticleFindManyArgs>
+    ): PrismaPromise<Array<ArticleGetPayload<T>>>
+
+    /**
+     * Create a Article.
+     * @param {ArticleCreateArgs} args - Arguments to create a Article.
+     * @example
+     * // Create one Article
+     * const Article = await prisma.article.create({
+     *   data: {
+     *     // ... data to create a Article
+     *   }
+     * })
+     * 
+    **/
+    create<T extends ArticleCreateArgs>(
+      args: SelectSubset<T, ArticleCreateArgs>
+    ): Prisma__ArticleClient<ArticleGetPayload<T>>
+
+    /**
+     * Create many Articles.
+     *     @param {ArticleCreateManyArgs} args - Arguments to create many Articles.
+     *     @example
+     *     // Create many Articles
+     *     const article = await prisma.article.createMany({
+     *       data: {
+     *         // ... provide data here
+     *       }
+     *     })
+     *     
+    **/
+    createMany<T extends ArticleCreateManyArgs>(
+      args?: SelectSubset<T, ArticleCreateManyArgs>
+    ): PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a Article.
+     * @param {ArticleDeleteArgs} args - Arguments to delete one Article.
+     * @example
+     * // Delete one Article
+     * const Article = await prisma.article.delete({
+     *   where: {
+     *     // ... filter to delete one Article
+     *   }
+     * })
+     * 
+    **/
+    delete<T extends ArticleDeleteArgs>(
+      args: SelectSubset<T, ArticleDeleteArgs>
+    ): Prisma__ArticleClient<ArticleGetPayload<T>>
+
+    /**
+     * Update one Article.
+     * @param {ArticleUpdateArgs} args - Arguments to update one Article.
+     * @example
+     * // Update one Article
+     * const article = await prisma.article.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    update<T extends ArticleUpdateArgs>(
+      args: SelectSubset<T, ArticleUpdateArgs>
+    ): Prisma__ArticleClient<ArticleGetPayload<T>>
+
+    /**
+     * Delete zero or more Articles.
+     * @param {ArticleDeleteManyArgs} args - Arguments to filter Articles to delete.
+     * @example
+     * // Delete a few Articles
+     * const { count } = await prisma.article.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+    **/
+    deleteMany<T extends ArticleDeleteManyArgs>(
+      args?: SelectSubset<T, ArticleDeleteManyArgs>
+    ): PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Articles.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ArticleUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Articles
+     * const article = await prisma.article.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    updateMany<T extends ArticleUpdateManyArgs>(
+      args: SelectSubset<T, ArticleUpdateManyArgs>
+    ): PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Article.
+     * @param {ArticleUpsertArgs} args - Arguments to update or create a Article.
+     * @example
+     * // Update or create a Article
+     * const article = await prisma.article.upsert({
+     *   create: {
+     *     // ... data to create a Article
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Article we want to update
+     *   }
+     * })
+    **/
+    upsert<T extends ArticleUpsertArgs>(
+      args: SelectSubset<T, ArticleUpsertArgs>
+    ): Prisma__ArticleClient<ArticleGetPayload<T>>
+
+    /**
+     * Count the number of Articles.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ArticleCountArgs} args - Arguments to filter Articles to count.
+     * @example
+     * // Count the number of Articles
+     * const count = await prisma.article.count({
+     *   where: {
+     *     // ... the filter for the Articles we want to count
+     *   }
+     * })
+    **/
+    count<T extends ArticleCountArgs>(
+      args?: Subset<T, ArticleCountArgs>,
+    ): PrismaPromise<
+      T extends _Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], ArticleCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Article.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ArticleAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends ArticleAggregateArgs>(args: Subset<T, ArticleAggregateArgs>): PrismaPromise<GetArticleAggregateType<T>>
+
+    /**
+     * Group by Article.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ArticleGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends ArticleGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: ArticleGroupByArgs['orderBy'] }
+        : { orderBy?: ArticleGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends TupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, ArticleGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetArticleGroupByPayload<T> : PrismaPromise<InputErrors>
+
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Article.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export class Prisma__ArticleClient<T, Null = never> implements PrismaPromise<T> {
+    [prisma]: true;
+    private readonly _dmmf;
+    private readonly _fetcher;
+    private readonly _queryType;
+    private readonly _rootField;
+    private readonly _clientMethod;
+    private readonly _args;
+    private readonly _dataPath;
+    private readonly _errorFormat;
+    private readonly _measurePerformance?;
+    private _isList;
+    private _callsite;
+    private _requestPromise?;
+    constructor(_dmmf: runtime.DMMFClass, _fetcher: PrismaClientFetcher, _queryType: 'query' | 'mutation', _rootField: string, _clientMethod: string, _args: any, _dataPath: string[], _errorFormat: ErrorFormat, _measurePerformance?: boolean | undefined, _isList?: boolean);
+    readonly [Symbol.toStringTag]: 'PrismaClientPromise';
+
+    account<T extends AccountArgs= {}>(args?: Subset<T, AccountArgs>): Prisma__AccountClient<AccountGetPayload<T> | Null>;
+
+    private get _document();
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): Promise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): Promise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): Promise<T>;
+  }
+
+
+
+  // Custom InputTypes
+
+  /**
+   * Article base type for findUnique actions
+   */
+  export type ArticleFindUniqueArgsBase = {
+    /**
+     * Select specific fields to fetch from the Article
+     * 
+    **/
+    select?: ArticleSelect | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     * 
+    **/
+    include?: ArticleInclude | null
+    /**
+     * Filter, which Article to fetch.
+     * 
+    **/
+    where: ArticleWhereUniqueInput
+  }
+
+  /**
+   * Article: findUnique
+   */
+  export interface ArticleFindUniqueArgs extends ArticleFindUniqueArgsBase {
+   /**
+    * Throw an Error if query returns no results
+    * @deprecated since 4.0.0: use `findUniqueOrThrow` method instead
+    */
+    rejectOnNotFound?: RejectOnNotFound
+  }
+      
+
+  /**
+   * Article findUniqueOrThrow
+   */
+  export type ArticleFindUniqueOrThrowArgs = {
+    /**
+     * Select specific fields to fetch from the Article
+     * 
+    **/
+    select?: ArticleSelect | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     * 
+    **/
+    include?: ArticleInclude | null
+    /**
+     * Filter, which Article to fetch.
+     * 
+    **/
+    where: ArticleWhereUniqueInput
+  }
+
+
+  /**
+   * Article base type for findFirst actions
+   */
+  export type ArticleFindFirstArgsBase = {
+    /**
+     * Select specific fields to fetch from the Article
+     * 
+    **/
+    select?: ArticleSelect | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     * 
+    **/
+    include?: ArticleInclude | null
+    /**
+     * Filter, which Article to fetch.
+     * 
+    **/
+    where?: ArticleWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Articles to fetch.
+     * 
+    **/
+    orderBy?: Enumerable<ArticleOrderByWithRelationInput>
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Articles.
+     * 
+    **/
+    cursor?: ArticleWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Articles from the position of the cursor.
+     * 
+    **/
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Articles.
+     * 
+    **/
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Articles.
+     * 
+    **/
+    distinct?: Enumerable<ArticleScalarFieldEnum>
+  }
+
+  /**
+   * Article: findFirst
+   */
+  export interface ArticleFindFirstArgs extends ArticleFindFirstArgsBase {
+   /**
+    * Throw an Error if query returns no results
+    * @deprecated since 4.0.0: use `findFirstOrThrow` method instead
+    */
+    rejectOnNotFound?: RejectOnNotFound
+  }
+      
+
+  /**
+   * Article findFirstOrThrow
+   */
+  export type ArticleFindFirstOrThrowArgs = {
+    /**
+     * Select specific fields to fetch from the Article
+     * 
+    **/
+    select?: ArticleSelect | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     * 
+    **/
+    include?: ArticleInclude | null
+    /**
+     * Filter, which Article to fetch.
+     * 
+    **/
+    where?: ArticleWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Articles to fetch.
+     * 
+    **/
+    orderBy?: Enumerable<ArticleOrderByWithRelationInput>
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Articles.
+     * 
+    **/
+    cursor?: ArticleWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Articles from the position of the cursor.
+     * 
+    **/
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Articles.
+     * 
+    **/
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Articles.
+     * 
+    **/
+    distinct?: Enumerable<ArticleScalarFieldEnum>
+  }
+
+
+  /**
+   * Article findMany
+   */
+  export type ArticleFindManyArgs = {
+    /**
+     * Select specific fields to fetch from the Article
+     * 
+    **/
+    select?: ArticleSelect | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     * 
+    **/
+    include?: ArticleInclude | null
+    /**
+     * Filter, which Articles to fetch.
+     * 
+    **/
+    where?: ArticleWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Articles to fetch.
+     * 
+    **/
+    orderBy?: Enumerable<ArticleOrderByWithRelationInput>
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Articles.
+     * 
+    **/
+    cursor?: ArticleWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Articles from the position of the cursor.
+     * 
+    **/
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Articles.
+     * 
+    **/
+    skip?: number
+    distinct?: Enumerable<ArticleScalarFieldEnum>
+  }
+
+
+  /**
+   * Article create
+   */
+  export type ArticleCreateArgs = {
+    /**
+     * Select specific fields to fetch from the Article
+     * 
+    **/
+    select?: ArticleSelect | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     * 
+    **/
+    include?: ArticleInclude | null
+    /**
+     * The data needed to create a Article.
+     * 
+    **/
+    data: XOR<ArticleCreateInput, ArticleUncheckedCreateInput>
+  }
+
+
+  /**
+   * Article createMany
+   */
+  export type ArticleCreateManyArgs = {
+    /**
+     * The data used to create many Articles.
+     * 
+    **/
+    data: Enumerable<ArticleCreateManyInput>
+    skipDuplicates?: boolean
+  }
+
+
+  /**
+   * Article update
+   */
+  export type ArticleUpdateArgs = {
+    /**
+     * Select specific fields to fetch from the Article
+     * 
+    **/
+    select?: ArticleSelect | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     * 
+    **/
+    include?: ArticleInclude | null
+    /**
+     * The data needed to update a Article.
+     * 
+    **/
+    data: XOR<ArticleUpdateInput, ArticleUncheckedUpdateInput>
+    /**
+     * Choose, which Article to update.
+     * 
+    **/
+    where: ArticleWhereUniqueInput
+  }
+
+
+  /**
+   * Article updateMany
+   */
+  export type ArticleUpdateManyArgs = {
+    /**
+     * The data used to update Articles.
+     * 
+    **/
+    data: XOR<ArticleUpdateManyMutationInput, ArticleUncheckedUpdateManyInput>
+    /**
+     * Filter which Articles to update
+     * 
+    **/
+    where?: ArticleWhereInput
+  }
+
+
+  /**
+   * Article upsert
+   */
+  export type ArticleUpsertArgs = {
+    /**
+     * Select specific fields to fetch from the Article
+     * 
+    **/
+    select?: ArticleSelect | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     * 
+    **/
+    include?: ArticleInclude | null
+    /**
+     * The filter to search for the Article to update in case it exists.
+     * 
+    **/
+    where: ArticleWhereUniqueInput
+    /**
+     * In case the Article found by the `where` argument doesn't exist, create a new Article with this data.
+     * 
+    **/
+    create: XOR<ArticleCreateInput, ArticleUncheckedCreateInput>
+    /**
+     * In case the Article was found with the provided `where` argument, update it with this data.
+     * 
+    **/
+    update: XOR<ArticleUpdateInput, ArticleUncheckedUpdateInput>
+  }
+
+
+  /**
+   * Article delete
+   */
+  export type ArticleDeleteArgs = {
+    /**
+     * Select specific fields to fetch from the Article
+     * 
+    **/
+    select?: ArticleSelect | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     * 
+    **/
+    include?: ArticleInclude | null
+    /**
+     * Filter which Article to delete.
+     * 
+    **/
+    where: ArticleWhereUniqueInput
+  }
+
+
+  /**
+   * Article deleteMany
+   */
+  export type ArticleDeleteManyArgs = {
+    /**
+     * Filter which Articles to delete
+     * 
+    **/
+    where?: ArticleWhereInput
+  }
+
+
+  /**
+   * Article without action
+   */
+  export type ArticleArgs = {
+    /**
+     * Select specific fields to fetch from the Article
+     * 
+    **/
+    select?: ArticleSelect | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     * 
+    **/
+    include?: ArticleInclude | null
   }
 
 
@@ -1793,6 +3002,23 @@ export namespace Prisma {
   };
 
   export type AccountScalarFieldEnum = (typeof AccountScalarFieldEnum)[keyof typeof AccountScalarFieldEnum]
+
+
+  export const ArticleScalarFieldEnum: {
+    id: 'id',
+    title: 'title',
+    description: 'description',
+    uri: 'uri',
+    imageUri: 'imageUri',
+    readAt: 'readAt',
+    isPublic: 'isPublic',
+    accountId: 'accountId',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt',
+    deletedAt: 'deletedAt'
+  };
+
+  export type ArticleScalarFieldEnum = (typeof ArticleScalarFieldEnum)[keyof typeof ArticleScalarFieldEnum]
 
 
   export const QueryMode: {
@@ -1833,6 +3059,7 @@ export namespace Prisma {
     id?: IntFilter | number
     email?: StringFilter | string
     name?: StringFilter | string
+    articles?: ArticleListRelationFilter
     createdAt?: DateTimeFilter | Date | string
     updatedAt?: DateTimeFilter | Date | string
     deletedAt?: DateTimeNullableFilter | Date | string | null
@@ -1842,6 +3069,7 @@ export namespace Prisma {
     id?: SortOrder
     email?: SortOrder
     name?: SortOrder
+    articles?: ArticleOrderByRelationAggregateInput
     createdAt?: SortOrder
     updatedAt?: SortOrder
     deletedAt?: SortOrder
@@ -1878,9 +3106,83 @@ export namespace Prisma {
     deletedAt?: DateTimeNullableWithAggregatesFilter | Date | string | null
   }
 
+  export type ArticleWhereInput = {
+    AND?: Enumerable<ArticleWhereInput>
+    OR?: Enumerable<ArticleWhereInput>
+    NOT?: Enumerable<ArticleWhereInput>
+    id?: IntFilter | number
+    title?: StringFilter | string
+    description?: StringFilter | string
+    uri?: StringFilter | string
+    imageUri?: StringNullableFilter | string | null
+    readAt?: DateTimeNullableFilter | Date | string | null
+    isPublic?: BoolFilter | boolean
+    account?: XOR<AccountRelationFilter, AccountWhereInput>
+    accountId?: IntFilter | number
+    createdAt?: DateTimeFilter | Date | string
+    updatedAt?: DateTimeFilter | Date | string
+    deletedAt?: DateTimeNullableFilter | Date | string | null
+  }
+
+  export type ArticleOrderByWithRelationInput = {
+    id?: SortOrder
+    title?: SortOrder
+    description?: SortOrder
+    uri?: SortOrder
+    imageUri?: SortOrder
+    readAt?: SortOrder
+    isPublic?: SortOrder
+    account?: AccountOrderByWithRelationInput
+    accountId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    deletedAt?: SortOrder
+  }
+
+  export type ArticleWhereUniqueInput = {
+    id?: number
+  }
+
+  export type ArticleOrderByWithAggregationInput = {
+    id?: SortOrder
+    title?: SortOrder
+    description?: SortOrder
+    uri?: SortOrder
+    imageUri?: SortOrder
+    readAt?: SortOrder
+    isPublic?: SortOrder
+    accountId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    deletedAt?: SortOrder
+    _count?: ArticleCountOrderByAggregateInput
+    _avg?: ArticleAvgOrderByAggregateInput
+    _max?: ArticleMaxOrderByAggregateInput
+    _min?: ArticleMinOrderByAggregateInput
+    _sum?: ArticleSumOrderByAggregateInput
+  }
+
+  export type ArticleScalarWhereWithAggregatesInput = {
+    AND?: Enumerable<ArticleScalarWhereWithAggregatesInput>
+    OR?: Enumerable<ArticleScalarWhereWithAggregatesInput>
+    NOT?: Enumerable<ArticleScalarWhereWithAggregatesInput>
+    id?: IntWithAggregatesFilter | number
+    title?: StringWithAggregatesFilter | string
+    description?: StringWithAggregatesFilter | string
+    uri?: StringWithAggregatesFilter | string
+    imageUri?: StringNullableWithAggregatesFilter | string | null
+    readAt?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    isPublic?: BoolWithAggregatesFilter | boolean
+    accountId?: IntWithAggregatesFilter | number
+    createdAt?: DateTimeWithAggregatesFilter | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter | Date | string
+    deletedAt?: DateTimeNullableWithAggregatesFilter | Date | string | null
+  }
+
   export type AccountCreateInput = {
     email: string
     name: string
+    articles?: ArticleCreateNestedManyWithoutAccountInput
     createdAt?: Date | string
     updatedAt?: Date | string
     deletedAt?: Date | string | null
@@ -1890,6 +3192,7 @@ export namespace Prisma {
     id?: number
     email: string
     name: string
+    articles?: ArticleUncheckedCreateNestedManyWithoutAccountInput
     createdAt?: Date | string
     updatedAt?: Date | string
     deletedAt?: Date | string | null
@@ -1898,6 +3201,7 @@ export namespace Prisma {
   export type AccountUpdateInput = {
     email?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    articles?: ArticleUpdateManyWithoutAccountNestedInput
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -1907,6 +3211,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     email?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    articles?: ArticleUncheckedUpdateManyWithoutAccountNestedInput
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -1938,6 +3243,100 @@ export namespace Prisma {
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
+  export type ArticleCreateInput = {
+    title: string
+    description: string
+    uri: string
+    imageUri?: string | null
+    readAt?: Date | string | null
+    isPublic?: boolean
+    account: AccountCreateNestedOneWithoutArticlesInput
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    deletedAt?: Date | string | null
+  }
+
+  export type ArticleUncheckedCreateInput = {
+    id?: number
+    title: string
+    description: string
+    uri: string
+    imageUri?: string | null
+    readAt?: Date | string | null
+    isPublic?: boolean
+    accountId: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    deletedAt?: Date | string | null
+  }
+
+  export type ArticleUpdateInput = {
+    title?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    uri?: StringFieldUpdateOperationsInput | string
+    imageUri?: NullableStringFieldUpdateOperationsInput | string | null
+    readAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
+    account?: AccountUpdateOneRequiredWithoutArticlesNestedInput
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type ArticleUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    uri?: StringFieldUpdateOperationsInput | string
+    imageUri?: NullableStringFieldUpdateOperationsInput | string | null
+    readAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
+    accountId?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type ArticleCreateManyInput = {
+    id?: number
+    title: string
+    description: string
+    uri: string
+    imageUri?: string | null
+    readAt?: Date | string | null
+    isPublic?: boolean
+    accountId: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    deletedAt?: Date | string | null
+  }
+
+  export type ArticleUpdateManyMutationInput = {
+    title?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    uri?: StringFieldUpdateOperationsInput | string
+    imageUri?: NullableStringFieldUpdateOperationsInput | string | null
+    readAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type ArticleUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    uri?: StringFieldUpdateOperationsInput | string
+    imageUri?: NullableStringFieldUpdateOperationsInput | string | null
+    readAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
+    accountId?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
   export type IntFilter = {
     equals?: number
     in?: Enumerable<number>
@@ -1964,6 +3363,12 @@ export namespace Prisma {
     not?: NestedStringFilter | string
   }
 
+  export type ArticleListRelationFilter = {
+    every?: ArticleWhereInput
+    some?: ArticleWhereInput
+    none?: ArticleWhereInput
+  }
+
   export type DateTimeFilter = {
     equals?: Date | string
     in?: Enumerable<Date> | Enumerable<string>
@@ -1984,6 +3389,10 @@ export namespace Prisma {
     gt?: Date | string
     gte?: Date | string
     not?: NestedDateTimeNullableFilter | Date | string | null
+  }
+
+  export type ArticleOrderByRelationAggregateInput = {
+    _count?: SortOrder
   }
 
   export type AccountCountOrderByAggregateInput = {
@@ -2083,8 +3492,139 @@ export namespace Prisma {
     _max?: NestedDateTimeNullableFilter
   }
 
+  export type StringNullableFilter = {
+    equals?: string | null
+    in?: Enumerable<string> | null
+    notIn?: Enumerable<string> | null
+    lt?: string
+    lte?: string
+    gt?: string
+    gte?: string
+    contains?: string
+    startsWith?: string
+    endsWith?: string
+    mode?: QueryMode
+    not?: NestedStringNullableFilter | string | null
+  }
+
+  export type BoolFilter = {
+    equals?: boolean
+    not?: NestedBoolFilter | boolean
+  }
+
+  export type AccountRelationFilter = {
+    is?: AccountWhereInput
+    isNot?: AccountWhereInput
+  }
+
+  export type ArticleCountOrderByAggregateInput = {
+    id?: SortOrder
+    title?: SortOrder
+    description?: SortOrder
+    uri?: SortOrder
+    imageUri?: SortOrder
+    readAt?: SortOrder
+    isPublic?: SortOrder
+    accountId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    deletedAt?: SortOrder
+  }
+
+  export type ArticleAvgOrderByAggregateInput = {
+    id?: SortOrder
+    accountId?: SortOrder
+  }
+
+  export type ArticleMaxOrderByAggregateInput = {
+    id?: SortOrder
+    title?: SortOrder
+    description?: SortOrder
+    uri?: SortOrder
+    imageUri?: SortOrder
+    readAt?: SortOrder
+    isPublic?: SortOrder
+    accountId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    deletedAt?: SortOrder
+  }
+
+  export type ArticleMinOrderByAggregateInput = {
+    id?: SortOrder
+    title?: SortOrder
+    description?: SortOrder
+    uri?: SortOrder
+    imageUri?: SortOrder
+    readAt?: SortOrder
+    isPublic?: SortOrder
+    accountId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    deletedAt?: SortOrder
+  }
+
+  export type ArticleSumOrderByAggregateInput = {
+    id?: SortOrder
+    accountId?: SortOrder
+  }
+
+  export type StringNullableWithAggregatesFilter = {
+    equals?: string | null
+    in?: Enumerable<string> | null
+    notIn?: Enumerable<string> | null
+    lt?: string
+    lte?: string
+    gt?: string
+    gte?: string
+    contains?: string
+    startsWith?: string
+    endsWith?: string
+    mode?: QueryMode
+    not?: NestedStringNullableWithAggregatesFilter | string | null
+    _count?: NestedIntNullableFilter
+    _min?: NestedStringNullableFilter
+    _max?: NestedStringNullableFilter
+  }
+
+  export type BoolWithAggregatesFilter = {
+    equals?: boolean
+    not?: NestedBoolWithAggregatesFilter | boolean
+    _count?: NestedIntFilter
+    _min?: NestedBoolFilter
+    _max?: NestedBoolFilter
+  }
+
+  export type ArticleCreateNestedManyWithoutAccountInput = {
+    create?: XOR<Enumerable<ArticleCreateWithoutAccountInput>, Enumerable<ArticleUncheckedCreateWithoutAccountInput>>
+    connectOrCreate?: Enumerable<ArticleCreateOrConnectWithoutAccountInput>
+    createMany?: ArticleCreateManyAccountInputEnvelope
+    connect?: Enumerable<ArticleWhereUniqueInput>
+  }
+
+  export type ArticleUncheckedCreateNestedManyWithoutAccountInput = {
+    create?: XOR<Enumerable<ArticleCreateWithoutAccountInput>, Enumerable<ArticleUncheckedCreateWithoutAccountInput>>
+    connectOrCreate?: Enumerable<ArticleCreateOrConnectWithoutAccountInput>
+    createMany?: ArticleCreateManyAccountInputEnvelope
+    connect?: Enumerable<ArticleWhereUniqueInput>
+  }
+
   export type StringFieldUpdateOperationsInput = {
     set?: string
+  }
+
+  export type ArticleUpdateManyWithoutAccountNestedInput = {
+    create?: XOR<Enumerable<ArticleCreateWithoutAccountInput>, Enumerable<ArticleUncheckedCreateWithoutAccountInput>>
+    connectOrCreate?: Enumerable<ArticleCreateOrConnectWithoutAccountInput>
+    upsert?: Enumerable<ArticleUpsertWithWhereUniqueWithoutAccountInput>
+    createMany?: ArticleCreateManyAccountInputEnvelope
+    set?: Enumerable<ArticleWhereUniqueInput>
+    disconnect?: Enumerable<ArticleWhereUniqueInput>
+    delete?: Enumerable<ArticleWhereUniqueInput>
+    connect?: Enumerable<ArticleWhereUniqueInput>
+    update?: Enumerable<ArticleUpdateWithWhereUniqueWithoutAccountInput>
+    updateMany?: Enumerable<ArticleUpdateManyWithWhereWithoutAccountInput>
+    deleteMany?: Enumerable<ArticleScalarWhereInput>
   }
 
   export type DateTimeFieldUpdateOperationsInput = {
@@ -2101,6 +3641,42 @@ export namespace Prisma {
     decrement?: number
     multiply?: number
     divide?: number
+  }
+
+  export type ArticleUncheckedUpdateManyWithoutAccountNestedInput = {
+    create?: XOR<Enumerable<ArticleCreateWithoutAccountInput>, Enumerable<ArticleUncheckedCreateWithoutAccountInput>>
+    connectOrCreate?: Enumerable<ArticleCreateOrConnectWithoutAccountInput>
+    upsert?: Enumerable<ArticleUpsertWithWhereUniqueWithoutAccountInput>
+    createMany?: ArticleCreateManyAccountInputEnvelope
+    set?: Enumerable<ArticleWhereUniqueInput>
+    disconnect?: Enumerable<ArticleWhereUniqueInput>
+    delete?: Enumerable<ArticleWhereUniqueInput>
+    connect?: Enumerable<ArticleWhereUniqueInput>
+    update?: Enumerable<ArticleUpdateWithWhereUniqueWithoutAccountInput>
+    updateMany?: Enumerable<ArticleUpdateManyWithWhereWithoutAccountInput>
+    deleteMany?: Enumerable<ArticleScalarWhereInput>
+  }
+
+  export type AccountCreateNestedOneWithoutArticlesInput = {
+    create?: XOR<AccountCreateWithoutArticlesInput, AccountUncheckedCreateWithoutArticlesInput>
+    connectOrCreate?: AccountCreateOrConnectWithoutArticlesInput
+    connect?: AccountWhereUniqueInput
+  }
+
+  export type NullableStringFieldUpdateOperationsInput = {
+    set?: string | null
+  }
+
+  export type BoolFieldUpdateOperationsInput = {
+    set?: boolean
+  }
+
+  export type AccountUpdateOneRequiredWithoutArticlesNestedInput = {
+    create?: XOR<AccountCreateWithoutArticlesInput, AccountUncheckedCreateWithoutArticlesInput>
+    connectOrCreate?: AccountCreateOrConnectWithoutArticlesInput
+    upsert?: AccountUpsertWithoutArticlesInput
+    connect?: AccountWhereUniqueInput
+    update?: XOR<AccountUpdateWithoutArticlesInput, AccountUncheckedUpdateWithoutArticlesInput>
   }
 
   export type NestedIntFilter = {
@@ -2231,6 +3807,213 @@ export namespace Prisma {
     gt?: number
     gte?: number
     not?: NestedIntNullableFilter | number | null
+  }
+
+  export type NestedStringNullableFilter = {
+    equals?: string | null
+    in?: Enumerable<string> | null
+    notIn?: Enumerable<string> | null
+    lt?: string
+    lte?: string
+    gt?: string
+    gte?: string
+    contains?: string
+    startsWith?: string
+    endsWith?: string
+    not?: NestedStringNullableFilter | string | null
+  }
+
+  export type NestedBoolFilter = {
+    equals?: boolean
+    not?: NestedBoolFilter | boolean
+  }
+
+  export type NestedStringNullableWithAggregatesFilter = {
+    equals?: string | null
+    in?: Enumerable<string> | null
+    notIn?: Enumerable<string> | null
+    lt?: string
+    lte?: string
+    gt?: string
+    gte?: string
+    contains?: string
+    startsWith?: string
+    endsWith?: string
+    not?: NestedStringNullableWithAggregatesFilter | string | null
+    _count?: NestedIntNullableFilter
+    _min?: NestedStringNullableFilter
+    _max?: NestedStringNullableFilter
+  }
+
+  export type NestedBoolWithAggregatesFilter = {
+    equals?: boolean
+    not?: NestedBoolWithAggregatesFilter | boolean
+    _count?: NestedIntFilter
+    _min?: NestedBoolFilter
+    _max?: NestedBoolFilter
+  }
+
+  export type ArticleCreateWithoutAccountInput = {
+    title: string
+    description: string
+    uri: string
+    imageUri?: string | null
+    readAt?: Date | string | null
+    isPublic?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    deletedAt?: Date | string | null
+  }
+
+  export type ArticleUncheckedCreateWithoutAccountInput = {
+    id?: number
+    title: string
+    description: string
+    uri: string
+    imageUri?: string | null
+    readAt?: Date | string | null
+    isPublic?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    deletedAt?: Date | string | null
+  }
+
+  export type ArticleCreateOrConnectWithoutAccountInput = {
+    where: ArticleWhereUniqueInput
+    create: XOR<ArticleCreateWithoutAccountInput, ArticleUncheckedCreateWithoutAccountInput>
+  }
+
+  export type ArticleCreateManyAccountInputEnvelope = {
+    data: Enumerable<ArticleCreateManyAccountInput>
+    skipDuplicates?: boolean
+  }
+
+  export type ArticleUpsertWithWhereUniqueWithoutAccountInput = {
+    where: ArticleWhereUniqueInput
+    update: XOR<ArticleUpdateWithoutAccountInput, ArticleUncheckedUpdateWithoutAccountInput>
+    create: XOR<ArticleCreateWithoutAccountInput, ArticleUncheckedCreateWithoutAccountInput>
+  }
+
+  export type ArticleUpdateWithWhereUniqueWithoutAccountInput = {
+    where: ArticleWhereUniqueInput
+    data: XOR<ArticleUpdateWithoutAccountInput, ArticleUncheckedUpdateWithoutAccountInput>
+  }
+
+  export type ArticleUpdateManyWithWhereWithoutAccountInput = {
+    where: ArticleScalarWhereInput
+    data: XOR<ArticleUpdateManyMutationInput, ArticleUncheckedUpdateManyWithoutArticlesInput>
+  }
+
+  export type ArticleScalarWhereInput = {
+    AND?: Enumerable<ArticleScalarWhereInput>
+    OR?: Enumerable<ArticleScalarWhereInput>
+    NOT?: Enumerable<ArticleScalarWhereInput>
+    id?: IntFilter | number
+    title?: StringFilter | string
+    description?: StringFilter | string
+    uri?: StringFilter | string
+    imageUri?: StringNullableFilter | string | null
+    readAt?: DateTimeNullableFilter | Date | string | null
+    isPublic?: BoolFilter | boolean
+    accountId?: IntFilter | number
+    createdAt?: DateTimeFilter | Date | string
+    updatedAt?: DateTimeFilter | Date | string
+    deletedAt?: DateTimeNullableFilter | Date | string | null
+  }
+
+  export type AccountCreateWithoutArticlesInput = {
+    email: string
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    deletedAt?: Date | string | null
+  }
+
+  export type AccountUncheckedCreateWithoutArticlesInput = {
+    id?: number
+    email: string
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    deletedAt?: Date | string | null
+  }
+
+  export type AccountCreateOrConnectWithoutArticlesInput = {
+    where: AccountWhereUniqueInput
+    create: XOR<AccountCreateWithoutArticlesInput, AccountUncheckedCreateWithoutArticlesInput>
+  }
+
+  export type AccountUpsertWithoutArticlesInput = {
+    update: XOR<AccountUpdateWithoutArticlesInput, AccountUncheckedUpdateWithoutArticlesInput>
+    create: XOR<AccountCreateWithoutArticlesInput, AccountUncheckedCreateWithoutArticlesInput>
+  }
+
+  export type AccountUpdateWithoutArticlesInput = {
+    email?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type AccountUncheckedUpdateWithoutArticlesInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    email?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type ArticleCreateManyAccountInput = {
+    id?: number
+    title: string
+    description: string
+    uri: string
+    imageUri?: string | null
+    readAt?: Date | string | null
+    isPublic?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    deletedAt?: Date | string | null
+  }
+
+  export type ArticleUpdateWithoutAccountInput = {
+    title?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    uri?: StringFieldUpdateOperationsInput | string
+    imageUri?: NullableStringFieldUpdateOperationsInput | string | null
+    readAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type ArticleUncheckedUpdateWithoutAccountInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    uri?: StringFieldUpdateOperationsInput | string
+    imageUri?: NullableStringFieldUpdateOperationsInput | string | null
+    readAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type ArticleUncheckedUpdateManyWithoutArticlesInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    uri?: StringFieldUpdateOperationsInput | string
+    imageUri?: NullableStringFieldUpdateOperationsInput | string | null
+    readAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
 

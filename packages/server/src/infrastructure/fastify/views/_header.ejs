@@ -1,10 +1,12 @@
-<header class="flex justify-center border-0 border-b-2 border-gray-300 border-solid">
-  <div class="flex justify-between items-center w-full max-w-screen-2xl">
+<header class="flex justify-center border-0 border-b-2 border-gray-300 border-solid bg-white">
+  <div class="flex justify-between items-center w-full max-w-screen-2xl box-border px-16">
     <div hx-boost="true" class="flex items-center">
-      <h1 class="mr-10">Articler</h1>
+      <h1 class="mr-10">
+        <a href="/" class="text-gray-700 no-underline">Articler</a>
+      </h1>
 
       <a href="/articles/my" class="mr-4 text-gray-700 no-underline">My Article</a>
-      <a href="/articles/all" class="text-gray-700 no-underline">All Article</a>
+      <a href="/articles/public" class="text-gray-700 no-underline">All Article</a>
     </div>
 
     <% if (user) { %>

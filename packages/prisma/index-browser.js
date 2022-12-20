@@ -98,6 +98,20 @@ exports.Prisma.AccountScalarFieldEnum = makeEnum({
   deletedAt: 'deletedAt'
 });
 
+exports.Prisma.ArticleScalarFieldEnum = makeEnum({
+  id: 'id',
+  title: 'title',
+  description: 'description',
+  uri: 'uri',
+  imageUri: 'imageUri',
+  readAt: 'readAt',
+  isPublic: 'isPublic',
+  accountId: 'accountId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  deletedAt: 'deletedAt'
+});
+
 exports.Prisma.QueryMode = makeEnum({
   default: 'default',
   insensitive: 'insensitive'
@@ -117,7 +131,8 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
 
 
 exports.Prisma.ModelName = makeEnum({
-  Account: 'Account'
+  Account: 'Account',
+  Article: 'Article'
 });
 
 /**

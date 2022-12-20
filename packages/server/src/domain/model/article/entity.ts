@@ -2,25 +2,38 @@ import { Entity } from '../entity'
 
 export class Article extends Entity {
   title!: string
+  description!: string
   uri!: string
   read!: boolean
-  userId!: number
+  isPublic!: boolean
+  accountId!: number
   tags!: Array<RegisteredTag>
+  imageUri?: string
+  createdAt!: Date
 
-  static new({ id, title, uri, read, tags }: {
-    id?: number,
-    title: string,
-    uri: string,
-    read: boolean,
-    userId: number,
-    tags?: Array<RegisteredTag>,
-  }): Article {
+  static new(
+    { id, title, description, uri, read, isPublic, accountId, tags, imageUri, createdAt }:
+      {
+        id: Maybe<number>,
+        title: string,
+        description: string,
+        uri: string,
+        read: boolean,
+        isPublic: boolean,
+        accountId: number,
+        imageUri: Maybe<string>,
+        tags?: Array<RegisteredTag>,
+        createdAt: Date,
+      },
+  ): Article {
     const entity = new this()
     entity.setId(id ?? -1)
     entity.setTitle(title)
+    entity.setDescription(description)
     entity.setUri(uri)
-    entity.read = read
-    entity.tags = tags ?? []
+    entity.setImageUri(imageUri)
+
+    Object.assign(entity, { read, isPublic, accountId, createdAt, tags: tags ?? [] })
 
     return entity
   }
@@ -31,10 +44,27 @@ export class Article extends Entity {
     this.title = value
   }
 
+  private setDescription(value: string): void {
+    if (value.length < 1) throw Error()
+
+    this.description = value
+  }
+
   private setUri(value: string): void {
     if (value.length < 1) throw Error()
 
     this.uri = value
+  }
+
+  private setImageUri(value: Maybe<string>): void {
+    if (value === undefined || value === null) {
+      this.imageUri = undefined
+      return
+    }
+
+    if (value.length < 1) throw Error()
+
+    this.imageUri = value
   }
 }
 

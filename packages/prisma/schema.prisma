@@ -16,7 +16,23 @@ model Account {
   id        Int       @id @default(autoincrement())
   email     String    @unique
   name      String
+  articles  Article[]
   createdAt DateTime  @default(now())
   updatedAt DateTime  @updatedAt
   deletedAt DateTime?
+}
+
+model Article {
+  id          Int       @id @default(autoincrement())
+  title       String
+  description String
+  uri         String
+  imageUri    String?
+  readAt      DateTime?
+  isPublic    Boolean   @default(false)
+  account     Account   @relation(fields: [accountId], references: [id])
+  accountId   Int
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  deletedAt   DateTime?
 }
