@@ -16,12 +16,18 @@ const articles: FastifyPluginAsync = async (fastify) => {
     {
       schema: {
         params: Type.Object({
-          id: Type.Integer(),
+          id: Type.String(),
         }),
       },
     },
     async (request, reply) => {
-      const article = await articleService.findById(request.params.id)
+      const id = parseInt(request.params.id, 10)
+      if (Number.isNaN(id)) {
+        return reply.notFound()
+      }
+
+      const article = await articleService.findById(id)
+
       return reply.view('articles/show', { article })
     },
   )

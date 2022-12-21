@@ -1,22 +1,37 @@
-<article hx-boost="true" class="flex flex-col mt-4 space-y-4">
+<article class="flex flex-col mt-4 space-y-4">
   <% for (const article of articles.concat(articles).concat(articles)) { %>
-    <a href="/articles/<%= article.id %>" class="text-gray-700 no-underline">
-      <div class="flex flex-col bg-white h-48 px-16 py-8 cursor-pointer hover:bg-slate-100">
-        <h2 class="m-0 mb-2">
-          <%= article.title %>
-        </h2>
-        <div class="flex justify-between space-x-4 h-40">
+    <div hx-boost="true" class="disable-tap-highlight-color">
+      <div class="flex flex-col bg-white h-36 sm:h-48 px-8 sm:px-16 py-8">
+        <div class="flex justify-between mb-2">
+          <h2 class="m-0 line-clamp-1">
+            <a href="/articles/<%= article.id %>" class="text-gray-700 no-underline hover:underline">
+              <%= article.title %>
+            </a>
+          </h2>
+
+          <div class="relative">
+            <button class="peer border-0 w-auto bg-transparent cursor-pointer rounded hover:bg-slate-300 focus:bg-slate-300">
+              <%- include('../_shared/svg/ellipsis-vertical') -%>
+            </button>
+            <div class="absolute right-0 bg-white invisible peer-focus:visible w-28 outline outline-1 outline-gray-300 rounded">
+              <button class="w-full text-left px-4 py-2 border-0 bg-white hover:bg-slate-300">Edit</button>
+              <button class="w-full text-left px-4 py-2 border-0 bg-white hover:bg-slate-300">Delete</button>
+            </div>
+          </div>
+        </div>
+
+        <a href="/articles/<%= article.id %>" class="flex justify-between space-x-4 h-28 sm:h-40 text-gray-700 no-underline hover:underline">
           <div class="flex flex-col justify-between">
-            <div class="leading-6 line-clamp-5">
-              <%= article.description %>
+            <div class="leading-6 line-clamp-3 sm:line-clamp-5">
+                <%= article.description %>
             </div>
             <div>
               Registration time: <%= new Intl.DateTimeFormat('ko', { dateStyle: 'medium', timeStyle: 'medium' }).format(article.createdAt) %>
             </div>
           </div>
-          <img src="<%= article.imageUri %>" class="object-cover w-80">
-        </div>
+          <img src="<%= article.imageUri %>" class="hidden sm:block object-cover w-80">
+        </a>
       </div>
-    </a>
+    </div>
   <% } %>
 </article>
