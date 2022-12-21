@@ -137,10 +137,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["@fastify/autoload", [\
-        ["npm:5.4.0", {\
-          "packageLocation": "./.yarn/cache/@fastify-autoload-npm-5.4.0-5d4bbc6b3d-47c3d6e164.zip/node_modules/@fastify/autoload/",\
+        ["npm:5.6.0", {\
+          "packageLocation": "./.yarn/cache/@fastify-autoload-npm-5.6.0-8cbd80c56d-257712a26f.zip/node_modules/@fastify/autoload/",\
           "packageDependencies": [\
-            ["@fastify/autoload", "npm:5.4.0"],\
+            ["@fastify/autoload", "npm:5.6.0"],\
             ["fastify", "npm:4.5.3"],\
             ["pkg-up", "npm:3.1.0"]\
           ],\
@@ -148,10 +148,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["@fastify/cookie", [\
-        ["npm:7.4.0", {\
-          "packageLocation": "./.yarn/cache/@fastify-cookie-npm-7.4.0-1127e4ec0f-cf710f8fcf.zip/node_modules/@fastify/cookie/",\
+        ["npm:8.3.0", {\
+          "packageLocation": "./.yarn/cache/@fastify-cookie-npm-8.3.0-d4b09e29b0-d5dfb5c85d.zip/node_modules/@fastify/cookie/",\
           "packageDependencies": [\
-            ["@fastify/cookie", "npm:7.4.0"],\
+            ["@fastify/cookie", "npm:8.3.0"],\
             ["cookie", "npm:0.5.0"],\
             ["fastify", "npm:4.5.3"],\
             ["fastify-plugin", "npm:4.2.1"]\
@@ -160,13 +160,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["@fastify/cors", [\
-        ["npm:8.1.0", {\
-          "packageLocation": "./.yarn/cache/@fastify-cors-npm-8.1.0-606a98125f-7fb48eb743.zip/node_modules/@fastify/cors/",\
+        ["npm:8.2.0", {\
+          "packageLocation": "./.yarn/cache/@fastify-cors-npm-8.2.0-46fdadf32d-b2e30602d3.zip/node_modules/@fastify/cors/",\
           "packageDependencies": [\
-            ["@fastify/cors", "npm:8.1.0"],\
+            ["@fastify/cors", "npm:8.2.0"],\
             ["fastify", "npm:4.5.3"],\
             ["fastify-plugin", "npm:4.2.1"],\
-            ["mnemonist", "npm:0.39.2"]\
+            ["mnemonist", "npm:0.39.5"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -223,26 +223,26 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["@fastify/secure-session", [\
-        ["npm:5.2.0", {\
-          "packageLocation": "./.yarn/cache/@fastify-secure-session-npm-5.2.0-037dd06576-3366155760.zip/node_modules/@fastify/secure-session/",\
+        ["npm:5.3.0", {\
+          "packageLocation": "./.yarn/cache/@fastify-secure-session-npm-5.3.0-aeb1b9a191-584d9321f2.zip/node_modules/@fastify/secure-session/",\
           "packageDependencies": [\
-            ["@fastify/secure-session", "npm:5.2.0"],\
-            ["@fastify/cookie", "npm:7.4.0"],\
+            ["@fastify/secure-session", "npm:5.3.0"],\
+            ["@fastify/cookie", "npm:8.3.0"],\
             ["fastify", "npm:4.5.3"],\
-            ["fastify-plugin", "npm:3.0.1"],\
+            ["fastify-plugin", "npm:4.2.1"],\
             ["sodium-native", "npm:3.4.1"]\
           ],\
           "linkType": "HARD"\
         }]\
       ]],\
       ["@fastify/sensible", [\
-        ["npm:4.1.0", {\
-          "packageLocation": "./.yarn/cache/@fastify-sensible-npm-4.1.0-d9e38ff869-13b71b3fb3.zip/node_modules/@fastify/sensible/",\
+        ["npm:5.2.0", {\
+          "packageLocation": "./.yarn/cache/@fastify-sensible-npm-5.2.0-7f255153dc-ceb82fd21d.zip/node_modules/@fastify/sensible/",\
           "packageDependencies": [\
-            ["@fastify/sensible", "npm:4.1.0"],\
+            ["@fastify/sensible", "npm:5.2.0"],\
             ["fast-deep-equal", "npm:3.1.3"],\
             ["fastify", "npm:4.5.3"],\
-            ["fastify-plugin", "npm:3.0.1"],\
+            ["fastify-plugin", "npm:4.2.1"],\
             ["forwarded", "npm:0.2.0"],\
             ["http-errors", "npm:2.0.0"],\
             ["ms", "npm:2.1.3"],\
@@ -3105,14 +3105,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["fastify-plugin", [\
-        ["npm:3.0.1", {\
-          "packageLocation": "./.yarn/cache/fastify-plugin-npm-3.0.1-30a545741d-131ba0a388.zip/node_modules/fastify-plugin/",\
-          "packageDependencies": [\
-            ["fastify-plugin", "npm:3.0.1"],\
-            ["fastify", "npm:4.5.3"]\
-          ],\
-          "linkType": "HARD"\
-        }],\
         ["npm:4.2.1", {\
           "packageLocation": "./.yarn/cache/fastify-plugin-npm-4.2.1-4237abb051-01eaa6644f.zip/node_modules/fastify-plugin/",\
           "packageDependencies": [\
@@ -4715,10 +4707,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["mnemonist", [\
-        ["npm:0.39.2", {\
-          "packageLocation": "./.yarn/cache/mnemonist-npm-0.39.2-03f0b84c2a-77075ddf30.zip/node_modules/mnemonist/",\
+        ["npm:0.39.5", {\
+          "packageLocation": "./.yarn/cache/mnemonist-npm-0.39.5-cbd4ee161e-6669d687a4.zip/node_modules/mnemonist/",\
           "packageDependencies": [\
-            ["mnemonist", "npm:0.39.2"],\
+            ["mnemonist", "npm:0.39.5"],\
             ["obliterator", "npm:2.0.4"]\
           ],\
           "linkType": "HARD"\
@@ -5802,11 +5794,11 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["server", "workspace:packages/server"],\
             ["@ava/typescript", "npm:3.0.1"],\
-            ["@fastify/autoload", "npm:5.4.0"],\
-            ["@fastify/cors", "npm:8.1.0"],\
+            ["@fastify/autoload", "npm:5.6.0"],\
+            ["@fastify/cors", "npm:8.2.0"],\
             ["@fastify/passport", "npm:2.2.0"],\
-            ["@fastify/secure-session", "npm:5.2.0"],\
-            ["@fastify/sensible", "npm:4.1.0"],\
+            ["@fastify/secure-session", "npm:5.3.0"],\
+            ["@fastify/sensible", "npm:5.2.0"],\
             ["@fastify/type-provider-typebox", "virtual:2499dbb93d824027565d71b0716c4fb8b548ad61955d0a0286bfb3c5b4058e227894b6691d96808c00f576db14870018375210362c26ee321ea99fd6ed041c74#npm:2.4.0"],\
             ["@fastify/view", "npm:7.3.0"],\
             ["@prisma/client", "virtual:2499dbb93d824027565d71b0716c4fb8b548ad61955d0a0286bfb3c5b4058e227894b6691d96808c00f576db14870018375210362c26ee321ea99fd6ed041c74#npm:4.7.1"],\

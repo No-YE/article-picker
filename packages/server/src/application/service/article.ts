@@ -1,6 +1,6 @@
 import { Inject, Service } from 'autoinjection'
-import { type ArticleRepository } from '@/domain/model/article/repository'
-import { type Article } from '../../domain/model/article/entity'
+import { type ArticleRepository } from '@/domain/model/article/repository.js'
+import { type Article } from '../../domain/model/article/entity.js'
 
 @Service({ singleton: true })
 export class ArticleService {

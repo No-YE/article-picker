@@ -1,6 +1,6 @@
 import { Inject, Service } from 'autoinjection'
-import { AccountRepository } from '@/domain/model/account/repository'
-import { Account } from '../../domain/model/account/entity'
+import { AccountRepository } from '@/domain/model/account/repository.js'
+import { Account } from '../../domain/model/account/entity.js'
 
 @Service({ singleton: true })
 export class AccountService {

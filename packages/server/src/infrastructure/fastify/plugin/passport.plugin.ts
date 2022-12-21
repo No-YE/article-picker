@@ -2,7 +2,7 @@ import fp from 'fastify-plugin'
 import fastifyPassport from '@fastify/passport'
 import secureSession, { type SecureSessionPluginOptions } from '@fastify/secure-session'
 import { Strategy as GoogleStrategy } from 'passport-google-oauth20'
-import { AccountService } from '../../../application/service/account'
+import { AccountService } from '../../../application/service/account.js'
 
 declare module 'fastify' {
   // eslint-disable-next-line no-unused-vars
@@ -46,15 +46,13 @@ const googleStrategy = new GoogleStrategy(
   },
 )
 
-const oauth = fp(async (fastify) => {
+export default fp.default(async (fastify) => {
   fastify.register(secureSession, secureSessionPluginOptions)
-  fastify.register(fastifyPassport.initialize())
-  fastify.register(fastifyPassport.secureSession())
+  fastify.register(fastifyPassport.default.initialize())
+  fastify.register(fastifyPassport.default.secureSession())
 
-  fastifyPassport.use(googleStrategy)
+  fastifyPassport.default.use(googleStrategy)
 
-  fastifyPassport.registerUserDeserializer(async (user, _req) => user)
-  fastifyPassport.registerUserSerializer(async (user, _req) => user)
+  fastifyPassport.default.registerUserDeserializer(async (user, _req) => user)
+  fastifyPassport.default.registerUserSerializer(async (user, _req) => user)
 })
-
-export default oauth

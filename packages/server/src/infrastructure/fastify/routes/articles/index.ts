@@ -1,7 +1,7 @@
 import { FastifyPluginAsync } from 'fastify'
 import { type TypeBoxTypeProvider } from '@fastify/type-provider-typebox'
 import { Type } from '@sinclair/typebox'
-import { ArticleService } from '../../../../application/service/article'
+import { ArticleService } from '../../../../application/service/article.js'
 
 const articleService = new ArticleService()
 

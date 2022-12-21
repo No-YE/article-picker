@@ -1,7 +1,8 @@
 import fp from 'fastify-plugin'
 import view, { type FastifyViewOptions } from '@fastify/view'
 import ejs from 'ejs'
-import path from 'path'
+import { join, dirname } from 'path'
+import { fileURLToPath } from 'url'
 
 declare module 'fastify' {
   interface RouteSpecificOptions {
@@ -17,13 +18,16 @@ declare module 'fastify' {
   }
 }
 
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = dirname(__filename)
+
 const options: FastifyViewOptions = {
   engine: { ejs },
-  root: path.join(__dirname, '../', 'views'),
+  root: join(__dirname, '../', 'views'),
   layout: '_layout.ejs',
 }
 
-export default fp(async (fastify, _opts) => {
+export default fp.default(async (fastify, _opts) => {
   fastify.addHook('preHandler', async (request, reply) => {
     // eslint-disable-next-line no-param-reassign
     reply.locals = {

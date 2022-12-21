@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "This project was bootstrapped with Fastify-CLI.",
   "main": "app.ts",
+  "type": "module",
   "scripts": {
     "test": "dotenv -e .env.test -- ./bin/test",
     "test:unit": "ava spec",
@@ -18,11 +19,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@fastify/autoload": "^5.4.0",
-    "@fastify/cors": "^8.1.0",
+    "@fastify/autoload": "^5.6.0",
+    "@fastify/cors": "^8.2.0",
     "@fastify/passport": "^2.2.0",
-    "@fastify/secure-session": "^5.2.0",
-    "@fastify/sensible": "^4.1.0",
+    "@fastify/secure-session": "^5.3.0",
+    "@fastify/sensible": "^5.2.0",
     "@fastify/type-provider-typebox": "^2.4.0",
     "@fastify/view": "^7.3.0",
     "@sinclair/typebox": "^0.25.15",

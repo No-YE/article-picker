@@ -1,9 +1,10 @@
 // import { fileURLToPath } from 'url';
-import { join } from 'path'
+import { join, dirname } from 'path'
+import { fileURLToPath } from 'url'
 import AutoLoad, { AutoloadPluginOptions } from '@fastify/autoload'
 import { FastifyPluginAsync } from 'fastify'
 import { TypeBoxValidatorCompiler } from '@fastify/type-provider-typebox'
-import '../prisma/repository'
+import '../prisma/repository/index.js'
 
 export type AppOptions = {
   // Place your custom options for app below here.
@@ -23,6 +24,9 @@ const app: FastifyPluginAsync<AppOptions> = async (
   // through your application
   // This loads all plugins defined in routes
   // define your routes in one of these
+
+  const __filename = fileURLToPath(import.meta.url)
+  const __dirname = dirname(__filename)
 
   fastify.setValidatorCompiler(TypeBoxValidatorCompiler)
 

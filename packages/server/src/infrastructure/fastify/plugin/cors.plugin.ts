@@ -7,6 +7,6 @@ const options: FastifyCorsOptions = {
   credentials: true,
 }
 
-export default fp(async (fastify, _opts) => {
+export default fp.default(async (fastify, _opts) => {
   fastify.register(cors, options)
 })

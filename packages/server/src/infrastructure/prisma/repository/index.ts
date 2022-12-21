@@ -1,2 +1,2 @@
-export * from './account'
-export * from './article'
+export * from './account.js'
+export * from './article.js'
