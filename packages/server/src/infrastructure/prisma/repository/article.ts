@@ -21,6 +21,24 @@ class PrismaArticleRepository implements ArticleRepository {
     return this.mapToEntity(article)
   }
 
+  async findByAccountId(accountId: number): Promise<Article[]> {
+    const articles = await prisma.article.findMany({
+      where: { accountId },
+    })
+
+    return articles.map(this.mapToEntity)
+  }
+
+  async findByTitle(title: string): Promise<Article[]> {
+    const articles = await prisma.article.findMany({
+      where: {
+        title: { contains: title },
+      },
+    })
+
+    return articles.map(this.mapToEntity)
+  }
+
   private mapToEntity(article: Prisma.Article): Article {
     return Article.new({ ...article, read: !!article.readAt })
   }

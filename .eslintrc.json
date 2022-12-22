@@ -38,6 +38,7 @@
         ],
         "no-new": "off",
         "no-undef": "off",
+        "no-return-await": "off",
         "import/prefer-default-export": "off",
         "import/extensions": "off",
         "import/no-unresolved": "off"

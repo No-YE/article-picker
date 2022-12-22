@@ -5,10 +5,19 @@ import { ArticleService } from '../../../../application/service/article.js'
 
 const articleService = new ArticleService()
 
-const articles: FastifyPluginAsync = async (fastify) => {
+const articlesRoute: FastifyPluginAsync = async (fastify) => {
+  fastify.get('/my', async (request, reply) => {
+    if (!request.user) {
+      return reply.notFound()
+    }
+
+    const articles = await articleService.findByAccountId(request.user.id)
+    return reply.view('articles/my', { articles })
+  })
+
   fastify.get('/public', async (_request, reply) => {
-    const publicArticles = await articleService.allPublicArticles()
-    return reply.view('articles/public', { articles: publicArticles })
+    const articles = await articleService.allPublicArticles()
+    return reply.view('articles/public', { articles })
   })
 
   fastify.withTypeProvider<TypeBoxTypeProvider>().get(
@@ -31,6 +40,24 @@ const articles: FastifyPluginAsync = async (fastify) => {
       return reply.view('articles/show', { article })
     },
   )
+
+  fastify.withTypeProvider<TypeBoxTypeProvider>().post(
+    '/search',
+    {
+      schema: {
+        body: Type.Object({
+          title: Type.String(),
+          my: Type.Optional(Type.Union([Type.Literal('true'), Type.Literal('false')])),
+          public: Type.Optional(Type.Union([Type.Literal('true'), Type.Literal('false')])),
+        }),
+      },
+    },
+    async (request, reply) => {
+      const { title } = request.body
+      const articles = await articleService.findByTitle(title)
+      return reply.partial('articles/search', { articles })
+    },
+  )
 }
 
-export default articles
+export default articlesRoute

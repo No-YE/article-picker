@@ -1,8 +1,9 @@
 // import { fileURLToPath } from 'url';
 import { join, dirname } from 'path'
 import { fileURLToPath } from 'url'
-import AutoLoad, { AutoloadPluginOptions } from '@fastify/autoload'
 import { FastifyPluginAsync } from 'fastify'
+import AutoLoad, { AutoloadPluginOptions } from '@fastify/autoload'
+import formbody from '@fastify/formbody'
 import { TypeBoxValidatorCompiler } from '@fastify/type-provider-typebox'
 import '../prisma/repository/index.js'
 
@@ -29,6 +30,8 @@ const app: FastifyPluginAsync<AppOptions> = async (
   const __dirname = dirname(__filename)
 
   fastify.setValidatorCompiler(TypeBoxValidatorCompiler)
+
+  fastify.register(formbody)
 
   fastify.register(AutoLoad, {
     dir: join(__dirname, 'plugin'),

@@ -9,7 +9,7 @@ const google: FastifyPluginAsync = async (fastify) => {
     { preValidation: fastifyPassport.default.authenticate('google', { failureMessage: true }) },
     async (request, reply) => {
       request.flash('info', 'You have been signed in.')
-      reply.redirect('http://localhost:4000/')
+      reply.redirect('http://localhost:4000/articles/my')
     },
   )
 }

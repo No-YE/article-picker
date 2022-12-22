@@ -8,10 +8,18 @@ export class ArticleService {
   constructor(@Inject() private readonly articleRepository?: ArticleRepository) {}
 
   async allPublicArticles(): Promise<Array<Article>> {
-    return this.articleRepository!.allPublicArticles()
+    return await this.articleRepository!.allPublicArticles()
   }
 
   async findById(id: number): Promise<Article> {
-    return this.articleRepository!.findById(id)
+    return await this.articleRepository!.findById(id)
+  }
+
+  async findByAccountId(accountId: number): Promise<Array<Article>> {
+    return await this.articleRepository!.findByAccountId(accountId)
+  }
+
+  async findByTitle(title: string): Promise<Array<Article>> {
+    return await this.articleRepository!.findByTitle(title)
   }
 }

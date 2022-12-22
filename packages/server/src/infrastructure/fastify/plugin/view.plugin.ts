@@ -14,6 +14,10 @@ declare module 'fastify' {
       _page: string, _data: T, _opts?: RouteSpecificOptions
     ): FastifyReply;
     view(_page: string, _data?: object, _opts?: RouteSpecificOptions): FastifyReply;
+    partial<T extends { [key: string]: any; }>(
+      _page: string, _data: T, _opts?: RouteSpecificOptions
+    ): FastifyReply;
+    partial(_page: string, _data?: object, _opts?: RouteSpecificOptions): FastifyReply;
     locals: { [key: string]: unknown; }
   }
 }
@@ -26,6 +30,11 @@ const options: FastifyViewOptions = {
   root: join(__dirname, '../', 'views'),
   layout: '_layout.ejs',
 }
+const partialOptions: FastifyViewOptions = {
+  engine: { ejs },
+  root: join(__dirname, '../', 'views'),
+  propertyName: 'partial',
+}
 
 export default fp.default(async (fastify, _opts) => {
   fastify.addHook('preHandler', async (request, reply) => {
@@ -35,5 +44,7 @@ export default fp.default(async (fastify, _opts) => {
       flash: reply.flash(),
     }
   })
+
   fastify.register(view, options)
+  fastify.register(view, partialOptions)
 })

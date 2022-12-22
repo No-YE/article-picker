@@ -209,6 +209,18 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["@fastify/formbody", [\
+        ["npm:7.4.0", {\
+          "packageLocation": "./.yarn/cache/@fastify-formbody-npm-7.4.0-e688760e8b-5bff8180b7.zip/node_modules/@fastify/formbody/",\
+          "packageDependencies": [\
+            ["@fastify/formbody", "npm:7.4.0"],\
+            ["fast-querystring", "npm:1.0.0"],\
+            ["fastify", "npm:4.5.3"],\
+            ["fastify-plugin", "npm:4.2.1"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["@fastify/passport", [\
         ["npm:2.2.0", {\
           "packageLocation": "./.yarn/cache/@fastify-passport-npm-2.2.0-8128ce2c3c-8add9da301.zip/node_modules/@fastify/passport/",\
@@ -2966,6 +2978,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["fast-decode-uri-component", [\
+        ["npm:1.0.1", {\
+          "packageLocation": "./.yarn/cache/fast-decode-uri-component-npm-1.0.1-578ba9fecf-427a48fe09.zip/node_modules/fast-decode-uri-component/",\
+          "packageDependencies": [\
+            ["fast-decode-uri-component", "npm:1.0.1"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["fast-deep-equal", [\
         ["npm:3.1.3", {\
           "packageLocation": "./.yarn/cache/fast-deep-equal-npm-3.1.3-790edcfcf5-e21a9d8d84.zip/node_modules/fast-deep-equal/",\
@@ -3026,6 +3047,16 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/fast-levenshtein-npm-2.0.6-fcd74b8df5-92cfec0a8d.zip/node_modules/fast-levenshtein/",\
           "packageDependencies": [\
             ["fast-levenshtein", "npm:2.0.6"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["fast-querystring", [\
+        ["npm:1.0.0", {\
+          "packageLocation": "./.yarn/cache/fast-querystring-npm-1.0.0-5343234408-5f70df27d0.zip/node_modules/fast-querystring/",\
+          "packageDependencies": [\
+            ["fast-querystring", "npm:1.0.0"],\
+            ["fast-decode-uri-component", "npm:1.0.1"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -5796,6 +5827,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@ava/typescript", "npm:3.0.1"],\
             ["@fastify/autoload", "npm:5.6.0"],\
             ["@fastify/cors", "npm:8.2.0"],\
+            ["@fastify/formbody", "npm:7.4.0"],\
             ["@fastify/passport", "npm:2.2.0"],\
             ["@fastify/secure-session", "npm:5.3.0"],\
             ["@fastify/sensible", "npm:5.2.0"],\
