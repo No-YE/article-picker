@@ -388,6 +388,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["@mobily/ts-belt", [\
+        ["npm:4.0.0-rc.2", {\
+          "packageLocation": "./.yarn/cache/@mobily-ts-belt-npm-4.0.0-rc.2-5e197b6db1-40cc6ca748.zip/node_modules/@mobily/ts-belt/",\
+          "packageDependencies": [\
+            ["@mobily/ts-belt", "npm:4.0.0-rc.2"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["@nodelib/fs.scandir", [\
         ["npm:2.1.5", {\
           "packageLocation": "./.yarn/cache/@nodelib-fs.scandir-npm-2.1.5-89c67370dd-a970d595bd.zip/node_modules/@nodelib/fs.scandir/",\
@@ -754,15 +763,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["@types/oauth", "npm:0.9.1"],\
             ["@types/node", "npm:18.7.13"]\
-          ],\
-          "linkType": "HARD"\
-        }]\
-      ]],\
-      ["@types/object.pick", [\
-        ["npm:1.3.2", {\
-          "packageLocation": "./.yarn/cache/@types-object.pick-npm-1.3.2-924bf43ca8-71053ec684.zip/node_modules/@types/object.pick/",\
-          "packageDependencies": [\
-            ["@types/object.pick", "npm:1.3.2"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -4161,15 +4161,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
-      ["isobject", [\
-        ["npm:3.0.1", {\
-          "packageLocation": "./.yarn/cache/isobject-npm-3.0.1-8145901fd2-db85c4c970.zip/node_modules/isobject/",\
-          "packageDependencies": [\
-            ["isobject", "npm:3.0.1"]\
-          ],\
-          "linkType": "HARD"\
-        }]\
-      ]],\
       ["istanbul-lib-coverage", [\
         ["npm:3.2.0", {\
           "packageLocation": "./.yarn/cache/istanbul-lib-coverage-npm-3.2.0-93f84b2c8c-a2a545033b.zip/node_modules/istanbul-lib-coverage/",\
@@ -4980,16 +4971,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["call-bind", "npm:1.0.2"],\
             ["define-properties", "npm:1.1.4"],\
             ["es-abstract", "npm:1.20.1"]\
-          ],\
-          "linkType": "HARD"\
-        }]\
-      ]],\
-      ["object.pick", [\
-        ["npm:1.3.0", {\
-          "packageLocation": "./.yarn/cache/object.pick-npm-1.3.0-dad8eae8fb-77fb6eed57.zip/node_modules/object.pick/",\
-          "packageDependencies": [\
-            ["object.pick", "npm:1.3.0"],\
-            ["isobject", "npm:3.0.1"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -5861,11 +5842,11 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@fastify/sensible", "npm:5.2.0"],\
             ["@fastify/type-provider-typebox", "virtual:2499dbb93d824027565d71b0716c4fb8b548ad61955d0a0286bfb3c5b4058e227894b6691d96808c00f576db14870018375210362c26ee321ea99fd6ed041c74#npm:2.4.0"],\
             ["@fastify/view", "npm:7.3.0"],\
+            ["@mobily/ts-belt", "npm:4.0.0-rc.2"],\
             ["@prisma/client", "virtual:2499dbb93d824027565d71b0716c4fb8b548ad61955d0a0286bfb3c5b4058e227894b6691d96808c00f576db14870018375210362c26ee321ea99fd6ed041c74#npm:4.7.1"],\
             ["@sinclair/typebox", "npm:0.25.15"],\
             ["@types/ejs", "npm:3.1.1"],\
             ["@types/node", "npm:18.8.4"],\
-            ["@types/object.pick", "npm:1.3.2"],\
             ["@types/passport-google-oauth20", "npm:2.0.11"],\
             ["@yarnpkg/pnpify", "npm:4.0.0-rc.15"],\
             ["@yarnpkg/sdks", "npm:3.0.0-rc.15"],\
@@ -5881,7 +5862,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["fishery", "npm:2.2.2"],\
             ["my-prisma", "workspace:packages/prisma"],\
             ["nodemon", "npm:2.0.20"],\
-            ["object.pick", "npm:1.3.0"],\
             ["passport-google-oauth20", "npm:2.0.0"],\
             ["prisma", "npm:4.7.1"],\
             ["reflect-metadata", "npm:0.1.13"],\

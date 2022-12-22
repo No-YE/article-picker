@@ -11,7 +11,7 @@ const articlesRoute: FastifyPluginAsync = async (fastify) => {
       return reply.notFound()
     }
 
-    const articles = await articleResolver.getByAccountId(request.user.id)
+    const articles = await articleResolver.getAllByAccountId(request.user.id)
     return reply.view('articles/my', { articles })
   })
 
@@ -48,13 +48,18 @@ const articlesRoute: FastifyPluginAsync = async (fastify) => {
         body: Type.Object({
           title: Type.String(),
           my: Type.Optional(Type.Union([Type.Literal('true'), Type.Literal('false')])),
-          public: Type.Optional(Type.Union([Type.Literal('true'), Type.Literal('false')])),
+          isPublic: Type.Optional(Type.Union([Type.Literal('true'), Type.Literal('false')])),
         }),
       },
     },
     async (request, reply) => {
-      const { title } = request.body
-      const articles = await articleResolver.getArticleByTitle(title)
+      const { title, my, isPublic } = request.body
+      const articles = await articleResolver.getAllByTitleAndAccountIdAndPublic({
+        title,
+        isPublic: isPublic === 'true' ? true : undefined,
+        accountId: my ? request.user?.id : undefined,
+      })
+
       return reply.partial('articles/search', { articles })
     },
   )

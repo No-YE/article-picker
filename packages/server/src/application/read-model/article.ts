@@ -1,5 +1,5 @@
 import { Service } from 'autoinjection'
-import pick from 'object.pick'
+import { D, pipe } from '@mobily/ts-belt'
 import prisma, { Prisma } from '../../infrastructure/prisma/client.js'
 
 export type Article = {
@@ -29,7 +29,7 @@ export class ArticleResolver {
     return this.mapToReadModel(article)
   }
 
-  async getByAccountId(accountId: number): Promise<Array<Article>> {
+  async getAllByAccountId(accountId: number): Promise<Array<Article>> {
     const articles = await prisma.article.findMany({
       where: { accountId },
     })
@@ -37,17 +37,35 @@ export class ArticleResolver {
     return articles.map(this.mapToReadModel)
   }
 
-  async getArticleByTitle(title: string): Promise<Array<Article>> {
-    const articles = await prisma.article.findMany({
-      where: {
-        title: { contains: title },
-      },
-    })
+  async getAllByTitleAndAccountIdAndPublic(
+    params: { title?: string, accountId?: number, isPublic?: boolean },
+  ): Promise<Array<Article>> {
+    const { title, accountId, isPublic } = params
+
+    const whereInput = pipe(
+      {} as Prisma.Prisma.ArticleWhereInput,
+      (q) => mergeWith(q, { title: { contains: title } }, () => title !== undefined),
+      (q) => mergeWith(q, { accountId }, () => accountId !== undefined),
+      (q) => mergeWith(q, { isPublic }, () => isPublic !== undefined),
+    )
+
+    const articles = await prisma.article.findMany({ where: whereInput })
 
     return articles.map(this.mapToReadModel)
   }
 
   private mapToReadModel(article: Prisma.Article): Article {
-    return pick(article, ['id', 'title', 'description', 'imageUri', 'isPublic', 'accountId'])
+    return D.selectKeys(article, ['id', 'title', 'description', 'imageUri', 'isPublic', 'accountId'])
   }
+}
+
+function mergeWith<T extends object, U extends object>(
+  target: T,
+  source: U,
+  predicate: (_target: T, _source: U) => boolean,
+): T {
+  if (predicate(target, source)) {
+    Object.assign(target, source)
+  }
+  return target
 }
