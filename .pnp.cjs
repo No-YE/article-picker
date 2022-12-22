@@ -758,6 +758,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["@types/object.pick", [\
+        ["npm:1.3.2", {\
+          "packageLocation": "./.yarn/cache/@types-object.pick-npm-1.3.2-924bf43ca8-71053ec684.zip/node_modules/@types/object.pick/",\
+          "packageDependencies": [\
+            ["@types/object.pick", "npm:1.3.2"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["@types/passport", [\
         ["npm:1.0.11", {\
           "packageLocation": "./.yarn/cache/@types-passport-npm-1.0.11-691a505ef6-7fea92aeb0.zip/node_modules/@types/passport/",\
@@ -4152,6 +4161,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["isobject", [\
+        ["npm:3.0.1", {\
+          "packageLocation": "./.yarn/cache/isobject-npm-3.0.1-8145901fd2-db85c4c970.zip/node_modules/isobject/",\
+          "packageDependencies": [\
+            ["isobject", "npm:3.0.1"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["istanbul-lib-coverage", [\
         ["npm:3.2.0", {\
           "packageLocation": "./.yarn/cache/istanbul-lib-coverage-npm-3.2.0-93f84b2c8c-a2a545033b.zip/node_modules/istanbul-lib-coverage/",\
@@ -4962,6 +4980,16 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["call-bind", "npm:1.0.2"],\
             ["define-properties", "npm:1.1.4"],\
             ["es-abstract", "npm:1.20.1"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["object.pick", [\
+        ["npm:1.3.0", {\
+          "packageLocation": "./.yarn/cache/object.pick-npm-1.3.0-dad8eae8fb-77fb6eed57.zip/node_modules/object.pick/",\
+          "packageDependencies": [\
+            ["object.pick", "npm:1.3.0"],\
+            ["isobject", "npm:3.0.1"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -5837,6 +5865,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@sinclair/typebox", "npm:0.25.15"],\
             ["@types/ejs", "npm:3.1.1"],\
             ["@types/node", "npm:18.8.4"],\
+            ["@types/object.pick", "npm:1.3.2"],\
             ["@types/passport-google-oauth20", "npm:2.0.11"],\
             ["@yarnpkg/pnpify", "npm:4.0.0-rc.15"],\
             ["@yarnpkg/sdks", "npm:3.0.0-rc.15"],\
@@ -5852,6 +5881,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["fishery", "npm:2.2.2"],\
             ["my-prisma", "workspace:packages/prisma"],\
             ["nodemon", "npm:2.0.20"],\
+            ["object.pick", "npm:1.3.0"],\
             ["passport-google-oauth20", "npm:2.0.0"],\
             ["prisma", "npm:4.7.1"],\
             ["reflect-metadata", "npm:0.1.13"],\

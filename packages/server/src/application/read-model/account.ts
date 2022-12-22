@@ -1,4 +1,6 @@
 import { Service } from 'autoinjection'
 
+export type Account = {}
+
 @Service({ singleton: true })
-export class ArticleService {}
+export class AccountResolver {}

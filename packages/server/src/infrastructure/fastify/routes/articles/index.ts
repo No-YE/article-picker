@@ -1,9 +1,9 @@
 import { FastifyPluginAsync } from 'fastify'
 import { type TypeBoxTypeProvider } from '@fastify/type-provider-typebox'
 import { Type } from '@sinclair/typebox'
-import { ArticleService } from '../../../../application/service/article.js'
+import { ArticleResolver } from '../../../../application/read-model/article.js'
 
-const articleService = new ArticleService()
+const articleResolver = new ArticleResolver()
 
 const articlesRoute: FastifyPluginAsync = async (fastify) => {
   fastify.get('/my', async (request, reply) => {
@@ -11,12 +11,12 @@ const articlesRoute: FastifyPluginAsync = async (fastify) => {
       return reply.notFound()
     }
 
-    const articles = await articleService.findByAccountId(request.user.id)
+    const articles = await articleResolver.getByAccountId(request.user.id)
     return reply.view('articles/my', { articles })
   })
 
   fastify.get('/public', async (_request, reply) => {
-    const articles = await articleService.allPublicArticles()
+    const articles = await articleResolver.allPublicArticles()
     return reply.view('articles/public', { articles })
   })
 
@@ -35,7 +35,7 @@ const articlesRoute: FastifyPluginAsync = async (fastify) => {
         return reply.notFound()
       }
 
-      const article = await articleService.findById(id)
+      const article = await articleResolver.getArticleById(id)
 
       return reply.view('articles/show', { article })
     },
@@ -54,7 +54,7 @@ const articlesRoute: FastifyPluginAsync = async (fastify) => {
     },
     async (request, reply) => {
       const { title } = request.body
-      const articles = await articleService.findByTitle(title)
+      const articles = await articleResolver.getArticleByTitle(title)
       return reply.partial('articles/search', { articles })
     },
   )
