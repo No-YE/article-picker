@@ -8,16 +8,16 @@ const articleResolver = new ArticleResolver()
 const articlesRoute: FastifyPluginAsync = async (fastify) => {
   fastify.get('/my', async (request, reply) => {
     if (!request.user) {
-      return reply.notFound()
+      return reply.redirect('/user/google/signin')
     }
 
-    const articles = await articleResolver.getAllByAccountId(request.user.id)
-    return reply.view('articles/my', { articles })
+    const articles = await articleResolver.getAllByAccountId(request.user!.id)
+    return reply.view('articles/articles', { articles })
   })
 
   fastify.get('/public', async (_request, reply) => {
     const articles = await articleResolver.allPublicArticles()
-    return reply.view('articles/public', { articles })
+    return reply.view('articles/articles', { articles })
   })
 
   fastify.withTypeProvider<TypeBoxTypeProvider>().get(

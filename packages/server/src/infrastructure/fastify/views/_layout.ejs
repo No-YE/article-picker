@@ -6,6 +6,11 @@
     <script src="https://cdn.tailwindcss.com/3.2.4"></script>
     <script type="module">
       import lineClamp from 'https://esm.sh/@tailwindcss/line-clamp@0.4.2'
+      import { Application, Controller } from "https://unpkg.com/@hotwired/stimulus@3.2.1/dist/stimulus.js"
+
+      window.Stimulus = Application.start()
+      window.Controller = Controller
+
       tailwind.config = {
         corePlugins: {
           preflight: false,
