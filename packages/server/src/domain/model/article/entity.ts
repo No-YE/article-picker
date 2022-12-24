@@ -14,16 +14,16 @@ export class Article extends Entity {
   static new(
     { id, title, description, uri, read, isPublic, accountId, tags, imageUri, createdAt }:
       {
-        id: Maybe<number>,
+        id?: Maybe<number>,
         title: string,
         description: string,
         uri: string,
         read: boolean,
         isPublic: boolean,
         accountId: number,
-        imageUri: Maybe<string>,
+        imageUri?: Maybe<string>,
         tags?: Array<RegisteredTag>,
-        createdAt: Date,
+        createdAt?: Date,
       },
   ): Article {
     const entity = new this()

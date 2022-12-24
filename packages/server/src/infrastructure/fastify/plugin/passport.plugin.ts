@@ -3,14 +3,11 @@ import fastifyPassport from '@fastify/passport'
 import secureSession, { type SecureSessionPluginOptions } from '@fastify/secure-session'
 import { Strategy as GoogleStrategy } from 'passport-google-oauth20'
 import { AccountService } from '../../../application/service/account.js'
+import { type Account } from '@/domain/model/account/entity.js'
 
 declare module 'fastify' {
   // eslint-disable-next-line no-unused-vars
-  interface PassportUser {
-    id: number;
-    email: string;
-    name: string;
-  }
+  interface PassportUser extends Account {}
 }
 
 const secureSessionPluginOptions: SecureSessionPluginOptions = {

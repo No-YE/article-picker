@@ -1,0 +1,39 @@
+<article class="flex flex-col items-center px-5 sm:px-16">
+  <div class="w-full max-w-screen-lg mb-2">
+    <h2>Register</h2>
+  </div>
+
+  <form hx-boost="true"
+        action="/articles/create"
+        method="post"
+        class="flex flex-col space-y-4 max-w-screen-lg w-full">
+
+    <input name="uri"
+           type="text"
+           placeholder="URI"
+           class="text-base px-2 py-1 rounded border border-solid border-gray-400"
+           required>
+
+    <input name="title"
+           type="text"
+           placeholder="Title"
+           class="text-base px-2 py-1 rounded border border-solid border-gray-400"
+           required>
+    
+    <textarea name="description"
+              placeholder="Description"
+              rows="7"
+              class="text-base px-2 rounded border border-solid border-gray-400"
+              required></textarea>
+    
+    <div>
+      <input type="hidden" name="isPublic" value="false">
+      <input id="article-new-is-public" type="checkbox" name="isPublic" value="true" class="scale-125">
+      <label for="article-new-is-public" class="text-base">reveal to public</label>
+    </div>
+
+    <div class="flex flex-row-reverse">
+      <button type="submit" class="text-base">Register</button>
+    </div>
+  </form>
+</article>

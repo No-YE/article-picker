@@ -2,10 +2,51 @@ import { FastifyPluginAsync } from 'fastify'
 import { type TypeBoxTypeProvider } from '@fastify/type-provider-typebox'
 import { Type } from '@sinclair/typebox'
 import { ArticleResolver } from '../../../../application/read-model/article.js'
+import { ArticleService } from '../../../../application/service/article.js'
 
 const articleResolver = new ArticleResolver()
+const articleService = new ArticleService()
 
 const articlesRoute: FastifyPluginAsync = async (fastify) => {
+  fastify.get('/new', async (request, reply) => {
+    if (!request.user) {
+      return reply.redirect('/user/google/signin')
+    }
+
+    return reply.view('articles/new')
+  })
+
+  fastify.withTypeProvider<TypeBoxTypeProvider>().post(
+    '/create',
+    {
+      schema: {
+        body: Type.Object({
+          title: Type.String(),
+          description: Type.String(),
+          uri: Type.String(),
+          isPublic: Type.Union([Type.Boolean(), Type.Literal('true'), Type.Literal('false')]),
+        }),
+      },
+    },
+    async (request, reply) => {
+      if (!request.user) {
+        return reply.redirect('/user/google/signin')
+      }
+
+      const { title, description, uri, isPublic } = request.body
+
+      await articleService.createArticle({
+        title,
+        description,
+        uri,
+        isPublic: isPublic === 'true' || isPublic === true,
+        account: request.user,
+      })
+
+      return reply.redirect('/articles/my')
+    },
+  )
+
   fastify.get('/my', async (request, reply) => {
     if (!request.user) {
       return reply.redirect('/user/google/signin')
@@ -48,7 +89,7 @@ const articlesRoute: FastifyPluginAsync = async (fastify) => {
         body: Type.Object({
           title: Type.String(),
           my: Type.Optional(Type.Union([Type.Literal('true'), Type.Literal('false')])),
-          isPublic: Type.Optional(Type.Union([Type.Literal('true'), Type.Literal('false')])),
+          isPublic: Type.Optional(Type.Union([Type.Boolean(), Type.Literal('true'), Type.Literal('false')])),
         }),
       },
     },
@@ -56,7 +97,7 @@ const articlesRoute: FastifyPluginAsync = async (fastify) => {
       const { title, my, isPublic } = request.body
       const articles = await articleResolver.getAllByTitleAndAccountIdAndPublic({
         title,
-        isPublic: isPublic === 'true' ? true : undefined,
+        isPublic: isPublic === undefined ? undefined : isPublic === 'true' || isPublic === true,
         accountId: my ? request.user?.id : undefined,
       })
 
