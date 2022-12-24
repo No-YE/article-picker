@@ -47,19 +47,55 @@ const articlesRoute: FastifyPluginAsync = async (fastify) => {
     },
   )
 
-  fastify.get('/my', async (request, reply) => {
-    if (!request.user) {
-      return reply.redirect('/user/google/signin')
-    }
+  fastify.withTypeProvider<TypeBoxTypeProvider>().get(
+    '/my',
+    {
+      schema: {
+        querystring: Type.Object({
+          title: Type.Optional(Type.String()),
+        }),
+      },
+    },
+    async (request, reply) => {
+      if (!request.user) {
+        return reply.redirect('/user/google/signin')
+      }
 
-    const articles = await articleResolver.getAllByAccountId(request.user!.id)
-    return reply.view('articles/my', { articles })
-  })
+      const title = request.query.title || undefined
+      const articles = await articleResolver.getAllByTitleAndAccountIdAndPublic({
+        title,
+        accountId: request.user.id,
+      })
 
-  fastify.get('/public', async (_request, reply) => {
-    const articles = await articleResolver.allPublicArticles()
-    return reply.view('articles/public', { articles })
-  })
+      if (request.headers['hx-request'] === 'true' && request.headers['hx-boosted'] !== 'true') {
+        return reply.partial('articles/_search', { articles })
+      }
+      return reply.view('articles/my', { articles, title })
+    },
+  )
+
+  fastify.withTypeProvider<TypeBoxTypeProvider>().get(
+    '/public',
+    {
+      schema: {
+        querystring: Type.Object({
+          title: Type.Optional(Type.String()),
+        }),
+      },
+    },
+    async (request, reply) => {
+      const title = request.query.title || undefined
+      const articles = await articleResolver.getAllByTitleAndAccountIdAndPublic({
+        title,
+        isPublic: true,
+      })
+
+      if (request.headers['hx-request'] === 'true' && request.headers['hx-boosted'] !== 'true') {
+        return reply.partial('articles/_search', { articles })
+      }
+      return reply.view('articles/public', { articles, title })
+    },
+  )
 
   fastify.withTypeProvider<TypeBoxTypeProvider>().get(
     '/:id',
@@ -79,29 +115,6 @@ const articlesRoute: FastifyPluginAsync = async (fastify) => {
       const article = await articleResolver.getArticleById(id)
 
       return reply.view('articles/show', { article })
-    },
-  )
-
-  fastify.withTypeProvider<TypeBoxTypeProvider>().post(
-    '/search',
-    {
-      schema: {
-        body: Type.Object({
-          title: Type.String(),
-          my: Type.Optional(Type.Union([Type.Literal('true'), Type.Literal('false')])),
-          isPublic: Type.Optional(Type.Union([Type.Boolean(), Type.Literal('true'), Type.Literal('false')])),
-        }),
-      },
-    },
-    async (request, reply) => {
-      const { title, my, isPublic } = request.body
-      const articles = await articleResolver.getAllByTitleAndAccountIdAndPublic({
-        title,
-        isPublic: isPublic === undefined ? undefined : isPublic === 'true' || isPublic === true,
-        accountId: my ? request.user?.id : undefined,
-      })
-
-      return reply.partial('articles/search', { articles })
     },
   )
 }

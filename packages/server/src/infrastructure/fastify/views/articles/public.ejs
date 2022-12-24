@@ -1,13 +1,5 @@
 <article class="flex flex-col space-y-2">
-  <input class="h-10 sm:h-12 text-sm sm:text-base px-16 rounded border-0 focus:outline-blue-600"
-         type="search" 
-         name="title"
-         placeholder="Search Article Title..." 
-         hx-post="/articles/search" 
-         hx-vals='{"isPublic": true}'
-         hx-params="*"
-         hx-trigger="keyup changed delay:300ms, search" 
-         hx-target="#search-results">
+  <%- include('_search-bar', { hxGet: '/articles/public', hxTarget: '#search-results' }) -%>
 
   <div id="search-results">
     <%- include('_articles') -%>
