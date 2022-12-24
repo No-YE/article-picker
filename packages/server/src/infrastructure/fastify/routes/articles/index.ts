@@ -53,12 +53,12 @@ const articlesRoute: FastifyPluginAsync = async (fastify) => {
     }
 
     const articles = await articleResolver.getAllByAccountId(request.user!.id)
-    return reply.view('articles/articles', { articles })
+    return reply.view('articles/my', { articles })
   })
 
   fastify.get('/public', async (_request, reply) => {
     const articles = await articleResolver.allPublicArticles()
-    return reply.view('articles/articles', { articles })
+    return reply.view('articles/public', { articles })
   })
 
   fastify.withTypeProvider<TypeBoxTypeProvider>().get(

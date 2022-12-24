@@ -31,6 +31,12 @@ const app: FastifyPluginAsync<AppOptions> = async (
 
   fastify.setValidatorCompiler(TypeBoxValidatorCompiler)
 
+  fastify.addHook('preHandler', async (request) => {
+    if (request.body) {
+      request.log.info({ body: request.body })
+    }
+  })
+
   fastify.register(formbody)
 
   fastify.register(AutoLoad, {

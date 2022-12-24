@@ -16,6 +16,7 @@ export class ArticleResolver {
   async allPublicArticles(): Promise<Array<Article>> {
     const articles = await prisma.article.findMany({
       where: { isPublic: true },
+      orderBy: { createdAt: 'desc' },
     })
 
     return articles.map(this.mapToReadModel)
@@ -32,6 +33,7 @@ export class ArticleResolver {
   async getAllByAccountId(accountId: number): Promise<Array<Article>> {
     const articles = await prisma.article.findMany({
       where: { accountId },
+      orderBy: { createdAt: 'desc' },
     })
 
     return articles.map(this.mapToReadModel)
@@ -49,13 +51,16 @@ export class ArticleResolver {
       (q) => mergeWith(q, { isPublic }, () => isPublic !== undefined),
     )
 
-    const articles = await prisma.article.findMany({ where: whereInput })
+    const articles = await prisma.article.findMany({
+      where: whereInput,
+      orderBy: { createdAt: 'desc' },
+    })
 
     return articles.map(this.mapToReadModel)
   }
 
   private mapToReadModel(article: Prisma.Article): Article {
-    return D.selectKeys(article, ['id', 'title', 'description', 'imageUri', 'isPublic', 'accountId'])
+    return D.selectKeys(article, ['id', 'title', 'description', 'imageUri', 'isPublic', 'accountId', 'createdAt'])
   }
 }
 
