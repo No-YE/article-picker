@@ -98,6 +98,26 @@ const articlesRoute: FastifyPluginAsync = async (fastify) => {
   )
 
   fastify.withTypeProvider<TypeBoxTypeProvider>().get(
+    '/random',
+    {
+      schema: {
+        querystring: Type.Object({
+          title: Type.Optional(Type.String()),
+        }),
+      },
+    },
+    async (request, reply) => {
+      const title = request.query.title || undefined
+      const article = await articleResolver.getRandomArticleByTitle(title)
+
+      if (request.headers['hx-request'] === 'true' && request.headers['hx-boosted'] !== 'true') {
+        return reply.partial('articles/_search', { articles: [article] })
+      }
+      return reply.view('articles/random', { articles: [article], title })
+    },
+  )
+
+  fastify.withTypeProvider<TypeBoxTypeProvider>().get(
     '/:id',
     {
       schema: {

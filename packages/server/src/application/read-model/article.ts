@@ -2,6 +2,8 @@ import { Service } from 'autoinjection'
 import { D, pipe } from '@mobily/ts-belt'
 import prisma, { Prisma } from '../../infrastructure/prisma/client.js'
 
+const { sql } = Prisma.Prisma
+
 export type Article = {
   id: number
   title: string
@@ -39,6 +41,16 @@ export class ArticleResolver {
     return articles.map(this.mapToReadModel)
   }
 
+  async getRandomArticleByTitle(title?: string): Promise<Maybe<Article>> {
+    const query = title === undefined
+      ? sql`SELECT * FROM "Article" ORDER BY RANDOM() LIMIT 1;`
+      : sql`SELECT * FROM "Article" WHERE title ILIKE '%${title}%' ORDER BY RANDOM() LIMIT 1;`
+
+    const article = await prisma.$queryRaw<Array<Article>>(query)
+
+    return article[0]
+  }
+
   async getAllByTitleAndAccountIdAndPublic(
     params: { title?: string, accountId?: number, isPublic?: boolean },
   ): Promise<Array<Article>> {
@@ -46,7 +58,7 @@ export class ArticleResolver {
 
     const whereInput = pipe(
       {} as Prisma.Prisma.ArticleWhereInput,
-      (q) => mergeWith(q, { title: { contains: title } }, () => title !== undefined),
+      (q) => mergeWith(q, { title: { contains: title, mode: 'insensitive' } }, () => title !== undefined),
       (q) => mergeWith(q, { accountId }, () => accountId !== undefined),
       (q) => mergeWith(q, { isPublic }, () => isPublic !== undefined),
     )
