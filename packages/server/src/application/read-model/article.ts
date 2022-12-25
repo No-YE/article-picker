@@ -72,7 +72,7 @@ export class ArticleResolver {
   }
 
   private mapToReadModel(article: Prisma.Article): Article {
-    return D.selectKeys(article, ['id', 'title', 'description', 'imageUri', 'isPublic', 'accountId', 'createdAt'])
+    return D.selectKeys(article, ['id', 'title', 'description', 'uri', 'imageUri', 'isPublic', 'accountId', 'createdAt'])
   }
 }
 

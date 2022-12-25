@@ -2,27 +2,30 @@
 <html>
   <head>
     <title>Articler</title>
-    <script src="https://unpkg.com/htmx.org@1.8.4"></script>
-    <script src="https://cdn.tailwindcss.com/3.2.4"></script>
-    <script type="module">
-      import lineClamp from 'https://esm.sh/@tailwindcss/line-clamp@0.4.2'
-      import { Application, Controller } from "https://unpkg.com/@hotwired/stimulus@3.2.1/dist/stimulus.js"
-
-      window.Stimulus = Application.start()
-      window.Controller = Controller
-
+    <script src="https://cdn.tailwindcss.com/3.2.4?plugins=line-clamp"></script>
+    <script>
       tailwind.config = {
         corePlugins: {
           preflight: false,
         },
-        plugins: [
-          lineClamp,
-        ],
       }
+    </script>
+    <script aysnc src="https://unpkg.com/htmx.org@1.8.4" integrity="sha384-wg5Y/JwF7VxGk4zLsJEcAojRtlVp1FKKdGy1qN+OMtdq72WRvX/EdRdqg/LOhYeV" crossorigin="anonymous"></script>
+    <script async src="https://unpkg.com/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script async src="https://unpkg.com/tippy.js@6.3.7/dist/tippy-bundle.umd.min.js"></script>
+    <script type="module">
+      import { Application, Controller } from "https://unpkg.com/@hotwired/stimulus@3.2.1/dist/stimulus.js"
+
+      window.Stimulus = Application.start()
+      window.Controller = Controller
     </script>
     <style>
       .disable-tap-highlight-color {
         -webkit-tap-highlight-color: transparent;
+      }
+
+      .tippy-box {
+        background-color: white;
       }
     </style>
     <meta name="viewport" content="width=device-width">
