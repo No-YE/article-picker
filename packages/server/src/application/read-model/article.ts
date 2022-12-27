@@ -48,9 +48,9 @@ export class ArticleResolver {
       ? sql`SELECT * FROM "Article" ORDER BY RANDOM() LIMIT 1;`
       : sql`SELECT * FROM "Article" WHERE title ILIKE '%${title}%' ORDER BY RANDOM() LIMIT 1;`
 
-    const article = await prisma.$queryRaw<Array<Article>>(query)
+    const article = await prisma.$queryRaw<Array<Prisma.Article>>(query)
 
-    return article[0]
+    return this.mapToReadModel(article[0])
   }
 
   async getAllByTitleAndAccountIdAndPublic(
