@@ -1,14 +1,16 @@
-import { FastifyPluginAsync } from 'fastify'
-import { type TypeBoxTypeProvider } from '@fastify/type-provider-typebox'
-import { Type } from '@sinclair/typebox'
+import { type FastifyPluginAsync } from 'fastify'
+import yup from 'yup'
 import { ArticleResolver } from '../../../../application/read-model/article.js'
 import { ArticleService } from '../../../../application/service/article.js'
+import { YupTypeProvider } from '../../plugin/validator.plugin.js'
 
 const articleResolver = new ArticleResolver()
 const articleService = new ArticleService()
 
 const articlesRoute: FastifyPluginAsync = async (fastify) => {
-  fastify.get('/new', async (request, reply) => {
+  const server = fastify.withTypeProvider<YupTypeProvider>()
+
+  server.get('/new', async (request, reply) => {
     if (!request.user) {
       return reply.redirect('/user/google/signin')
     }
@@ -16,15 +18,15 @@ const articlesRoute: FastifyPluginAsync = async (fastify) => {
     return reply.view('articles/new')
   })
 
-  fastify.withTypeProvider<TypeBoxTypeProvider>().post(
+  server.post(
     '/create',
     {
       schema: {
-        body: Type.Object({
-          title: Type.String(),
-          description: Type.String(),
-          uri: Type.String(),
-          isPublic: Type.Union([Type.Boolean(), Type.Literal('true'), Type.Literal('false')]),
+        body: yup.object({
+          title: yup.string().required(),
+          description: yup.string().required(),
+          uri: yup.string().required(),
+          isPublic: yup.boolean().required(),
         }),
       },
     },
@@ -39,7 +41,7 @@ const articlesRoute: FastifyPluginAsync = async (fastify) => {
         title,
         description,
         uri,
-        isPublic: isPublic === 'true' || isPublic === true,
+        isPublic,
         account: request.user,
       })
 
@@ -47,12 +49,12 @@ const articlesRoute: FastifyPluginAsync = async (fastify) => {
     },
   )
 
-  fastify.withTypeProvider<TypeBoxTypeProvider>().get(
+  server.get(
     '/my',
     {
       schema: {
-        querystring: Type.Object({
-          title: Type.Optional(Type.String()),
+        querystring: yup.object({
+          title: yup.string(),
         }),
       },
     },
@@ -74,12 +76,12 @@ const articlesRoute: FastifyPluginAsync = async (fastify) => {
     },
   )
 
-  fastify.withTypeProvider<TypeBoxTypeProvider>().get(
+  server.get(
     '/public',
     {
       schema: {
-        querystring: Type.Object({
-          title: Type.Optional(Type.String()),
+        querystring: yup.object({
+          title: yup.string(),
         }),
       },
     },
@@ -97,12 +99,12 @@ const articlesRoute: FastifyPluginAsync = async (fastify) => {
     },
   )
 
-  fastify.withTypeProvider<TypeBoxTypeProvider>().get(
+  server.get(
     '/random',
     {
       schema: {
-        querystring: Type.Object({
-          title: Type.Optional(Type.String()),
+        querystring: yup.object({
+          title: yup.string(),
         }),
       },
     },
@@ -117,21 +119,17 @@ const articlesRoute: FastifyPluginAsync = async (fastify) => {
     },
   )
 
-  fastify.withTypeProvider<TypeBoxTypeProvider>().get(
+  server.get(
     '/:id',
     {
       schema: {
-        params: Type.Object({
-          id: Type.String(),
+        params: yup.object({
+          id: yup.number().integer().required(),
         }),
       },
     },
     async (request, reply) => {
-      const id = parseInt(request.params.id, 10)
-      if (Number.isNaN(id)) {
-        return reply.notFound()
-      }
-
+      const { id } = request.params
       const article = await articleResolver.getArticleById(id)
 
       return reply.view('articles/show', { article })

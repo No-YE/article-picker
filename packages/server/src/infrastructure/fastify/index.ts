@@ -4,7 +4,6 @@ import { fileURLToPath } from 'url'
 import { FastifyPluginAsync } from 'fastify'
 import AutoLoad, { AutoloadPluginOptions } from '@fastify/autoload'
 import formbody from '@fastify/formbody'
-import { TypeBoxValidatorCompiler } from '@fastify/type-provider-typebox'
 import '../prisma/repository/index.js'
 
 export type AppOptions = {
@@ -28,8 +27,6 @@ const app: FastifyPluginAsync<AppOptions> = async (
 
   const __filename = fileURLToPath(import.meta.url)
   const __dirname = dirname(__filename)
-
-  fastify.setValidatorCompiler(TypeBoxValidatorCompiler)
 
   fastify.addHook('preHandler', async (request) => {
     if (request.body) {
