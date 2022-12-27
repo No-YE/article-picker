@@ -6,9 +6,12 @@ import prisma, { Prisma } from '../client.js'
 
 @Service({ singleton: true })
 class PrismaArticleRepository implements ArticleRepository {
-  async findById(id: number): Promise<Article> {
-    const article = await prisma.article.findUniqueOrThrow({
-      where: { id },
+  async findById(accountId: number, articleId: number): Promise<Article> {
+    const article = await prisma.article.findFirstOrThrow({
+      where: {
+        accountId,
+        id: articleId,
+      },
     })
 
     return this.mapToEntity(article)
@@ -16,8 +19,7 @@ class PrismaArticleRepository implements ArticleRepository {
 
   async save(article: Article): Promise<Article> {
     const prismaArticle = {
-      ...D.selectKeys(article, ['title', 'description', 'uri', 'isPublic', 'accountId']),
-      readAt: article.read ? new Date() : null,
+      ...D.selectKeys(article, ['title', 'description', 'uri', 'isPublic', 'accountId', 'readAt']),
     }
 
     const upsertedAccount = await prisma.article.upsert({
@@ -30,7 +32,7 @@ class PrismaArticleRepository implements ArticleRepository {
   }
 
   private mapToEntity(article: Prisma.Article): Article {
-    return Article.new({ ...article, read: !!article.readAt })
+    return Article.new(article)
   }
 }
 

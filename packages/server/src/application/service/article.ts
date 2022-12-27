@@ -17,7 +17,19 @@ export class ArticleService {
       account: Account
     },
   ): Promise<Article> {
-    const article = Article.new({ ...dto, read: false, accountId: dto.account.id })
+    const article = Article.new({ ...dto, readAt: undefined, accountId: dto.account.id })
+    return await this.articleRepository!.save(article)
+  }
+
+  async readArticle(accountId: number, articleId: number): Promise<Article> {
+    const article = await this.articleRepository!.findById(accountId, articleId)
+    article.read()
+    return await this.articleRepository!.save(article)
+  }
+
+  async unreadArticle(accountId: number, articleId: number): Promise<Article> {
+    const article = await this.articleRepository!.findById(accountId, articleId)
+    article.unread()
     return await this.articleRepository!.save(article)
   }
 }

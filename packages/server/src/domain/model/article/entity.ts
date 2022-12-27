@@ -4,21 +4,21 @@ export class Article extends Entity {
   title!: string
   description!: string
   uri!: string
-  read!: boolean
   isPublic!: boolean
   accountId!: number
   tags!: Array<RegisteredTag>
-  imageUri?: string
+  imageUri: Maybe<string>
   createdAt!: Date
+  readAt: Maybe<Date>
 
   static new(
-    { id, title, description, uri, read, isPublic, accountId, tags, imageUri, createdAt }:
+    { id, title, description, uri, readAt, isPublic, accountId, tags, imageUri, createdAt }:
       {
         id?: Maybe<number>,
         title: string,
         description: string,
         uri: string,
-        read: boolean,
+        readAt: Maybe<Date>,
         isPublic: boolean,
         accountId: number,
         imageUri?: Maybe<string>,
@@ -33,9 +33,29 @@ export class Article extends Entity {
     entity.setUri(uri)
     entity.setImageUri(imageUri)
 
-    Object.assign(entity, { read, isPublic, accountId, createdAt, tags: tags ?? [] })
+    Object.assign(entity, { readAt, isPublic, accountId, createdAt, tags: tags ?? [] })
 
     return entity
+  }
+
+  read(value = new Date()): void {
+    if (this.readAt !== undefined && this.readAt !== null) {
+      throw new Error('Article is already read')
+    }
+
+    this.readAt = value
+  }
+
+  unread(): void {
+    if (this.readAt === undefined || this.readAt === null) {
+      throw Error('Article is not read yet')
+    }
+
+    this.readAt = null
+  }
+
+  get hasRead(): boolean {
+    return this.readAt !== undefined && this.readAt !== null
   }
 
   private setTitle(value: string): void {
@@ -58,7 +78,7 @@ export class Article extends Entity {
 
   private setImageUri(value: Maybe<string>): void {
     if (value === undefined || value === null) {
-      this.imageUri = undefined
+      this.imageUri = null
       return
     }
 

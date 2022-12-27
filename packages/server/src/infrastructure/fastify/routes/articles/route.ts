@@ -119,22 +119,7 @@ const articlesRoute: FastifyPluginAsync = async (fastify) => {
     },
   )
 
-  server.get(
-    '/:id',
-    {
-      schema: {
-        params: yup.object({
-          id: yup.number().integer().required(),
-        }),
-      },
-    },
-    async (request, reply) => {
-      const { id } = request.params
-      const article = await articleResolver.getArticleById(id)
-
-      return reply.view('articles/show', { article })
-    },
-  )
+  fastify.register(import('./show/route.js'), { prefix: '/:id' })
 }
 
 export default articlesRoute

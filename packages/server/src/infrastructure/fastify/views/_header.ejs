@@ -2,32 +2,32 @@
   <div class="flex justify-between items-center w-full max-w-screen-2xl box-border px-5 sm:px-16">
     <div hx-boost="true" class="flex items-center space-x-2 sm:space-x-4">
       <h1 class="mr-1 sm:mr-2 text-2xl sm:text-3xl">
-        <a href="/" class="text-gray-700 no-underline">Articler</a>
+        <a href="/" class="text-gray-800 no-underline">Articler</a>
       </h1>
 
-      <a href="/articles/random" class="sm:hidden text-gray-700 no-underline">Random</a>
-      <a href="/articles/random" class="max-sm:hidden text-gray-700 no-underline">Random Article</a>
+      <a href="/articles/random" class="sm:hidden text-gray-800 no-underline">Random</a>
+      <a href="/articles/random" class="max-sm:hidden text-gray-800 no-underline">Random Article</a>
 
       <% if (user) { %>
-        <a href="/articles/my" class="sm:hidden text-gray-700 no-underline">My</a>
-        <a href="/articles/my" class="max-sm:hidden text-gray-700 no-underline">My Article</a>
+        <a href="/articles/my" class="sm:hidden text-gray-800 no-underline">My</a>
+        <a href="/articles/my" class="max-sm:hidden text-gray-800 no-underline">My Article</a>
       <% } else { %>
-        <a href="#" data-action="click->header#showSigninConfirm" class="sm:hidden text-gray-700 no-underline">My</a>
-        <a href="#" data-action="click->header#showSigninConfirm" class="max-sm:hidden text-gray-700 no-underline">My Article</a>
+        <a href="#" data-action="click->header#showSigninConfirm" class="sm:hidden text-gray-800 no-underline">My</a>
+        <a href="#" data-action="click->header#showSigninConfirm" class="max-sm:hidden text-gray-800 no-underline">My Article</a>
       <% } %>
 
-      <a href="/articles/public" class="sm:hidden text-gray-700 no-underline">All</a>
-      <a href="/articles/public" class="max-sm:hidden text-gray-700 no-underline">All Article</a>
+      <a href="/articles/public" class="sm:hidden text-gray-800 no-underline">All</a>
+      <a href="/articles/public" class="max-sm:hidden text-gray-800 no-underline">All Article</a>
 
       <span>|</span>
 
-      <a href="/articles/new" class="text-gray-700 no-underline">Register</a>
+      <a href="/articles/new" class="text-gray-800 no-underline">Register</a>
     </div>
 
     <% if (user) { %>
-      <a href="/user/signout" class="text-gray-700 no-underline">Sign Out</a>
+      <a href="/user/signout" class="text-gray-800 no-underline">Sign Out</a>
     <% } else { %>
-      <a href="/user/google/signin" class="text-gray-700 no-underline">Sign In</a>
+      <a href="/user/google/signin" class="text-gray-800 no-underline">Sign In</a>
     <% } %>
   </div>
 </header>

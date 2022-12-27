@@ -1,88 +1,30 @@
 <div data-controller="articles">
   <% for (const article of articles) { %>
-    <div class="disable-tap-highlight-color mt-2">
-      <div class="flex flex-col bg-white h-36 sm:h-48 px-8 sm:px-16 py-8 rounded border border-solid border-gray-300">
-        <div class="flex justify-between mb-2">
-          <h2 class="m-0 line-clamp-1">
-            <a href="<%= article.uri %>" target="_blank" class="text-gray-700 no-underline hover:underline">
-              <%= article.title %>
-            </a>
-          </h2>
-
-          <div class="relative">
-            <button data-articles-target="tooltipTrigger" class="border-0 w-auto bg-transparent cursor-pointer rounded hover:bg-slate-300 focus:bg-slate-300">
-              <%- include('../_shared/svg/ellipsis-vertical') -%>
-
-              <div class="tooltip-content invisible">
-                <div class="absolute right-0 -top-2 flex flex-col bg-white w-28 outline outline-1 outline-gray-300 rounded">
-                  <% if (article.accountId === user.id) { %>
-                    <a hx-post="/articles/<%= article.id %>/read"
-                       class="w-auto text-left px-4 py-2 border-0 bg-white hover:bg-slate-300 text-gray-700 cursor-pointer">
-                      Read
-                    </a>
-                    <a href="/articles/<%= article.id %>/edit"
-                       hx-boost="true"
-                       class="w-auto text-left px-4 py-2 border-0 bg-white hover:bg-slate-300 text-gray-700 no-underline">
-                      Edit
-                    </a>
-                    <a hx-post="/articles/<%= article.id %>/delete"
-                       class="w-auto text-left px-4 py-2 border-0 bg-white hover:bg-slate-300 text-gray-700 cursor-pointer">
-                      Delete
-                    </a>
-                  <% } else { %>
-                    <a hx-post="/articles/<%= article.id %>/copy-to-my"
-                       class="w-auto text-left px-4 py-2 border-0 bg-white hover:bg-slate-300 text-gray-700">
-                      Bring
-                    </a>
-                  <% } %>
-                </div>
-              </div>
-            </button>
-          </div>
-        </div>
-
-        <a href="<%= article.uri %>" target="_blank" class="flex justify-between space-x-4 h-28 sm:h-40 text-gray-700 no-underline hover:underline">
-          <div class="flex flex-col justify-between">
-            <div class="line-clamp-4 text-sm sm:text-lg">
-                <%= article.description %>
-            </div>
-            <div class="text-sm sm:text-base">
-              Registration time: <%= new Intl.DateTimeFormat('ko', { dateStyle: 'medium', timeStyle: 'medium' }).format(article.createdAt) %>
-            </div>
-          </div>
-          <% if (article.imageUri) { %>
-            <img src="<%= article.imageUri %>" class="hidden sm:block object-cover w-80 h-36">
-          <% } %>
-        </a>
-      </div>
-    </div>
+    <%- include('_article', { article }) -%> 
   <% } %>
 </div>
 
 <script type="module">
   Stimulus.register('articles', class extends Controller {
-    static targets = ['tooltipTrigger']
-
     connect() {
-      tippy(this.tooltipTriggerTargets, {
+      tippy.delegate(this.element, {
         placement: 'bottom-end',
         trigger: 'click',
+        target: '.tooltip-trigger',
         interactive: true,
         theme: 'light-border',
         arrow: false,
-        content: this.#getContent,
         allowHTML: true,
+        content(instance) {
+          const content = instance.getElementsByClassName('tooltip-content')[0]
+          return content.innerHTML
+        },
         onMount(instance) {
           for (const a of instance.popper.getElementsByTagName('a')) {
             htmx.process(a)
           }
         },
       })
-    }
-
-    #getContent(instance) {
-      const content = instance.getElementsByClassName('tooltip-content')[0]
-      return content.innerHTML
     }
   })
 </script>
