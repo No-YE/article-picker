@@ -14,10 +14,7 @@ declare module 'fastify' {
       _page: string, _data: T, _opts?: RouteSpecificOptions
     ): FastifyReply;
     view(_page: string, _data?: object, _opts?: RouteSpecificOptions): FastifyReply;
-    partial<T extends { [key: string]: any; }>(
-      _page: string, _data: T, _opts?: RouteSpecificOptions
-    ): FastifyReply;
-    partial(_page: string, _data?: object, _opts?: RouteSpecificOptions): FastifyReply;
+    partial: this['view']
     locals: { [key: string]: unknown; }
   }
 }

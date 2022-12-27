@@ -1,7 +1,7 @@
 import { FastifyPluginAsync } from 'fastify'
 import fastifyPassport from '@fastify/passport'
 
-const google: FastifyPluginAsync = async (fastify) => {
+const googleRoute: FastifyPluginAsync = async (fastify) => {
   fastify.get('/signin', fastifyPassport.default.authenticate('google'))
 
   fastify.get(
@@ -14,4 +14,4 @@ const google: FastifyPluginAsync = async (fastify) => {
   )
 }
 
-export default google
+export default googleRoute

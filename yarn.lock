@@ -97,15 +97,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@fastify/autoload@npm:^5.6.0":
-  version: 5.6.0
-  resolution: "@fastify/autoload@npm:5.6.0"
-  dependencies:
-    pkg-up: ^3.1.0
-  checksum: 257712a26f4bf7fa06306aefe9dde4deb466d045829b581e5dfbe92914a45febfa85a520733709228b305033f672291ea6861aeb049d1c3d388ac2cde6198dfd
-  languageName: node
-  linkType: hard
-
 "@fastify/cookie@npm:^8.0.0":
   version: 8.3.0
   resolution: "@fastify/cookie@npm:8.3.0"
@@ -203,16 +194,6 @@ __metadata:
     type-is: ^1.6.18
     vary: ^1.1.2
   checksum: ceb82fd21d7844f0c487fca57ab766dd9efe8202661fd282eb539e783ebdfbc87d1a356578eb988958be2b3e83fbfa1193b905dd5b8ec61bc628416823348835
-  languageName: node
-  linkType: hard
-
-"@fastify/type-provider-typebox@npm:^2.4.0":
-  version: 2.4.0
-  resolution: "@fastify/type-provider-typebox@npm:2.4.0"
-  peerDependencies:
-    "@sinclair/typebox": ^0.25.9
-    fastify: ^4.0.0
-  checksum: abaf019e25bb4dd7adbf5ad6d588b1cc846c60695b01c7ae5d4a98d4c8f8263c531f08ca2e81a54c8176117b856978cf541d7aff19d98b4c28f26a9f2a61da3a
   languageName: node
   linkType: hard
 
@@ -378,13 +359,6 @@ __metadata:
   version: 4.7.1
   resolution: "@prisma/engines@npm:4.7.1"
   checksum: 1660f1d5a6188a9cb9aa5186111910f37b1bc02f09be10336a41e0ec61a18a4193e0ff424077dafb1bf1392a435fc89cec47526a58784a7bdc6c8278adf147a4
-  languageName: node
-  linkType: hard
-
-"@sinclair/typebox@npm:^0.25.15":
-  version: 0.25.15
-  resolution: "@sinclair/typebox@npm:0.25.15"
-  checksum: af2f330e4fba7a38edfebb0c9210d14687de296a4dced71d653f5ce5fa8aa641159180c24f2b67c8f8fe725925d031d227f6d89f21cbaeba560ca58ce204ab4d
   languageName: node
   linkType: hard
 
@@ -4970,17 +4944,14 @@ __metadata:
   resolution: "server@workspace:packages/server"
   dependencies:
     "@ava/typescript": ^3.0.1
-    "@fastify/autoload": ^5.6.0
     "@fastify/cors": ^8.2.0
     "@fastify/formbody": ^7.4.0
     "@fastify/passport": ^2.2.0
     "@fastify/secure-session": ^5.3.0
     "@fastify/sensible": ^5.2.0
-    "@fastify/type-provider-typebox": ^2.4.0
     "@fastify/view": ^7.3.0
     "@mobily/ts-belt": 4.0.0-rc.2
     "@prisma/client": 4.7.1
-    "@sinclair/typebox": ^0.25.15
     "@types/ejs": ^3
     "@types/node": ^18.0.5
     "@types/passport-google-oauth20": ^2.0.11
