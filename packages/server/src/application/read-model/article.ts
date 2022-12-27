@@ -12,6 +12,7 @@ export type Article = {
   isPublic: boolean
   accountId: number
   hasRead: boolean
+  createdAt: Date
 }
 
 @Service({ singleton: true })
@@ -74,7 +75,7 @@ export class ArticleResolver {
 
   private mapToReadModel(article: Prisma.Article): Article {
     return D.merge(
-      D.selectKeys(article, ['id', 'title', 'description', 'uri', 'imageUri', 'isPublic', 'accountId']),
+      D.selectKeys(article, ['id', 'title', 'description', 'uri', 'imageUri', 'isPublic', 'accountId', 'createdAt']),
       { hasRead: article.readAt !== undefined && article.readAt !== null },
     )
   }
