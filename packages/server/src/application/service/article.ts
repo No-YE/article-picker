@@ -21,6 +21,22 @@ export class ArticleService {
     return await this.articleRepository!.save(article)
   }
 
+  async updateArticle(
+    dto: {
+      id: number,
+      title: string,
+      description: string,
+      uri: string,
+      isPublic: boolean,
+      account: Account
+    },
+  ): Promise<Article> {
+    const existArticle = await this.articleRepository!.findById(dto.account.id, dto.id)
+    const newArticle = Article.new({ ...existArticle, ...dto })
+
+    return await this.articleRepository!.save(newArticle)
+  }
+
   async readArticle(accountId: number, articleId: number): Promise<Article> {
     const article = await this.articleRepository!.findById(accountId, articleId)
     article.read()

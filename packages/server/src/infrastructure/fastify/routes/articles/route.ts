@@ -26,7 +26,7 @@ const articlesRoute: FastifyPluginAsync = async (fastify) => {
           title: yup.string().required(),
           description: yup.string().required(),
           uri: yup.string().required(),
-          isPublic: yup.boolean().required(),
+          isPublic: yup.boolean().default(false),
         }),
       },
     },

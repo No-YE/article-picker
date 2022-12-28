@@ -32,6 +32,14 @@ export class ArticleResolver {
     return this.mapToReadModel(article)
   }
 
+  async articleByAccontIdAndId(accountId: number, id: number): Promise<Article> {
+    const article = await prisma.article.findFirstOrThrow({
+      where: { id, accountId },
+    })
+
+    return this.mapToReadModel(article)
+  }
+
   async articlesByAccountId(accountId: number): Promise<Array<Article>> {
     const articles = await prisma.article.findMany({
       where: { accountId },

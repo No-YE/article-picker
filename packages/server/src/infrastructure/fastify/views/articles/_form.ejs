@@ -1,0 +1,34 @@
+<form hx-boost="true"
+      action="<%= action %>"
+      method="post"
+      class="flex flex-col space-y-4 max-w-screen-lg w-full">
+
+  <input name="uri"
+         type="text"
+         placeholder="URI"
+         class="text-base px-2 py-1 rounded border border-solid border-gray-300"
+         value="<%= locals.article?.uri ?? '' %>"
+         required>
+
+  <input name="title"
+         type="text"
+         placeholder="Title"
+         class="text-base px-2 py-1 rounded border border-solid border-gray-300"
+         value="<%= locals.article?.title ?? '' %>"
+         required>
+  
+  <textarea name="description"
+            placeholder="Description"
+            rows="7"
+            class="text-base px-2 rounded border border-solid border-gray-300"
+            required><%= locals.article?.description ?? '' %></textarea>
+  
+  <div>
+    <input id="article-new-is-public" type="checkbox" name="isPublic" value="true" class="scale-125" <%= locals.article?.isPublic ? 'checked' : '' %>>
+    <label for="article-new-is-public" class="text-base">reveal to public</label>
+  </div>
+
+  <div class="flex flex-row-reverse">
+    <button type="submit" class="text-base"><%= text %></button>
+  </div>
+</form>
