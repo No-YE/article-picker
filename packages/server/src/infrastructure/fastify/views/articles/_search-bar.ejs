@@ -1,10 +1,30 @@
-<input class="h-10 sm:h-12 text-sm sm:text-base px-16 rounded border border-solid border-gray-300 focus:border-blue-600"
-  type="search" 
-  name="title"
-  value="<%= locals.title %>"
-  placeholder="Search Article Title..." 
-  hx-get="<%= hxGet %>" 
-  hx-push-url="true"
-  hx-params="*"
-  hx-trigger="keyup changed delay:300ms, search" 
-  hx-target="<%= hxTarget %>">
+<form class="flex flex-col space-y-2">
+  <input class="h-10 sm:h-12 text-sm sm:text-base px-8 sm:px-16 rounded border border-solid border-gray-300 focus:border-blue-600"
+    type="search" 
+    name="title"
+    value="<%= locals.title %>"
+    placeholder="Search Article Title..." 
+    hx-get="<%= hxGet %>" 
+    hx-push-url="true"
+    hx-trigger="keyup changed delay:300ms, search" 
+    hx-include="closest form"
+    hx-target="<%= hxTarget %>">
+
+  <% if (locals.showIncludeRead) { %>
+    <div>
+      <input type="checkbox"
+              name="includeRead"
+              id="search-bar-include-read"
+              value="true"
+              hx-get="<%= hxGet %>" 
+              hx-push-url="true"
+              hx-trigger="change" 
+              hx-include="closest form"
+              hx-target="<%= hxTarget %>"
+              <%= locals.includeRead ? 'checked' : '' %>
+              class="scale-125">
+
+      <label for="search-bar-include-read" class="text-sm sm:text-base">include read article</label>
+    </div>
+  <% } %>
+</div>

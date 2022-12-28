@@ -1,1 +1,9 @@
 <%- include('_articles') -%>
+
+<div class="flex justify-center w-full mt-2">
+  <button hx-get="/articles/random?title=<%= locals.title ?? '' %>&includeRead=<%= locals.includeRead ?? '' %>"
+          hx-target="#search-results"
+          class="text-base">
+    Refresh
+  </button>
+</div>

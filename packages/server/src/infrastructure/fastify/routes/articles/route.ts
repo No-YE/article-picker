@@ -55,6 +55,7 @@ const articlesRoute: FastifyPluginAsync = async (fastify) => {
       schema: {
         querystring: yup.object({
           title: yup.string(),
+          includeRead: yup.boolean().default(false),
         }),
       },
     },
@@ -63,16 +64,17 @@ const articlesRoute: FastifyPluginAsync = async (fastify) => {
         return reply.redirect('/user/google/signin')
       }
 
-      const title = request.query.title || undefined
-      const articles = await articleResolver.getAllByTitleAndAccountIdAndPublic({
-        title,
+      const { title, includeRead } = request.query
+      const articles = await articleResolver.articlesByQuery({
+        title: title || undefined,
+        includeRead,
         accountId: request.user.id,
       })
 
       if (request.headers['hx-request'] === 'true' && request.headers['hx-boosted'] !== 'true') {
-        return reply.partial('articles/_search', { articles })
+        return reply.partial('articles/_search', { articles, includeRead })
       }
-      return reply.view('articles/my', { articles, title })
+      return reply.view('articles/my', { articles, title, includeRead })
     },
   )
 
@@ -87,7 +89,7 @@ const articlesRoute: FastifyPluginAsync = async (fastify) => {
     },
     async (request, reply) => {
       const title = request.query.title || undefined
-      const articles = await articleResolver.getAllByTitleAndAccountIdAndPublic({
+      const articles = await articleResolver.articlesByQuery({
         title,
         isPublic: true,
       })
@@ -105,17 +107,22 @@ const articlesRoute: FastifyPluginAsync = async (fastify) => {
       schema: {
         querystring: yup.object({
           title: yup.string(),
+          includeRead: yup.boolean().default(false),
         }),
       },
     },
     async (request, reply) => {
-      const title = request.query.title || undefined
-      const article = await articleResolver.getRandomArticleByTitle(title)
+      const { title, includeRead } = request.query
+      const article = await articleResolver.randomArticleByTitleAndRead({
+        title: title || undefined,
+        includeRead,
+      })
+      const articles = article ? [article] : []
 
       if (request.headers['hx-request'] === 'true' && request.headers['hx-boosted'] !== 'true') {
-        return reply.partial('articles/_search', { articles: [article] })
+        return reply.partial('articles/_search', { articles, includeRead })
       }
-      return reply.view('articles/random', { articles: [article], title })
+      return reply.view('articles/random', { articles, title, includeRead })
     },
   )
 

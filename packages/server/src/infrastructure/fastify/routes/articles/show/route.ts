@@ -21,7 +21,7 @@ const articlesShowRoute: FastifyPluginAsync = async (fastify) => {
     },
     async (request, reply) => {
       const { id } = request.params
-      const article = await articleResolver.getArticleById(id)
+      const article = await articleResolver.articleById(id)
 
       return reply.view('articles/show', { article })
     },

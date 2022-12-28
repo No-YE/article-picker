@@ -2,8 +2,6 @@ import { Service } from 'autoinjection'
 import { D, pipe } from '@mobily/ts-belt'
 import prisma, { Prisma } from '../../infrastructure/prisma/client.js'
 
-const { sql } = Prisma.Prisma
-
 export type Article = {
   id: number
   title: string
@@ -17,7 +15,7 @@ export type Article = {
 
 @Service({ singleton: true })
 export class ArticleResolver {
-  async allPublicArticles(): Promise<Array<Article>> {
+  async publicArticles(): Promise<Array<Article>> {
     const articles = await prisma.article.findMany({
       where: { isPublic: true },
       orderBy: { createdAt: 'desc' },
@@ -26,7 +24,7 @@ export class ArticleResolver {
     return articles.map(this.mapToReadModel)
   }
 
-  async getArticleById(id: number): Promise<Article> {
+  async articleById(id: number): Promise<Article> {
     const article = await prisma.article.findUniqueOrThrow({
       where: { id },
     })
@@ -34,7 +32,7 @@ export class ArticleResolver {
     return this.mapToReadModel(article)
   }
 
-  async getAllByAccountId(accountId: number): Promise<Array<Article>> {
+  async articlesByAccountId(accountId: number): Promise<Array<Article>> {
     const articles = await prisma.article.findMany({
       where: { accountId },
       orderBy: { createdAt: 'desc' },
@@ -43,26 +41,34 @@ export class ArticleResolver {
     return articles.map(this.mapToReadModel)
   }
 
-  async getRandomArticleByTitle(title?: string): Promise<Maybe<Article>> {
+  async randomArticleByTitleAndRead(
+    params: { title?: string, includeRead: boolean },
+  ): Promise<Maybe<Article>> {
+    const { title, includeRead } = params
     const query = title === undefined
-      ? sql`SELECT * FROM "Article" ORDER BY RANDOM() LIMIT 1;`
-      : sql`SELECT * FROM "Article" WHERE title ILIKE '%${title}%' ORDER BY RANDOM() LIMIT 1;`
+      ? `SELECT * FROM "Article" ${includeRead ? '' : 'WHERE "readAt" IS NULL'} ORDER BY RANDOM() LIMIT 1;`
+      : `SELECT * FROM "Article" WHERE ${includeRead ? '' : '"readAt" IS NULL AND'} title ILIKE $1 ORDER BY RANDOM() LIMIT 1;`
 
-    const article = await prisma.$queryRaw<Array<Prisma.Article>>(query)
+    const articles = await prisma.$queryRawUnsafe<Prisma.Article>(
+      query,
+      `%${title}%`,
+    )
+    const article = articles[0]
 
-    return this.mapToReadModel(article[0])
+    return article ? this.mapToReadModel(article) : undefined
   }
 
-  async getAllByTitleAndAccountIdAndPublic(
-    params: { title?: string, accountId?: number, isPublic?: boolean },
+  async articlesByQuery(
+    params: { title?: string, accountId?: number, isPublic?: boolean, includeRead?: boolean },
   ): Promise<Array<Article>> {
-    const { title, accountId, isPublic } = params
+    const { title, accountId, isPublic, includeRead } = params
 
     const whereInput = pipe(
       {} as Prisma.Prisma.ArticleWhereInput,
-      (q) => mergeWith(q, { title: { contains: title, mode: 'insensitive' } }, () => title !== undefined),
-      (q) => mergeWith(q, { accountId }, () => accountId !== undefined),
-      (q) => mergeWith(q, { isPublic }, () => isPublic !== undefined),
+      (q) => mergeWith(q, { title: { contains: title, mode: 'insensitive' } }, title !== undefined),
+      (q) => mergeWith(q, { accountId }, accountId !== undefined),
+      (q) => mergeWith(q, { isPublic }, isPublic !== undefined),
+      (q) => mergeWith(q, { readAt: null }, !includeRead),
     )
 
     const articles = await prisma.article.findMany({
@@ -81,13 +87,9 @@ export class ArticleResolver {
   }
 }
 
-function mergeWith<T extends object, U extends object>(
-  target: T,
-  source: U,
-  predicate: (_target: T, _source: U) => boolean,
-): T {
-  if (predicate(target, source)) {
-    Object.assign(target, source)
+function mergeWith<T extends object>(target: T, source: T, condition: boolean): T {
+  if (condition) {
+    return D.merge(target, source)
   }
   return target
 }

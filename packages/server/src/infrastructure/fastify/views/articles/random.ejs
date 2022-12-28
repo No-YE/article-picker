@@ -1,13 +1,15 @@
-<article class="flex flex-col space-y-2">
-  <%- include('_search-bar', { hxGet: '/articles/random', hxTarget: '#search-results' }) -%>
+<article class="flex flex-col space-y-3">
+  <%- include('_search-bar', { hxGet: '/articles/random', hxTarget: '#search-results', showIncludeRead: true }) -%>
   
   <div id="search-results">
     <%- include('_articles') -%>
-  </div>
 
-  <div class="flex justify-center w-full mt-2">
-    <button hx-get="/articles/random?title=<%= locals.title %>" hx-target="#search-results" class="text-base">
-      Refresh
-    </button>
+    <div class="flex justify-center w-full mt-2">
+      <button hx-get="/articles/random?title=<%= locals.title ?? '' %>&includeRead=<%= locals.includeRead ?? '' %>"
+              hx-target="#search-results"
+              class="text-base">
+        Refresh
+      </button>
+    </div>
   </div>
 </article>

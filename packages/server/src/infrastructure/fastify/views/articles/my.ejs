@@ -1,5 +1,5 @@
-<article class="flex flex-col space-y-2">
-  <%- include('_search-bar', { hxGet: '/articles/my', hxTarget: '#search-results' }) -%>
+<article class="flex flex-col space-y-3">
+  <%- include('_search-bar', { hxGet: '/articles/my', hxTarget: '#search-results', showIncludeRead: true }) -%>
 
   <div id="search-results">
     <%- include('_articles') -%>
