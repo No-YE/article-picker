@@ -86,6 +86,26 @@ const articlesShowRoute: FastifyPluginAsync = async (fastify) => {
   )
 
   server.post(
+    '/delete',
+    {
+      schema: {
+        params: yup.object({
+          id: yup.number().integer().required(),
+        }),
+      },
+    },
+    async (request, reply) => {
+      if (!request.user) {
+        return reply.redirect('/user/google/signin')
+      }
+
+      await articleService.deleteArticle(request.user.id, request.params.id)
+
+      return reply.send('ok')
+    },
+  )
+
+  server.post(
     '/read',
     {
       schema: {

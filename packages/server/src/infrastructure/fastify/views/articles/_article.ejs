@@ -37,6 +37,9 @@
                   Edit
                 </a>
                 <a hx-post="/articles/<%= article.id %>/delete"
+                   hx-confirm="Are you sure you want to delete this article?"
+                   hx-target="#article-<%= article.id %>"
+                   hx-swap="delete"
                    class="w-auto text-left px-4 py-2 border-0 bg-white hover:bg-slate-300 text-gray-800 cursor-pointer">
                   Delete
                 </a>

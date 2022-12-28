@@ -31,6 +31,12 @@ class PrismaArticleRepository implements ArticleRepository {
     return this.mapToEntity(upsertedAccount)
   }
 
+  async delete(article: Article): Promise<void> {
+    await prisma.article.delete({
+      where: { id: article.id },
+    })
+  }
+
   private mapToEntity(article: Prisma.Article): Article {
     return Article.new(article)
   }

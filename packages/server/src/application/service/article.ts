@@ -37,6 +37,11 @@ export class ArticleService {
     return await this.articleRepository!.save(newArticle)
   }
 
+  async deleteArticle(accountId: number, articleId: number): Promise<void> {
+    const article = await this.articleRepository!.findById(accountId, articleId)
+    await this.articleRepository!.delete(article)
+  }
+
   async readArticle(accountId: number, articleId: number): Promise<Article> {
     const article = await this.articleRepository!.findById(accountId, articleId)
     article.read()
