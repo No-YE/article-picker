@@ -38,6 +38,7 @@ export default fp.default(async (fastify, _opts) => {
     // eslint-disable-next-line no-param-reassign
     reply.locals = {
       user: request.user,
+      url: request.url,
       flash: reply.flash(),
     }
   })

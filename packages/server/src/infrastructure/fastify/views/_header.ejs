@@ -5,23 +5,23 @@
         <a href="/" class="text-gray-800 no-underline">Articler</a>
       </h1>
 
-      <a href="/articles/random" class="sm:hidden text-gray-800 no-underline">Random</a>
-      <a href="/articles/random" class="max-sm:hidden text-gray-800 no-underline">Random Article</a>
+      <a href="/articles/random" class="sm:hidden text-gray-800 no-underline <%= url.startsWith('/articles/random') ? 'font-bold' : '' %>">Random</a>
+      <a href="/articles/random" class="max-sm:hidden text-gray-800 no-underline <%= url.startsWith('/articles/random') ? 'font-bold' : '' %>">Random Article</a>
 
       <% if (user) { %>
-        <a href="/articles/my" class="sm:hidden text-gray-800 no-underline">My</a>
-        <a href="/articles/my" class="max-sm:hidden text-gray-800 no-underline">My Article</a>
+        <a href="/articles/my" class="sm:hidden text-gray-800 no-underline <%= url.startsWith('/articles/my') ? 'font-bold' : '' %>">My</a>
+        <a href="/articles/my" class="max-sm:hidden text-gray-800 no-underline <%= url.startsWith('/articles/my') ? 'font-bold' : '' %>">My Article</a>
       <% } else { %>
-        <a href="#" data-action="click->header#showSigninConfirm" class="sm:hidden text-gray-800 no-underline">My</a>
-        <a href="#" data-action="click->header#showSigninConfirm" class="max-sm:hidden text-gray-800 no-underline">My Article</a>
+        <a href="#" data-action="click->header#showSigninConfirm" class="sm:hidden text-gray-800 no-underline <%= url.startsWith('/articles/my') ? 'font-bold' : '' %>">My</a>
+        <a href="#" data-action="click->header#showSigninConfirm" class="max-sm:hidden text-gray-800 no-underline <%= url.startsWith('/articles/my') ? 'font-bold' : '' %>">My Article</a>
       <% } %>
 
-      <a href="/articles/public" class="sm:hidden text-gray-800 no-underline">All</a>
-      <a href="/articles/public" class="max-sm:hidden text-gray-800 no-underline">All Article</a>
+      <a href="/articles/public" class="sm:hidden text-gray-800 no-underline <%= url.startsWith('/articles/public') ? 'font-bold' : '' %>">All</a>
+      <a href="/articles/public" class="max-sm:hidden text-gray-800 no-underline <%= url.startsWith('/articles/public') ? 'font-bold' : '' %>">All Article</a>
 
       <span>|</span>
 
-      <a href="/articles/new" class="text-gray-800 no-underline">Register</a>
+      <a href="/articles/new" class="text-gray-800 no-underline <%= url.startsWith('/articles/new') ? 'font-bold' : '' %>">Register</a>
     </div>
 
     <% if (user) { %>
