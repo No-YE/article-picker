@@ -18,13 +18,15 @@ const secureSessionPluginOptions: SecureSessionPluginOptions = {
   },
 }
 
+const CALLBACK_URL = process.env.NODE_ENV === 'production' ? 'https://articler.fly.dev' : 'http://localhost:4000'
+
 const accountService = new AccountService()
 
 const googleStrategy = new GoogleStrategy(
   {
     clientID: process.env.GOOGLE_ID as string,
     clientSecret: process.env.GOOGLE_SECRET as string,
-    callbackURL: 'http://localhost:4000/user/google/callback',
+    callbackURL: `${CALLBACK_URL}/user/google/callback`,
     scope: ['email', 'profile'],
   },
   async (_accessToken, _refreshToken, profile, done) => {

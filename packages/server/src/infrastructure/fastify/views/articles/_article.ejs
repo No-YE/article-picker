@@ -15,7 +15,7 @@
 
           <div class="tooltip-content invisible">
             <div class="absolute right-0 -top-2 flex flex-col bg-white w-28 outline outline-1 outline-gray-300 rounded">
-              <% if (article.accountId === user.id) { %>
+              <% if (article.accountId === user?.id) { %>
                 <% if (article.hasRead) { %>
                   <a hx-post="/articles/<%= article.id %>/unread"
                      hx-target="#article-<%= article.id %>"
