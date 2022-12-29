@@ -1195,10 +1195,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"autoinjection@npm:^0.0.5":
-  version: 0.0.5
-  resolution: "autoinjection@npm:0.0.5"
-  checksum: ac83d093c824ec6ad0226d1041a63effb07d04e332ebc4be10b8242b9f2d4b58c8fd77f4d745233705b05d53237c0c63f53f2f8103543c3d84a61d781535d7f9
+"autoinjection@npm:^0.0.6":
+  version: 0.0.6
+  resolution: "autoinjection@npm:0.0.6"
+  peerDependencies:
+    typescript: ">=4.8.2"
+  checksum: e16778cd55e399e22eb710f3fac2737b5303da8de283dd3d190a0e0d04a93bfdfc105ce311d030caa9f5a2bf08f34088e20a2b040605fe6ead81ec3da5cfd145
   languageName: node
   linkType: hard
 
@@ -4958,7 +4960,7 @@ __metadata:
     "@types/yup": ^0
     "@yarnpkg/pnpify": ^4.0.0-rc.12
     "@yarnpkg/sdks": ^3.0.0-rc.12
-    autoinjection: ^0.0.5
+    autoinjection: ^0.0.6
     ava: ^4.3.1
     c8: ^7.11.3
     concurrently: ^7.0.0

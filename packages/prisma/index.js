@@ -167,7 +167,7 @@ const config = {
       },
       {
         "fromEnvVar": null,
-        "value": "linux-musl"
+        "value": "debian-openssl-1.1.x"
       }
     ],
     "previewFeatures": [],
@@ -206,7 +206,7 @@ Object.assign(exports, Prisma)
 path.join(__dirname, "libquery_engine-darwin.dylib.node");
 path.join(process.cwd(), "../prisma/libquery_engine-darwin.dylib.node")
 
-path.join(__dirname, "libquery_engine-linux-musl.so.node");
-path.join(process.cwd(), "../prisma/libquery_engine-linux-musl.so.node")
+path.join(__dirname, "libquery_engine-debian-openssl-1.1.x.so.node");
+path.join(process.cwd(), "../prisma/libquery_engine-debian-openssl-1.1.x.so.node")
 path.join(__dirname, "schema.prisma");
 path.join(process.cwd(), "../prisma/schema.prisma")

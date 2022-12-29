@@ -1528,10 +1528,23 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["autoinjection", [\
-        ["npm:0.0.5", {\
-          "packageLocation": "./.yarn/cache/autoinjection-npm-0.0.5-94ac798c3c-ac83d093c8.zip/node_modules/autoinjection/",\
+        ["npm:0.0.6", {\
+          "packageLocation": "./.yarn/cache/autoinjection-npm-0.0.6-ddc294733f-e16778cd55.zip/node_modules/autoinjection/",\
           "packageDependencies": [\
-            ["autoinjection", "npm:0.0.5"]\
+            ["autoinjection", "npm:0.0.6"]\
+          ],\
+          "linkType": "SOFT"\
+        }],\
+        ["virtual:2499dbb93d824027565d71b0716c4fb8b548ad61955d0a0286bfb3c5b4058e227894b6691d96808c00f576db14870018375210362c26ee321ea99fd6ed041c74#npm:0.0.6", {\
+          "packageLocation": "./.yarn/__virtual__/autoinjection-virtual-422bc1e65a/0/cache/autoinjection-npm-0.0.6-ddc294733f-e16778cd55.zip/node_modules/autoinjection/",\
+          "packageDependencies": [\
+            ["autoinjection", "virtual:2499dbb93d824027565d71b0716c4fb8b548ad61955d0a0286bfb3c5b4058e227894b6691d96808c00f576db14870018375210362c26ee321ea99fd6ed041c74#npm:0.0.6"],\
+            ["@types/typescript", null],\
+            ["typescript", "patch:typescript@npm%3A4.8.3#~builtin<compat/typescript>::version=4.8.3&hash=a1c5e5"]\
+          ],\
+          "packagePeers": [\
+            "@types/typescript",\
+            "typescript"\
           ],\
           "linkType": "HARD"\
         }]\
@@ -5866,7 +5879,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/yup", "npm:0.29.14"],\
             ["@yarnpkg/pnpify", "npm:4.0.0-rc.15"],\
             ["@yarnpkg/sdks", "npm:3.0.0-rc.15"],\
-            ["autoinjection", "npm:0.0.5"],\
+            ["autoinjection", "virtual:2499dbb93d824027565d71b0716c4fb8b548ad61955d0a0286bfb3c5b4058e227894b6691d96808c00f576db14870018375210362c26ee321ea99fd6ed041c74#npm:0.0.6"],\
             ["ava", "virtual:2499dbb93d824027565d71b0716c4fb8b548ad61955d0a0286bfb3c5b4058e227894b6691d96808c00f576db14870018375210362c26ee321ea99fd6ed041c74#npm:4.3.3"],\
             ["c8", "npm:7.12.0"],\
             ["concurrently", "npm:7.3.0"],\
