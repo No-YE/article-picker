@@ -2,6 +2,7 @@ import fp from 'fastify-plugin'
 import fastifyPassport from '@fastify/passport'
 import secureSession, { type SecureSessionPluginOptions } from '@fastify/secure-session'
 import { Strategy as GoogleStrategy } from 'passport-google-oauth20'
+import { config } from '../../../config.js'
 import { AccountService } from '../../../application/service/account.js'
 import { type Account } from '@/domain/model/account/entity.js'
 
@@ -11,22 +12,22 @@ declare module 'fastify' {
 }
 
 const secureSessionPluginOptions: SecureSessionPluginOptions = {
-  key: '1234567890123456789012345678901234567890123',
+  key: Buffer.from(config.COOKIE_KEY, 'hex'),
   cookie: {
     path: '/',
     secure: true,
   },
 }
 
-const CALLBACK_URL = process.env.NODE_ENV === 'production' ? 'https://articler.fly.dev' : 'http://localhost:4000'
+const callbackURL = `${config.baseUrl}/user/google/callback`
 
 const accountService = new AccountService()
 
 const googleStrategy = new GoogleStrategy(
   {
-    clientID: process.env.GOOGLE_ID as string,
-    clientSecret: process.env.GOOGLE_SECRET as string,
-    callbackURL: `${CALLBACK_URL}/user/google/callback`,
+    clientID: config.GOOGLE_ID,
+    clientSecret: config.GOOGLE_SECRET,
+    callbackURL,
     scope: ['email', 'profile'],
   },
   async (_accessToken, _refreshToken, profile, done) => {

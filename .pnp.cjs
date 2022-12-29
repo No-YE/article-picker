@@ -2449,6 +2449,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["dotenv", "npm:16.0.1"]\
           ],\
           "linkType": "HARD"\
+        }],\
+        ["npm:16.0.3", {\
+          "packageLocation": "./.yarn/cache/dotenv-npm-16.0.3-4cc29121dc-afcf03f373.zip/node_modules/dotenv/",\
+          "packageDependencies": [\
+            ["dotenv", "npm:16.0.3"]\
+          ],\
+          "linkType": "HARD"\
         }]\
       ]],\
       ["dotenv-cli", [\
@@ -2542,6 +2549,16 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/env-paths-npm-2.2.1-7c7577428c-65b5df55a8.zip/node_modules/env-paths/",\
           "packageDependencies": [\
             ["env-paths", "npm:2.2.1"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["envalid", [\
+        ["npm:7.3.1", {\
+          "packageLocation": "./.yarn/cache/envalid-npm-7.3.1-e16a72697a-dea10ada13.zip/node_modules/envalid/",\
+          "packageDependencies": [\
+            ["envalid", "npm:7.3.1"],\
+            ["tslib", "npm:2.3.1"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -5883,8 +5900,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["ava", "virtual:2499dbb93d824027565d71b0716c4fb8b548ad61955d0a0286bfb3c5b4058e227894b6691d96808c00f576db14870018375210362c26ee321ea99fd6ed041c74#npm:4.3.3"],\
             ["c8", "npm:7.12.0"],\
             ["concurrently", "npm:7.3.0"],\
+            ["dotenv", "npm:16.0.3"],\
             ["dotenv-cli", "npm:6.0.0"],\
             ["ejs", "npm:3.1.8"],\
+            ["envalid", "npm:7.3.1"],\
             ["fastify", "npm:4.5.3"],\
             ["fastify-cli", "npm:4.4.0"],\
             ["fastify-plugin", "npm:4.2.1"],\
@@ -6498,6 +6517,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/tslib-npm-1.14.1-102499115e-dbe628ef87.zip/node_modules/tslib/",\
           "packageDependencies": [\
             ["tslib", "npm:1.14.1"]\
+          ],\
+          "linkType": "HARD"\
+        }],\
+        ["npm:2.3.1", {\
+          "packageLocation": "./.yarn/cache/tslib-npm-2.3.1-0e21e18015-de17a98d46.zip/node_modules/tslib/",\
+          "packageDependencies": [\
+            ["tslib", "npm:2.3.1"]\
           ],\
           "linkType": "HARD"\
         }],\
