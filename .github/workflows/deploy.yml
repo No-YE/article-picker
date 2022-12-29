@@ -1,0 +1,29 @@
+name: deploy
+
+on:
+  workflow_dispatch:
+    inputs:
+      revision:
+        description: revision
+        required: false
+        type: string
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: superfly/flyctl-actions/setup-flyctl@master
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.inputs.revision }}
+    
+      - name: Build the Docker image 
+        run: yarn docker build --copy tsconfig.json server --tag articler:latest
+      
+      - name: Deploy to Fly.io
+        run: flyctl -c fly.server.toml deploy --local-only
+        env:
+          FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
+        
