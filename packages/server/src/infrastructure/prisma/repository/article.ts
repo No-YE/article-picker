@@ -2,7 +2,7 @@ import { Service } from 'autoinjection'
 import { D } from '@mobily/ts-belt'
 import { Article } from '~/domain/model/article/entity.js'
 import type { ArticleRepository } from '~/domain/model/article/repository.js'
-import prisma, { Prisma } from '../client.js'
+import prisma, { type Prisma } from '../client.js'
 
 @Service({ singleton: true })
 class PrismaArticleRepository implements ArticleRepository {
