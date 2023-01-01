@@ -6,7 +6,7 @@ import { type Account } from '~/domain/model/account/entity.js'
 @Service({ singleton: true })
 export class ArticleService {
   // eslint-disable-next-line no-unused-vars
-  constructor(@Inject() private readonly articleRepository?: ArticleRepository) {}
+  constructor(@Inject() public readonly articleRepository?: ArticleRepository) {}
 
   async createArticle(
     dto: {

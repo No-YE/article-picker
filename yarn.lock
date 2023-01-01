@@ -372,7 +372,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@prisma/client@npm:*, @prisma/client@npm:4.7.1":
+"@prisma/client@npm:4.7.1":
   version: 4.7.1
   resolution: "@prisma/client@npm:4.7.1"
   dependencies:
@@ -4288,15 +4288,6 @@ __metadata:
   checksum: aa92de608021b242401676e35cfa5aa42dd70cbdc082b916da7fb925c542173e36bce97ea3e804923fe92c0ad991434e4a38327e15a1b5b5f945d66df615ae6d
   languageName: node
   linkType: hard
-
-"my-prisma@workspace:packages/prisma":
-  version: 0.0.0-use.local
-  resolution: "my-prisma@workspace:packages/prisma"
-  dependencies:
-    "@prisma/client": "*"
-    "@types/node": "*"
-  languageName: unknown
-  linkType: soft
 
 "nanoclone@npm:^0.2.1":
   version: 0.2.1

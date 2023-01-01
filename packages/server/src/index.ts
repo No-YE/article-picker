@@ -1,5 +1,5 @@
 import 'reflect-metadata'
-import { app } from './infrastructure/fastify/index.js'
+import './infrastructure/prisma/repository/index.js'
+import { initialize } from './infrastructure/fastify/index.js'
 
-export default app
-export { app }
+initialize()
