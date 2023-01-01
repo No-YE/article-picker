@@ -1,7 +1,7 @@
 import { type FastifyPluginAsync } from 'fastify'
 import yup from 'yup'
-import { ArticleResolver } from '../../../../application/read-model/article.js'
-import { ArticleService } from '../../../../application/service/article.js'
+import { ArticleResolver } from '~/application/read-model/article.js'
+import { ArticleService } from '~/application/service/article.js'
 import { YupTypeProvider } from '../../plugin/validator.plugin.js'
 
 const articleResolver = new ArticleResolver()

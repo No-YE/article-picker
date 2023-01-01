@@ -5916,7 +5916,8 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["ts-node", "virtual:2499dbb93d824027565d71b0716c4fb8b548ad61955d0a0286bfb3c5b4058e227894b6691d96808c00f576db14870018375210362c26ee321ea99fd6ed041c74#npm:10.9.1"],\
             ["ttypescript", "virtual:2499dbb93d824027565d71b0716c4fb8b548ad61955d0a0286bfb3c5b4058e227894b6691d96808c00f576db14870018375210362c26ee321ea99fd6ed041c74#npm:1.5.13"],\
             ["typescript", "patch:typescript@npm%3A4.8.3#~builtin<compat/typescript>::version=4.8.3&hash=a1c5e5"],\
-            ["yup", "npm:0.32.11"]\
+            ["yup", "npm:0.32.11"],\
+            ["~", "link:./dist::locator=server%40workspace%3Apackages%2Fserver"]\
           ],\
           "linkType": "SOFT"\
         }]\
@@ -6976,6 +6977,16 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["toposort", "npm:2.0.2"]\
           ],\
           "linkType": "HARD"\
+        }]\
+      ]],\
+      ["~", [\
+        ["link:./dist::locator=server%40workspace%3Apackages%2Fserver", {\
+          "packageLocation": "./packages/server/dist/",\
+          "packageDependencies": [\
+            ["~", "link:./dist::locator=server%40workspace%3Apackages%2Fserver"]\
+          ],\
+          "linkType": "SOFT",\
+          "discardFromLookup": true\
         }]\
       ]]\
     ]\

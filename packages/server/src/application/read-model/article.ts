@@ -1,6 +1,6 @@
 import { Service } from 'autoinjection'
 import { D, pipe } from '@mobily/ts-belt'
-import prisma, { Prisma } from '../../infrastructure/prisma/client.js'
+import prisma, { Prisma } from '~/infrastructure/prisma/client.js'
 
 export type Article = {
   id: number

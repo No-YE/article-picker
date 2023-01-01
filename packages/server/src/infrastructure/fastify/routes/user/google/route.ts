@@ -1,6 +1,6 @@
 import { FastifyPluginAsync } from 'fastify'
 import fastifyPassport from '@fastify/passport'
-import { config } from '../../../../../config.js'
+import { config } from '~/config.js'
 
 const redirectUri = `${config.baseUrl}/articles/my`
 

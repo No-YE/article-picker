@@ -39,7 +39,8 @@
     "my-prisma": "workspace:*",
     "passport-google-oauth20": "^2.0.0",
     "reflect-metadata": "^0.1.13",
-    "yup": "^0.32.11"
+    "yup": "^0.32.11",
+    "~": "link:./dist"
   },
   "devDependencies": {
     "@ava/typescript": "^3.0.1",

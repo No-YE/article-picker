@@ -1,6 +1,6 @@
 import { Service } from 'autoinjection'
-import { Account } from '../../../domain/model/account/entity.js'
-import type { AccountRepository } from '../../../domain/model/account/repository.js'
+import { Account } from '~/domain/model/account/entity.js'
+import type { AccountRepository } from '~/domain/model/account/repository.js'
 import prisma from '../client.js'
 
 @Service({ singleton: true })
