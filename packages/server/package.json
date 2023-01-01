@@ -36,7 +36,6 @@
     "fastify-cli": "^4.3.0",
     "fastify-plugin": "^4.2.1",
     "fishery": "^2.2.2",
-    "my-prisma": "workspace:*",
     "passport-google-oauth20": "^2.0.0",
     "reflect-metadata": "^0.1.13",
     "yup": "^0.32.11",
@@ -57,15 +56,16 @@
     "nodemon": "^2.0.20",
     "prisma": "4.7.1",
     "ts-node": "^10.4.0",
+    "tsx": "^3.12.1",
     "ttypescript": "^1.5.13",
     "typescript": "4.8.3"
   },
   "ava": {
-    "extensions": [
-      "ts"
-    ],
-    "require": [
-      "ts-node/register"
+    "extensions": {
+      "ts": "module"
+    },
+    "nodeArguments": [
+      "--loader=tsx"
     ]
   }
 }

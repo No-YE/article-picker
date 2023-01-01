@@ -1,5 +1,5 @@
 /* eslint-disable no-param-reassign */
-import * as Prisma from 'my-prisma'
+import * as Prisma from '@prisma/client'
 
 const prismaClient = new Prisma.PrismaClient({
   log: ['query', 'info', 'warn', 'error'],
