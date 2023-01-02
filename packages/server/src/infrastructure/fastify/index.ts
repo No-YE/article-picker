@@ -1,6 +1,6 @@
-import fastify from 'fastify'
+import fastify, { type FastifyInstance } from 'fastify'
 
-export const initialize = async (): Promise<void> => {
+export const initialize = async (): Promise<FastifyInstance> => {
   const server = fastify.default({ logger: true })
 
   await server.register(import('@fastify/formbody'))
@@ -13,5 +13,9 @@ export const initialize = async (): Promise<void> => {
 
   await server.register(import('./routes/route.js'))
 
-  server.listen({ host: '0.0.0.0', port: 4000 })
+  if (import.meta.env.PROD) {
+    server.listen({ host: '0.0.0.0', port: 3000 })
+  }
+
+  return server
 }
