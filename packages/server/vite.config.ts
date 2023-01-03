@@ -1,8 +1,8 @@
-/* eslint-disable import/no-extraneous-dependencies */
-import path from 'path'
+import { resolve } from 'path'
 import { defineConfig } from 'vite'
 import { VitePluginNode } from 'vite-plugin-node'
-import typescript from '@rollup/plugin-typescript'
+// eslint-disable-next-line import/no-named-default
+import { default as typescript } from '@rollup/plugin-typescript'
 
 export default defineConfig({
   server: {
@@ -10,7 +10,7 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      '~': path.resolve(__dirname, './src'),
+      '~': resolve(__dirname, './src'),
     },
   },
   plugins: [

@@ -23,7 +23,6 @@
     ]
   },
   "exclude": [
-    "dist",
-    "spec"
+    "dist"
   ]
 }
