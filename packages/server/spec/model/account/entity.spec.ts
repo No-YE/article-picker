@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest'
 import { Account } from '~/domain/model/account/entity'
 
-describe('', () => {
+describe('validation', () => {
   it('name은 1글자 이상이어야 한다.', () => {
     expect(() => {
       Account.new({ name: 'a', email: 'test@test.com' })
