@@ -6,13 +6,12 @@ export class Article extends Entity {
   uri!: string
   isPublic!: boolean
   accountId!: number
-  tags!: Array<RegisteredTag>
   imageUri: Maybe<string>
   createdAt!: Date
   readAt: Maybe<Date>
 
   static new(
-    { id, title, description, uri, readAt, isPublic, accountId, tags, imageUri, createdAt }:
+    { id, title, description, uri, readAt, isPublic, accountId, imageUri, createdAt }:
       {
         id?: Maybe<number>,
         title: string,
@@ -22,7 +21,6 @@ export class Article extends Entity {
         isPublic: boolean,
         accountId: number,
         imageUri?: Maybe<string>,
-        tags?: Array<RegisteredTag>,
         createdAt?: Date,
       },
   ): Article {
@@ -33,7 +31,7 @@ export class Article extends Entity {
     entity.setUri(uri)
     entity.setImageUri(imageUri)
 
-    Object.assign(entity, { readAt, isPublic, accountId, createdAt, tags: tags ?? [] })
+    Object.assign(entity, { readAt, isPublic, accountId, createdAt })
 
     return entity
   }
@@ -88,24 +86,24 @@ export class Article extends Entity {
   }
 }
 
-class RegisteredTag extends Entity {
-  text!: string
-  articleId!: number
+// class RegisteredTag extends Entity {
+//   text!: string
+//   articleId!: number
 
-  static new({ id, text, articleId }: {
-    id?: number,
-    text: string,
-    articleId: number,
-  }): RegisteredTag {
-    const entity = new this()
-    entity.setId(id ?? -1)
-    entity.setText(text)
-    entity.articleId = articleId
+//   static new({ id, text, articleId }: {
+//     id?: number,
+//     text: string,
+//     articleId: number,
+//   }): RegisteredTag {
+//     const entity = new this()
+//     entity.setId(id ?? -1)
+//     entity.setText(text)
+//     entity.articleId = articleId
 
-    return entity
-  }
+//     return entity
+//   }
 
-  private setText(value: string): void {
-    this.text = value
-  }
-}
+//   private setText(value: string): void {
+//     this.text = value
+//   }
+// }
