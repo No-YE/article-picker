@@ -5,6 +5,7 @@ import { VitePluginNode } from 'vite-plugin-node'
 import { default as typescript } from '@rollup/plugin-typescript'
 
 export default defineConfig({
+  root: './src',
   server: {
     port: 4000,
   },
@@ -23,6 +24,4 @@ export default defineConfig({
     }),
     typescript(),
   ],
-  optimizeDeps: {
-  },
 })

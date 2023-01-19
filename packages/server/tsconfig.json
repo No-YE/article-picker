@@ -2,6 +2,9 @@
   "extends": "../../tsconfig.json",
   "compilerOptions": {
     "allowJs": true,
+    "moduleResolution": "Node",
+    "module": "es2022",
+    "target": "es2022",
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "outDir": "./dist",

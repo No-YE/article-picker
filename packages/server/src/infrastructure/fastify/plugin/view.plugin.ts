@@ -33,7 +33,7 @@ const partialOptions: FastifyViewOptions = {
   propertyName: 'partial',
 }
 
-export default fp.default(async (fastify, _opts) => {
+export const viewPlugin = fp(async (fastify, _opts) => {
   fastify.addHook('preHandler', async (request, reply) => {
     // eslint-disable-next-line no-param-reassign
     reply.locals = {

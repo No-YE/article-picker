@@ -1,9 +1,6 @@
 {
   "compilerOptions": {
     "strict": true,
-    "moduleResolution": "NodeNext",
-    "module": "ESNext",
-    "target": "es2022",
     "esModuleInterop": true,
     "allowJs": true,
     "outDir": "./dist",

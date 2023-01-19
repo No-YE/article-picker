@@ -3,6 +3,7 @@ import yup from 'yup'
 import { ArticleResolver } from '~/application/read-model/article.js'
 import { ArticleService } from '~/application/service/article.js'
 import { YupTypeProvider } from '../../plugin/validator.plugin.js'
+import showRoute from './show/route'
 
 const articleResolver = new ArticleResolver()
 const articleService = new ArticleService()
@@ -126,7 +127,7 @@ const articlesRoute: FastifyPluginAsync = async (fastify) => {
     },
   )
 
-  fastify.register(import('./show/route.js'), { prefix: '/:id' })
+  fastify.register(showRoute, { prefix: '/:id' })
 }
 
 export default articlesRoute

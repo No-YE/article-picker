@@ -46,13 +46,13 @@ const googleStrategy = new GoogleStrategy(
   },
 )
 
-export default fp.default(async (fastify) => {
+export const passportPlugin = fp(async (fastify) => {
   fastify.register(secureSession, secureSessionPluginOptions)
-  fastify.register(fastifyPassport.default.initialize())
-  fastify.register(fastifyPassport.default.secureSession())
+  fastify.register(fastifyPassport.initialize())
+  fastify.register(fastifyPassport.secureSession())
 
-  fastifyPassport.default.use(googleStrategy)
+  fastifyPassport.use(googleStrategy)
 
-  fastifyPassport.default.registerUserDeserializer(async (user, _req) => user)
-  fastifyPassport.default.registerUserSerializer(async (user, _req) => user)
+  fastifyPassport.registerUserDeserializer(async (user, _req) => user)
+  fastifyPassport.registerUserSerializer(async (user, _req) => user)
 })

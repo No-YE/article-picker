@@ -1,4 +1,3 @@
-import 'reflect-metadata'
 import { resolve } from 'path'
 import { defineConfig } from 'vitest/config'
 import swc from 'unplugin-swc'

@@ -6,7 +6,7 @@ export interface SupportPluginOptions {
 
 // The use of fastify-plugin is required to be able
 // to export the decorators to the outer scope
-export default fp.default<SupportPluginOptions>(async (fastify, _opts) => {
+export const supportPlugin = fp<SupportPluginOptions>(async (fastify, _opts) => {
   fastify.decorate('someSupport', () => 'hugs')
 })
 

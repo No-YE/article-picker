@@ -1,4 +1,6 @@
 import { FastifyPluginAsync } from 'fastify'
+import userRoute from './user/route'
+import articlesRoute from './articles/route'
 
 const rootRoute: FastifyPluginAsync = async (fastify, _opts): Promise<void> => {
   fastify.get('/', async (request, reply) => {
@@ -16,8 +18,8 @@ const rootRoute: FastifyPluginAsync = async (fastify, _opts): Promise<void> => {
     return request.user
   })
 
-  await fastify.register(import('./user/route.js'), { prefix: '/user' })
-  await fastify.register(import('./articles/route.js'), { prefix: '/articles' })
+  await fastify.register(userRoute, { prefix: '/user' })
+  await fastify.register(articlesRoute, { prefix: '/articles' })
 }
 
 export default rootRoute
