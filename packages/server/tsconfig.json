@@ -5,7 +5,10 @@
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "outDir": "./dist",
-    "rootDir": "./src",
+    "rootDirs": [
+      "./src",
+      "./spec"
+    ],
     "baseUrl": ".",
     "types": [
       "node",
@@ -24,7 +27,6 @@
   },
   "exclude": [
     "dist",
-    "spec",
     "coverage",
     "vite.config.ts",
     "vitest.config.ts"

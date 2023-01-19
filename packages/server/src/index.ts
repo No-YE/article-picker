@@ -1,5 +1,5 @@
 import 'reflect-metadata'
-import './infrastructure/prisma/repository/index.js'
+import './infrastructure/persistence/index.js'
 import { initialize } from './infrastructure/fastify/index.js'
 
 const app = await initialize()

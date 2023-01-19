@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { Account } from '~/domain/model/account/entity'
+import { Account } from '~/domain/model/account/entity.js'
 
 describe('constructor', () => {
   it('name은 1글자 이상이어야 한다.', () => {
