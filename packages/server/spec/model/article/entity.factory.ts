@@ -1,6 +1,6 @@
 import { Factory } from 'fishery'
-import { Article } from '~/domain/model/article/entity'
-import { accountFactory } from '../account/entity.factory'
+import { Article } from '~/domain/model/article/entity.js'
+import { accountFactory } from '../account/entity.factory.js'
 
 export const articleFactory = Factory.define<Article>(
   ({ sequence }) => Article.new({

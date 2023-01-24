@@ -1,5 +1,5 @@
 import { Factory } from 'fishery'
-import { Account } from '~/domain/model/account/entity'
+import { Account } from '~/domain/model/account/entity.js'
 
 export const accountFactory = Factory.define<Account>(
   ({ sequence }) => Account.new({

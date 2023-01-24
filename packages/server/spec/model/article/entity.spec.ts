@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest'
-import { Article } from '~/domain/model/article/entity'
-import { articleFactory } from './entity.factory'
+import { Article } from '~/domain/model/article/entity.js'
+import { articleFactory } from './entity.factory.js'
 
 describe('constructor', () => {
   it('title은 1글자 이상이어야 한다.', () => {

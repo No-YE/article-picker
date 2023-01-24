@@ -1,4 +1,5 @@
 import { FastifyPluginAsync } from 'fastify'
+import googleRoute from './google/route'
 
 const userRoute: FastifyPluginAsync = async (fastify) => {
   fastify.get('/signout', (request, reply) => {
@@ -7,7 +8,7 @@ const userRoute: FastifyPluginAsync = async (fastify) => {
     return reply.redirect('/')
   })
 
-  await fastify.register(import('./google/route.js'), { prefix: '/google' })
+  await fastify.register(googleRoute, { prefix: '/google' })
 }
 
 export default userRoute
