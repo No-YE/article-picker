@@ -21,6 +21,11 @@ jobs:
     
       - name: Build the Docker image 
         run: yarn docker build --copy tsconfig.json server --tag articler:latest
+
+      - name: Migrate the database
+        run: yarn workspace server prisma:migrate:deploy
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
       
       - name: Deploy to Fly.io
         run: flyctl -c fly.server.toml deploy --local-only
