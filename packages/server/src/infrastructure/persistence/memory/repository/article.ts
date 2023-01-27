@@ -4,10 +4,10 @@ import type { ArticleRepository } from '~/domain/model/article/repository.js'
 
 @Service({ singleton: true })
 class MemoryArticleRepository implements ArticleRepository {
-  #articles: Array<Article> = []
+  articles: Array<Article> = []
 
   async findById(accountId: number, articleId: number): Promise<Article> {
-    const article = this.#articles.find((a) => a.id === articleId && a.accountId === accountId)
+    const article = this.articles.find((a) => a.id === articleId && a.accountId === accountId)
 
     if (!article) {
       throw new Error('Article not found')
@@ -19,11 +19,11 @@ class MemoryArticleRepository implements ArticleRepository {
   async save(article: Article): Promise<Article> {
     const { id } = article
 
-    const index = this.#articles.findIndex((a) => a.id === id)
+    const index = this.articles.findIndex((a) => a.id === id)
     if (index === -1) {
-      this.#articles.push(article)
+      this.articles.push(article)
     } else {
-      this.#articles[index] = article
+      this.articles[index] = article
     }
 
     return article
@@ -32,9 +32,9 @@ class MemoryArticleRepository implements ArticleRepository {
   async delete(article: Article): Promise<void> {
     const { id } = article
 
-    const index = this.#articles.findIndex((a) => a.id === id)
+    const index = this.articles.findIndex((a) => a.id === id)
     if (index !== -1) {
-      this.#articles.splice(index, 1)
+      this.articles.splice(index, 1)
     }
   }
 
