@@ -1,8 +1,6 @@
-import { Service } from 'autoinjection'
 import { Account } from '~/domain/model/account/entity.js'
 import type { AccountRepository } from '~/domain/model/account/repository.js'
 
-@Service({ singleton: true })
 class MemoryAccountRepository implements AccountRepository {
   accounts: Array<Account> = []
 

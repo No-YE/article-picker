@@ -19,7 +19,7 @@ class PrismaArticleRepository implements ArticleRepository {
 
   async save(article: Article): Promise<Article> {
     const prismaArticle = {
-      ...D.selectKeys(article, ['title', 'description', 'uri', 'isPublic', 'accountId', 'readAt']),
+      ...D.selectKeys(article, ['title', 'description', 'uri', 'isPublic', 'accountId', 'readAt', 'contentStatus']),
     }
 
     const upsertedAccount = await prisma.article.upsert({

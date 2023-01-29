@@ -22,20 +22,28 @@ model Account {
 }
 
 model Article {
-  id          Int       @id @default(autoincrement())
-  title       String
-  description String
-  uri         String
-  imageUri    String?
-  readAt      DateTime?
-  isPublic    Boolean   @default(false)
-  account     Account   @relation(fields: [accountId], references: [id])
-  accountId   Int
-  createdAt   DateTime  @default(now())
-  updatedAt   DateTime  @updatedAt
-  deletedAt   DateTime?
+  id            Int                    @id @default(autoincrement())
+  title         String?
+  description   String?
+  uri           String
+  imageUri      String?
+  readAt        DateTime?
+  isPublic      Boolean                @default(false)
+  contentStatus ARTICLE_CONTENT_STATUS @default(LOADING)
+  account       Account                @relation(fields: [accountId], references: [id])
+  accountId     Int
+  createdAt     DateTime               @default(now())
+  updatedAt     DateTime               @updatedAt
+  deletedAt     DateTime?
 
   @@index([accountId])
   @@index([title(ops: raw("gin_trgm_ops"))], type: Gin)
   @@index([description(ops: raw("gin_trgm_ops"))], type: Gin)
+}
+
+enum ARTICLE_CONTENT_STATUS {
+  LOADING
+  LOADED
+  FAILED
+  CUSTOMIZED
 }

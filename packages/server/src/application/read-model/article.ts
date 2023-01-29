@@ -4,12 +4,13 @@ import prisma, { type Prisma } from '~/infrastructure/persistence/prisma/client.
 
 export type Article = {
   id: number
-  title: string
-  description: string
+  title: Maybe<string>
+  description: Maybe<string>
   imageUri: Maybe<string>
   isPublic: boolean
   accountId: number
   hasRead: boolean
+  contentStatus: 'LOADING' | 'LOADED' | 'FAILED' | 'CUSTOMIZED',
   createdAt: Date
 }
 
@@ -75,6 +76,7 @@ export class ArticleResolver {
       {} as Prisma.Prisma.ArticleWhereInput,
       (q) => mergeWith(q, { title: { contains: title, mode: 'insensitive' } }, title !== undefined),
       (q) => mergeWith(q, { accountId }, accountId !== undefined),
+      (q) => mergeWith(q, { contentStatus: { in: ['LOADING', 'CUSTOMIZED'] } }, accountId === undefined),
       (q) => mergeWith(q, { isPublic }, isPublic !== undefined),
       (q) => mergeWith(q, { readAt: null }, !includeRead),
     )
@@ -89,7 +91,7 @@ export class ArticleResolver {
 
   private mapToReadModel(article: Prisma.Article): Article {
     return D.merge(
-      D.selectKeys(article, ['id', 'title', 'description', 'uri', 'imageUri', 'isPublic', 'accountId', 'createdAt']),
+      D.selectKeys(article, ['id', 'title', 'description', 'uri', 'imageUri', 'isPublic', 'accountId', 'createdAt', 'contentStatus']),
       { hasRead: article.readAt !== undefined && article.readAt !== null },
     )
   }

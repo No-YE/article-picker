@@ -10,14 +10,19 @@ export class ArticleService {
 
   async createArticle(
     dto: {
-      title: string,
-      description: string,
+      title: Maybe<string>,
+      description: Maybe<string>,
       uri: string,
       isPublic: boolean,
-      account: Account
+      account: Account,
     },
   ): Promise<Article> {
-    const article = Article.new({ ...dto, readAt: undefined, accountId: dto.account.id })
+    const article = Article.new({
+      ...dto,
+      readAt: undefined,
+      accountId: dto.account.id,
+      contentStatus: dto.title && dto.description ? 'CUSTOMIZED' : 'LOADING',
+    })
     return await this.articleRepository!.save(article)
   }
 

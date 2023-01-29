@@ -5,7 +5,11 @@
     <div class="flex justify-between mb-2">
       <h2 class="m-0 line-clamp-1">
         <a href="<%= article.uri %>" target="_blank" class="<%= textColorClass %> no-underline hover:underline">
-          <%= article.title %>
+          <% if (!article.title) { %>
+            Loading...
+          <% } else { %>
+            <%= article.title %>
+          <% } %>
         </a>
       </h2>
 
@@ -58,7 +62,11 @@
     <a href="<%= article.uri %>" target="_blank" class="flex justify-between space-x-4 h-28 sm:h-40 <%= textColorClass %> no-underline hover:underline">
       <div class="flex flex-col justify-between">
         <div class="line-clamp-4 text-sm sm:text-lg">
+          <% if (!article.description) { %>
+            Loading...
+          <% } else { %>
             <%= article.description %>
+          <% } %>
         </div>
         <div class="text-sm sm:text-base">
           Registration time: <%= new Intl.DateTimeFormat('ko', { dateStyle: 'medium', timeStyle: 'medium' }).format(article.createdAt) %>

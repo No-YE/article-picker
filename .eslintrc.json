@@ -39,9 +39,18 @@
         "no-new": "off",
         "no-undef": "off",
         "no-return-await": "off",
+        "no-unused-expressions": "off",
         "import/prefer-default-export": "off",
         "import/extensions": "off",
         "import/no-unresolved": "off",
-        "import/no-extraneous-dependencies": ["error", {"devDependencies": ["**/spec/**/*.ts", "**/*.config.ts"]}]
+        "import/no-extraneous-dependencies": [
+            "error",
+            {
+                "devDependencies": [
+                    "**/spec/**/*.ts",
+                    "**/*.config.ts"
+                ]
+            }
+        ]
     }
 }

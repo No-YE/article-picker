@@ -3,47 +3,81 @@ import { Article } from '~/domain/model/article/entity.js'
 import { articleFactory } from './entity.factory.js'
 
 describe('constructor', () => {
-  it('title은 1글자 이상이어야 한다.', () => {
-    expect(() => {
-      Article.new({ title: 't', description: 'test', uri: 'test', readAt: null, isPublic: true, accountId: -1 })
-    }).not.toThrowError()
+  describe('contentStatus가 LOADING이나 FAILED이면', () => {
+    it('title은 undefined거나 null이어도 된다.', () => {
+      expect(() => {
+        Article.new({ title: undefined, uri: 'test', isPublic: true, accountId: -1, contentStatus: 'LOADING' })
+        Article.new({ title: null, uri: 'test', isPublic: true, accountId: -1, contentStatus: 'LOADING' })
+        Article.new({ title: undefined, uri: 'test', isPublic: true, accountId: -1, contentStatus: 'FAILED' })
+        Article.new({ title: null, uri: 'test', isPublic: true, accountId: -1, contentStatus: 'FAILED' })
+      }).not.toThrowError()
+    })
 
-    expect(() => {
-      Article.new({ title: '', description: 'test', uri: 'test', readAt: null, isPublic: true, accountId: -1 })
-    }).toThrowError(Error)
+    it('description은 undefined거나 null이어도 된다.', () => {
+      expect(() => {
+        Article.new({ description: undefined, uri: 'test', isPublic: true, accountId: -1, contentStatus: 'LOADING' })
+        Article.new({ description: null, uri: 'test', isPublic: true, accountId: -1, contentStatus: 'LOADING' })
+        Article.new({ description: undefined, uri: 'test', isPublic: true, accountId: -1, contentStatus: 'FAILED' })
+        Article.new({ description: null, uri: 'test', isPublic: true, accountId: -1, contentStatus: 'FAILED' })
+      }).not.toThrowError()
+    })
   })
 
-  it('description은 1글자 이상이어야 한다.', () => {
-    expect(() => {
-      Article.new({ description: 'd', title: 'test', uri: 'test', readAt: null, isPublic: true, accountId: -1 })
-    }).not.toThrowError()
+  describe('contentStatus가 LOADED나 CUSTOMIZED이면', () => {
+    it('title은 1글자 이상이어야 한다.', () => {
+      expect(() => {
+        Article.new({ title: 't', uri: 'test', isPublic: true, accountId: -1, contentStatus: 'LOADED' })
+        Article.new({ title: 't', uri: 'test', isPublic: true, accountId: -1, contentStatus: 'CUSTOMIZED' })
+      }).not.toThrowError()
 
-    expect(() => {
-      Article.new({ description: '', title: 'test', uri: 'test', readAt: null, isPublic: true, accountId: -1 })
-    }).toThrowError(Error)
+      expect(() => {
+        Article.new({ title: '', uri: 'test', isPublic: true, accountId: -1, contentStatus: 'LOADED' })
+        Article.new({ title: undefined, uri: 'test', isPublic: true, accountId: -1, contentStatus: 'LOADED' })
+        Article.new({ title: null, uri: 'test', isPublic: true, accountId: -1, contentStatus: 'LOADED' })
+        Article.new({ title: '', uri: 'test', isPublic: true, accountId: -1, contentStatus: 'CUSTOMIZED' })
+        Article.new({ title: undefined, uri: 'test', isPublic: true, accountId: -1, contentStatus: 'CUSTOMIZED' })
+        Article.new({ title: null, uri: 'test', isPublic: true, accountId: -1, contentStatus: 'CUSTOMIZED' })
+      }).toThrowError(Error)
+    })
+
+    it('description은 1글자 이상이어야 한다.', () => {
+      expect(() => {
+        Article.new({ description: 'd', title: 'test', uri: 'test', isPublic: true, accountId: -1, contentStatus: 'LOADED' })
+        Article.new({ description: 'd', title: 'test', uri: 'test', isPublic: true, accountId: -1, contentStatus: 'CUSTOMIZED' })
+      }).not.toThrowError()
+
+      expect(() => {
+        Article.new({ description: '', uri: 'test', isPublic: true, accountId: -1, contentStatus: 'LOADED' })
+        Article.new({ description: undefined, uri: 'test', isPublic: true, accountId: -1, contentStatus: 'LOADED' })
+        Article.new({ description: null, uri: 'test', isPublic: true, accountId: -1, contentStatus: 'LOADED' })
+        Article.new({ description: '', uri: 'test', isPublic: true, accountId: -1, contentStatus: 'CUSTOMIZED' })
+        Article.new({ description: undefined, uri: 'test', isPublic: true, accountId: -1, contentStatus: 'CUSTOMIZED' })
+        Article.new({ description: null, uri: 'test', isPublic: true, accountId: -1, contentStatus: 'CUSTOMIZED' })
+      }).toThrowError(Error)
+    })
   })
 
   it('uri는 1글자 이상이어야 한다.', () => {
     expect(() => {
-      Article.new({ uri: 'u', title: 'test', description: 'test', readAt: null, isPublic: true, accountId: -1 })
+      Article.new({ uri: 'u', isPublic: true, accountId: -1, contentStatus: 'LOADING' })
     }).not.toThrowError()
 
     expect(() => {
-      Article.new({ uri: '', title: 'test', description: 'test', readAt: null, isPublic: true, accountId: -1 })
+      Article.new({ uri: '', isPublic: true, accountId: -1, contentStatus: 'LOADING' })
     }).toThrowError(Error)
   })
 
   it('imageUri는 null이거나 1글자 이상이어야 한다.', () => {
     expect(() => {
-      Article.new({ imageUri: null, title: 'test', description: 'test', uri: 'test', readAt: null, isPublic: true, accountId: -1 })
+      Article.new({ imageUri: null, uri: 'test', isPublic: true, accountId: -1, contentStatus: 'LOADING' })
     }).not.toThrowError()
 
     expect(() => {
-      Article.new({ imageUri: 'i', title: 'test', description: 'test', uri: 'test', readAt: null, isPublic: true, accountId: -1 })
+      Article.new({ imageUri: 'i', uri: 'test', readAt: null, isPublic: true, accountId: -1, contentStatus: 'LOADING' })
     }).not.toThrowError()
 
     expect(() => {
-      Article.new({ imageUri: '', title: 'test', description: 'test', uri: 'test', readAt: null, isPublic: true, accountId: -1 })
+      Article.new({ imageUri: '', uri: 'test', readAt: null, isPublic: true, accountId: -1, contentStatus: 'LOADING' })
     }).toThrowError(Error)
   })
 })

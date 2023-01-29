@@ -1,8 +1,6 @@
-import { Service } from 'autoinjection'
 import { Article } from '~/domain/model/article/entity.js'
 import type { ArticleRepository } from '~/domain/model/article/repository.js'
 
-@Service({ singleton: true })
 class MemoryArticleRepository implements ArticleRepository {
   articles: Array<Article> = []
 
