@@ -1,12 +1,16 @@
+/* eslint-disable no-unused-vars */
 import { Inject, Service } from 'autoinjection'
 import { Article } from '~/domain/model/article/entity.js'
 import { type ArticleRepository } from '~/domain/model/article/repository.js'
 import { type Account } from '~/domain/model/account/entity.js'
+import { type ArticleContentService } from '~/domain/service/article-content'
 
 @Service({ singleton: true })
 export class ArticleService {
-  // eslint-disable-next-line no-unused-vars
-  constructor(@Inject() public readonly articleRepository?: ArticleRepository) {}
+  constructor(
+    @Inject() public readonly articleRepository?: ArticleRepository,
+    @Inject() private readonly articleContentService?: ArticleContentService,
+  ) {}
 
   async createArticle(
     dto: {
@@ -23,7 +27,13 @@ export class ArticleService {
       accountId: dto.account.id,
       contentStatus: dto.title && dto.description ? 'CUSTOMIZED' : 'LOADING',
     })
-    return await this.articleRepository!.save(article)
+    const savedArticle = await this.articleRepository!.save(article)
+
+    if (savedArticle.contentStatus === 'LOADING') {
+      this.articleContentService!.laodContent(savedArticle)
+    }
+
+    return savedArticle
   }
 
   async updateArticle(

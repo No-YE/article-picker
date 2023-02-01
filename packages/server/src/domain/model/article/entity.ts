@@ -68,6 +68,15 @@ export class Article extends Entity {
     this.readAt = null
   }
 
+  loadContent(title: string, description: string, imageUri: Maybe<string>): void {
+    if (this.contentStatus !== 'LOADING') throw Error()
+
+    this.contentStatus = 'LOADED'
+    !this.title && this.setTitle(title)
+    !this.description && this.setDescription(description)
+    this.setImageUri(imageUri)
+  }
+
   get hasRead(): boolean {
     return this.readAt !== undefined && this.readAt !== null
   }
