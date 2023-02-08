@@ -1,5 +1,6 @@
 import 'reflect-metadata'
-import './infrastructure/persistence/index.js'
-import { initialize } from './infrastructure/fastify/index.js'
+import './infrastructure/persistence'
+import './infrastructure/service'
+import { initialize } from './infrastructure/fastify'
 
 export const viteNodeApp = initialize()

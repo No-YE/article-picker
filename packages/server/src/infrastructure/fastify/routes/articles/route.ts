@@ -24,8 +24,8 @@ const articlesRoute: FastifyPluginAsync = async (fastify) => {
     {
       schema: {
         body: yup.object({
-          title: yup.string().required(),
-          description: yup.string().required(),
+          title: yup.string(),
+          description: yup.string(),
           uri: yup.string().required(),
           isPublic: yup.boolean().default(false),
         }),

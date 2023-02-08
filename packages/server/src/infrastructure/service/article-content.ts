@@ -9,7 +9,7 @@ export class WebScrapingArticleContentService implements ArticleContentService {
   // eslint-disable-next-line no-unused-vars
   constructor(@Inject() private readonly articleRepository?: ArticleRepository) {}
 
-  async laodContent(article: Article): Promise<void> {
+  async loadContent(article: Article): Promise<void> {
     try {
       const response = await fetch(article.uri)
       const html = await response.text()

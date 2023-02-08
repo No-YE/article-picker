@@ -14,14 +14,12 @@
          type="text"
          placeholder="Title"
          class="text-base px-2 py-1 rounded border border-solid border-gray-300"
-         value="<%= locals.article?.title ?? '' %>"
-         required>
+         value="<%= locals.article?.title ?? '' %>">
   
   <textarea name="description"
             placeholder="Description"
             rows="7"
-            class="text-base px-2 rounded border border-solid border-gray-300"
-            required><%= locals.article?.description ?? '' %></textarea>
+            class="text-base px-2 rounded border border-solid border-gray-300"><%= locals.article?.description ?? '' %></textarea>
   
   <div>
     <input id="article-new-is-public" type="checkbox" name="isPublic" value="true" class="scale-125" <%= locals.article?.isPublic ? 'checked' : '' %>>

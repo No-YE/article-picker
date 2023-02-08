@@ -8,7 +8,7 @@ import { type ArticleContentService } from '~/domain/service/article-content'
 @Service({ singleton: true })
 export class ArticleService {
   constructor(
-    @Inject() public readonly articleRepository?: ArticleRepository,
+    @Inject() private readonly articleRepository?: ArticleRepository,
     @Inject() private readonly articleContentService?: ArticleContentService,
   ) {}
 
@@ -30,7 +30,7 @@ export class ArticleService {
     const savedArticle = await this.articleRepository!.save(article)
 
     if (savedArticle.contentStatus === 'LOADING') {
-      this.articleContentService!.laodContent(savedArticle)
+      this.articleContentService!.loadContent(savedArticle)
     }
 
     return savedArticle

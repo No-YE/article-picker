@@ -45,7 +45,7 @@ export class Article extends Entity {
     entity.setUri(uri)
     entity.setImageUri(imageUri)
     entity.setTitle(title)
-    description && entity.setDescription(description)
+    entity.setDescription(description)
 
     Object.assign(entity, { readAt, isPublic, accountId, createdAt })
 
@@ -82,7 +82,7 @@ export class Article extends Entity {
   }
 
   private setTitle(value: Maybe<string>): void {
-    if (value === null || value === undefined) {
+    if (value === null || value === undefined || value.length === 0) {
       if (this.contentStatus === 'CUSTOMIZED') throw Error()
       if (this.contentStatus === 'LOADED') throw Error()
       this.title = null
@@ -94,11 +94,11 @@ export class Article extends Entity {
     this.title = value
   }
 
-  private setDescription(value: string): void {
-    if (value === null || value === undefined) {
+  private setDescription(value: Maybe<string>): void {
+    if (value === null || value === undefined || value.length === 0) {
       if (this.contentStatus === 'CUSTOMIZED') throw Error()
       if (this.contentStatus === 'LOADED') throw Error()
-      this.title = null
+      this.description = null
       return
     }
 
